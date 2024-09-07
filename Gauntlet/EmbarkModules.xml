@@ -1,0 +1,13 @@
+<embarkmodules>
+	<module Class="XRL.CharacterBuilds.Qud.QudGamemodeModule">
+		<modes>
+			<mode ID="Gauntlet" Title="Gauntlet">
+				<icon Tile="items/sw_longblade_5.bmp" Foreground="R" Detail="r"></icon>
+				<description>
+					Fight endless waves of creatures for as long as you can.
+				</description>
+				<stringgamestate Name="GameMode" Value="Gauntlet"></stringgamestate>
+			</mode>
+		</modes>
+	</module>
+</embarkmodules>

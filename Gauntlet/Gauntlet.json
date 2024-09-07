@@ -1,0 +1,1487 @@
+{
+	"Layouts": {
+		"RandomOpenArea": {
+			"Map": "Gauntlet_OpenArea.rpm"
+		},
+
+		"RandomOpenAreaCanyon": {
+			"Map": "Gauntlet_OpenAreaCanyon.rpm",
+			"Objects": [
+				{ "Object": "Dogthorn Tree", "Count": 20, "Traits": ["Neutral"] }
+			]
+		},
+
+		"RandomRiver": {
+			"Map": "Gauntlet_River.rpm",
+			"Objects": [
+				{ "Object": "Dogthorn Tree", "Count": 20, "Traits": ["Neutral"] }
+			]
+		},
+
+		"RandomBasic": {
+			"Map": "Gauntlet_Basic.rpm"
+		},
+
+		"RandomWrap": {
+			"Map": "Gauntlet_Wrap.rpm"
+		},
+
+		"RandomDivide": {
+			"Map": "Gauntlet_Divide.rpm",
+			"Objects": [
+				{ "Object": "Aloe Porta", "X": 25, "Y": 7, "Traits": ["Hologram"] },
+				{ "Object": "Aloe Porta", "X": 54, "Y": 17, "Traits": ["Hologram"] }
+			]
+		},
+
+		"RandomDivide2": {
+			"Map": "Gauntlet_Divide2.rpm",
+			"Objects": [
+				{ "Object": "Aloe Porta", "X": 54, "Y": 7, "Traits": ["Hologram"] },
+				{ "Object": "Aloe Porta", "X": 25, "Y": 17, "Traits": ["Hologram"] }
+			]
+		},
+
+		"RandomCave": {
+			"Map": "Gauntlet_Cave.rpm"
+		},
+
+		"RandomCave2": {
+			"Map": "Gauntlet_Cave2.rpm"
+		},
+
+		"RandomCave3": {
+			"Map": "Gauntlet_Cave3.rpm"
+		},
+
+		"RandomRuins": {
+			"Map": "Gauntlet_Ruins.rpm"
+		},
+
+		"RandomRedRock": {
+			"Map": "Gauntlet_RedRock.rpm",
+			"MaxWave": 15
+		},
+
+		"RandomRedRock2": {
+			"Map": "Gauntlet_RedRock2.rpm",
+			"MaxWave": 15
+		},
+
+		"RandomRedRockSlumberling": {
+			"Map": "Gauntlet_RedRock.rpm",
+			"MinWave": 15,
+			"MaxWave": 30,
+			"Objects": [
+				{ "Object": "Slumberling", "Traits": ["Optional"] }
+			]
+		},
+
+		"RandomRedRockSlumberling2": {
+			"Map": "Gauntlet_RedRock2.rpm",
+			"MinWave": 15,
+			"MaxWave": 30,
+			"Objects": [
+				{ "Object": "Slumberling", "Traits": ["Optional"] }
+			]
+		},
+
+		"RandomRedRockDeepSlumberling": {
+			"Map": "Gauntlet_RedRock.rpm",
+			"MinWave": 30,
+			"Objects": [
+				{ "Object": "Deep Slumberling", "Traits": ["Optional"] }
+			]
+		},
+
+		"RandomRedRockDeepSlumberling2": {
+			"Map": "Gauntlet_RedRock2.rpm",
+			"MinWave": 30,
+			"Objects": [
+				{ "Object": "Deep Slumberling", "Traits": ["Optional"] }
+			]
+		},
+
+		"RandomAsphaltMines": {
+			"Map": "Gauntlet_AsphaltMines.rpm",
+			"MinWave": 15
+		},
+
+		"RandomAsphaltMines2": {
+			"Map": "Gauntlet_AsphaltMines2.rpm",
+			"MinWave": 30
+		},
+
+		"RandomHealingPool": {
+			"Map": "Gauntlet_HealingPool.rpm",
+			"MinWave": 20
+		},
+
+		"RandomCourtOfTheSultans": {
+			"Map": "Gauntlet_CourtOfTheSultans.rpm",
+			"MinWave": 20
+		},
+
+		"OpenArea": {
+			"Map": "Gauntlet_OpenArea.rpm",
+			"Tag": "Big"
+		},
+
+		"OpenAreaCanyon": {
+			"Map": "Gauntlet_OpenAreaCanyon.rpm",
+			"Tag": "Big",
+			"Objects": [
+				{ "Object": "Dogthorn Tree", "Count": 20, "Traits": ["Neutral"] }
+			]
+		},
+
+		"River": {
+			"Map": "Gauntlet_River.rpm",
+			"Tag": "Big",
+			"Objects": [
+				{ "Object": "Dogthorn Tree", "Count": 20, "Traits": ["Neutral"] }
+			]
+		},
+
+		"Basic": {
+			"Map": "Gauntlet_Basic.rpm",
+			"Tag": "Cover"
+		},
+
+		"Divide": {
+			"Map": "Gauntlet_Divide.rpm",
+			"Tag": "Cover",
+			"Objects": [
+				{ "Object": "Aloe Porta", "X": 25, "Y": 7, "Traits": ["Hologram"] },
+				{ "Object": "Aloe Porta", "X": 54, "Y": 17, "Traits": ["Hologram"] }
+			]
+		},
+
+		"Divide2": {
+			"Map": "Gauntlet_Divide2.rpm",
+			"Tag": "Cover",
+			"Objects": [
+				{ "Object": "Aloe Porta", "X": 54, "Y": 7, "Traits": ["Hologram"] },
+				{ "Object": "Aloe Porta", "X": 25, "Y": 17, "Traits": ["Hologram"] }
+			]
+		},
+
+		"Wrap": {
+			"Map": "Gauntlet_Wrap.rpm",
+			"Tag": "Cover"
+		},
+
+		"Cave": {
+			"Map": "Gauntlet_Cave.rpm",
+			"Tag": "Cover"
+		},
+
+		"Cave2": {
+			"Map": "Gauntlet_Cave2.rpm",
+			"Tag": "Cover"
+		},
+
+		"Cave3": {
+			"Map": "Gauntlet_Cave3.rpm",
+			"Tag": "Cover"
+		},
+
+		"Ruins": {
+			"Map": "Gauntlet_Ruins.rpm",
+			"Tag": "Cramped"
+		},
+
+		"RedRock": {
+			"Map": "Gauntlet_RedRock.rpm",
+			"Tag": "Cramped"
+		},
+
+		"RedRock2": {
+			"Map": "Gauntlet_RedRock2.rpm",
+			"Tag": "Cramped"
+		},
+
+		"Cloaca": {
+			"Map": "Gauntlet_Cloaca.rpm",
+			"Tag": "Golgotha"
+		},
+
+		"AsphaltMines": {
+			"Map": "Gauntlet_AsphaltMines.rpm",
+			"Tag": "AsphaltMines"
+		},
+
+		"AsphaltMines2": {
+			"Map": "Gauntlet_AsphaltMines2.rpm",
+			"Tag": "AsphaltMines",
+			"MinWave": 30
+		},
+
+		"HealingPool": {
+			"Map": "Gauntlet_HealingPool.rpm",
+			"Tag": "HealingPool"
+		},
+
+		"CourtOfTheSultans": {
+			"Map": "Gauntlet_CourtOfTheSultans.rpm",
+			"Tag": "Sultan"
+		},
+
+		"1v1": {
+			"Map": "Gauntlet_1v1.rpm",
+			"Tag": "1v1"
+		},
+
+		"1v1Court": {
+			"Map": "Gauntlet_1v1Court.rpm",
+			"Tag": "1v1"
+		},
+
+		"CoveredVents": {
+			"Map": "Gauntlet_CoveredVents.rpm",
+			"Tag": "Destruction"
+		},
+
+		"Island": {
+			"Map": "Gauntlet_Island.rpm",
+			"Tag": "Water",
+			"Objects": [
+				{ "Object": "Madpole", "Count": 10, "Traits": ["Hologram"] }
+			]
+		}
+	},
+
+	"Waves": {
+		"Snapjaws": {
+			"Objects": [
+				{ "Object": "Snapjaw Scavenger 0", "Count": 8 }
+			]
+		},
+
+		"Snapjaws2": {
+			"MinWave": 2,
+			"Objects": [
+				{ "Object": "Snapjaw Scavenger 1", "Count": 6 },
+				{ "Object": "Snapjaw Hunter 1", "Count": 3 }
+			]
+		},
+
+		"DesertCanyon": {
+			"MinWave": 2,
+			"Objects": [
+				{ "Object": "IrritableTortoise" },
+				{ "Object": "Boar" },
+				{ "Object": "Seed-Spitting Vine", "Count": 3 }
+			]
+		},
+
+		"Baboons": {
+			"MinWave": 2,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Baboon", "Count": 4 }
+			]
+		},
+
+		"Cave": {
+			"MinWave": 2,
+			"Layout": "Cramped",
+			"Objects": [
+				{ "Object": "GiantAmoeba", "Count": 2 },
+				{ "Object": "Cave Spider", "Count": 4, "Traits": ["Optional"] }
+			]
+		},
+
+		"Snapjaws3": {
+			"MinWave": 5,
+			"Objects": [
+				{ "Object": "Snapjaw Scavenger 2", "Count": 5 },
+				{ "Object": "Snapjaw Warrior 2" },
+				{ "Object": "Snapjaw Warlord 2" }
+			]
+		},
+
+		"Cave2": {
+			"MinWave": 5,
+			"Objects": [
+				{ "Object": "Giant Centipede", "Count": 3 },
+				{ "Object": "Knollworm" },
+				{ "Object": "GiantAmoeba" },
+				{ "Object": "Dreadroot", "Count": 15, "Traits": ["Optional"] }
+			]
+		},
+
+		"Issachari": {
+			"MinWave": 5,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Issachari Raider", "Count": 5 },
+				{ "Object": "Issachari Rifler" }
+			]
+		},
+
+		"Hills": {
+			"MinWave": 5,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Goat" },
+				{ "Object": "Cannibal", "Count": 2 },
+				{ "Object": "Leech", "Count": 2 }
+			]
+		},
+
+		"MusketTurret": {
+			"MinWave": 5,
+			"Layout": "Cramped",
+			"Objects": [
+				{ "Object": "SecurityTurret", "Count": 2 }
+			]
+		},
+
+		"WallDwellers": {
+			"MinWave": 5,
+			"Layout": "Cramped",
+			"Objects": [
+				{ "Object": "Jilted Lover", "Count": 3 },
+				{ "Object": "Prickler", "Count": 2 }
+			]
+		},
+
+		"Cave3": {
+			"MinWave": 8,
+			"Objects": [
+				{ "Object": "Eyeless Crab" },
+				{ "Object": "Plated Knollworm" },
+				{ "Object": "Electrofuge" },
+				{ "Object": "Thirst Thistle" },
+				{ "Object": "Young Ivory", "Count": 10, "Traits": ["Optional"] }
+			]
+		},
+
+		"Cave4": {
+			"MinWave": 8,
+			"Objects": [
+				{ "Object": "Giant Centipede Nest" },
+				{ "Object": "Segmented Mirthworm" },
+				{ "Object": "Miner Mk I" },
+				{ "Object": "Young Ivory", "Count": 10, "Traits": ["Optional"] }
+			]
+		},
+
+		"Baboons2": {
+			"MinWave": 8,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Baboon", "Count": 6 },
+				{ "Object": "Hulking Baboon" },
+				{ "Object": "Shrewd Baboon" }
+			]
+		},
+
+		"Hills2": {
+			"MinWave": 8,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Novice of the Sightless Way" },
+				{ "Object": "Two-Headed Boar" },
+				{ "Object": "Leech", "Count": 2 }
+			]
+		},
+
+		"GritGate": {
+			"MinWave": 8,
+			"Layout": "Cramped",
+			"Objects": [
+				{ "Object": "Bear" },
+				{ "Object": "Waydroid" },
+				{ "Object": "Prickler", "Count": 2, "Traits": ["Optional"] }
+			]
+		},
+
+		"FlowerFields": {
+			"MinWave": 10,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Feral Lah" },
+				{ "Object": "Salthopper" },
+				{ "Object": "Honey Skunk", "Count": 2 }
+			]
+		},
+
+		"DesertCanyon2": {
+			"MinWave": 10,
+			"Objects": [
+				{ "Object": "IrritableTortoise", "Count": 2 },
+				{ "Object": "Horned Chameleon", "Count": 2 },
+				{ "Object": "Seed-Spitting Vine", "Count": 3 },
+				{ "Object": "Qudzu", "Count": 10, "Traits": ["Optional"] },
+				{ "Object": "Jilted Lover", "Count": 5, "Traits": ["Optional"] }
+			]
+		},
+
+		"Eels": {
+			"MinWave": 10,
+			"Layout": "Golgotha",
+			"Objects": [
+				{ "Object": "SewageEel", "Count": 5 }
+			]
+		},
+
+		"Cave5": {
+			"MinWave": 10,
+			"Layout": "Cramped",
+			"Objects": [
+				{ "Object": "Slugsnout" },
+				{ "Object": "Seedsprout Worm" },
+				{ "Object": "Eyeless Crab" },
+				{ "Object": "Dreadroot", "Count": 10, "Traits": ["Optional"] }
+			]
+		},
+
+		"Cave6": {
+			"MinWave": 10,
+			"Layout": "Cramped",
+			"Objects": [
+				{ "Object": "Glowmoth" },
+				{ "Object": "Seedsprout Worm" },
+				{ "Object": "Segmented Mirthworm" },
+				{ "Object": "Dreadroot", "Count": 10, "Traits": ["Optional"] }
+			]
+		},
+
+		"Humans": {
+			"MinWave": 10,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Trash Monk" },
+				{ "Object": "Arconaut" }
+			]
+		},
+
+		"RifleTurret": {
+			"MinWave": 10,
+			"Layout": "Cramped",
+			"Objects": [
+				{ "Object": "RifleTurret", "Count": 2 },
+				{ "Object": "Miner Mk I" }
+			]
+		},
+
+		"Naphtaali": {
+			"MinWave": 10,
+			"Objects": [
+				{ "Object": "Naphtaali Forager", "Count": 3 },
+				{ "Object": "Naphtaali Nimrod" },
+				{ "Object": "Naphtaali Jeer" },
+				{ "Object": "Naphtaali Tinker" }
+			]
+		},
+
+		"AsphaltMines": {
+			"MinWave": 10,
+			"Layout": "AsphaltMines",
+			"Objects": [
+				{ "Object": "Fire Snout", "Count": 2 },
+				{ "Object": "Drillbot", "Count": 2 }
+			]
+		},
+
+		"Snapjaws4": {
+			"MinWave": 10,
+			"Objects": [
+				{ "Object": "Snapjaw Feeder", "Count": 3 },
+				{ "Object": "Snapjaw Spearfiend" },
+				{ "Object": "Snapjaw Trapper" },
+				{ "Object": "Snapjaw Howler" }
+			]
+		},
+
+		"Furniture": {
+			"MinWave": 10,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Door", "Traits": ["Animate"] },
+				{ "Object": "Table", "Traits": ["Animate"] },
+				{ "Object": "Chair", "Traits": ["Animate"] }
+			]
+		},
+
+		"Jungle": {
+			"MinWave": 15,
+			"Objects": [
+				{ "Object": "Ice frog" },
+				{ "Object": "Quillipede" },
+				{ "Object": "Bloated Leech", "Count": 2 },
+				{ "Object": "Dogthorn Tree", "Count": 20, "Traits": ["Neutral"] }
+			]
+		},
+
+		"Goatfolk": {
+			"MinWave": 15,
+			"Objects": [
+				{ "Object": "Goatfolk Bully", "Count": 2 },
+				{ "Object": "Goatfolk Sower" },
+				{ "Object": "Goatfolk Yurtwarden" },
+				{ "Object": "Dogthorn Tree", "Count": 20, "Traits": ["Neutral"] }
+			]
+		},
+
+		"Naphtaali2": {
+			"MinWave": 15,
+			"Objects": [
+				{ "Object": "Unplanished Godhed" },
+				{ "Object": "Naphtaali Forager", "Count": 6 },
+				{ "Object": "Naphtaali Nimrod", "Count": 2 },
+				{ "Object": "Naphtaali Jeer", "Count": 2 },
+				{ "Object": "Naphtaali Tinker", "Count": 2 },
+				{ "Object": "Naphtaali Sap" }
+			]
+		},
+
+		"Templar": {
+			"MinWave": 15,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Templar Squire", "Count": 4 },
+				{ "Object": "Infiltrator" }
+			]
+		},
+
+		"Dawngliders": {
+			"MinWave": 15,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Dawnglider", "Count": 2 }
+			]
+		},
+
+		"Beards": {
+			"MinWave": 15,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Breather", "Count": 2 }
+			]
+		},
+
+		"FireAndIceBeard": {
+			"MinWave": 15,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "FireBreather" },
+				{ "Object": "IceBreather" }
+			]
+		},
+
+		"WallDwellers2": {
+			"MinWave": 15,
+			"Layout": "Cramped",
+			"Objects": [
+				{ "Object": "Livid Creeper", "Count": 5 }
+			]
+		},
+
+		"UrchinBelcher": {
+			"MinWave": 15,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Urchin Belcher" }
+			]
+		},
+
+		"Cave7": {
+			"MinWave": 15,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Rifle Turret Tinker" },
+				{ "Object": "Worm of the Earth" },
+				{ "Object": "Voider", "Count": 2 },
+				{ "Object": "Young Ivory", "Count": 10, "Traits": ["Optional"] }
+			]
+		},
+
+		"Slog": {
+			"MinWave": 15,
+			"Layout": "Golgotha",
+			"Objects": [
+				{ "Object": "GolgothaSlog" },
+				{ "Object": "Black Jel" },
+				{ "Object": "Brown Sludge" },
+				{ "Object": "Green Goo" }
+			]
+		},
+
+		"Girshlings": {
+			"MinWave": 15,
+			"Objects": [
+				{ "Object": "Rank Girshling" },
+				{ "Object": "Conjoined Girshling" },
+				{ "Object": "Plasmatic Girshling" },
+				{ "Object": "Polarized Girshling" },
+				{ "Object": "Cryptic Girshling" },
+				{ "Object": "Burrowing Girshling" }
+			]
+		},
+
+		"50Snapjaws": {
+			"MinWave": 15,
+			"Layout": "Big",
+			"Objects": [
+				{ "Object": "Snapjaw Scavenger 2", "Count": 50 }
+			]
+		},
+
+		"Goatfolk2": {
+			"MinWave": 20,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Goatfolk Bully", "Count": 2 },
+				{ "Object": "Goatfolk Sower" },
+				{ "Object": "Goatfolk Hornblower" },
+				{ "Object": "Goatfolk Shaman" },
+				{ "Object": "Dogthorn Tree", "Count": 20, "Traits": ["Neutral"] }
+			]
+		},
+
+		"Antelopes": {
+			"MinWave": 20,
+			"Layout": "Big",
+			"Objects": [
+				{ "Object": "Fork-Horned Gnu", "Count": 5 },
+				{ "Object": "Chitinous Puma", "Count": 2 }
+			]
+		},
+
+		"Jungle2": {
+			"MinWave": 20,
+			"Objects": [
+				{ "Object": "Slumberling" },
+				{ "Object": "Sawhander" },
+				{ "Object": "Electric Snail" },
+				{ "Object": "Dogthorn Tree", "Count": 20, "Traits": ["Neutral"] }
+			]
+		},
+
+		"PhylacterySquire": {
+			"MinWave": 20,
+			"Layout": "Cover",
+			"Objects": [
+				{
+					"Object": "Phylactery Squire",
+					"Objects": [
+						{ "Object": "SalveTonic" }
+					]
+				},
+				{ "Object": "Infiltrator" }
+			]
+		},
+
+		"Agolfly": {
+			"MinWave": 20,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Agolfly" },
+				{ "Object": "Agolmaggot", "Count": 8 }
+			]
+		},
+
+		"AsphaltMines2": {
+			"MinWave": 20,
+			"Layout": "AsphaltMines",
+			"Objects": [
+				{ "Object": "Eyeless King Crab" },
+				{ "Object": "Fire Snout", "Count": 2 },
+				{ "Object": "Eyeless Crab", "Count": 4 },
+				{ "Object": "Humor", "Count": 1 }
+			]
+		},
+
+		"Mopango": {
+			"MinWave": 20,
+			"Layout": "Sultan",
+			"Objects": [
+				{ "Object": "MopangoPilgrim" }
+			]
+		},
+
+		"FjornKosef": {
+			"MinWave": 20,
+			"Layout": "HealingPool",
+			"Objects": [
+				{ "Object": "Troll King 2" }
+			]
+		},
+
+		"Haggabah": {
+			"MinWave": 20,
+			"Layout": "HealingPool",
+			"Objects": [
+				{ "Object": "Troll King 3" }
+			]
+		},
+
+		"Mechanimists": {
+			"MinWave": 20,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Psyberneticist" },
+				{ "Object": "Mechnamist rummager", "Count": 2 },
+				{ "Object": "Scrapbot Mechanimist", "Count": 4 }
+			]
+		},
+
+		"Svardym": {
+			"MinWave": 20,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Svardym Hatchling", "Count": 3 }
+			]
+		},
+
+		"Door": {
+			"MinWave": 20,
+			"Layout": "1v1",
+			"Objects": [
+				{
+					"Object": "Red Security Door",
+					"Traits": ["Animate", "MaxWillpower"],
+					"Skills": ["Cudgel_Slam"],
+					"Objects": [ { "Object": "Cudgel3th" } ]
+				},
+				{ "Object": "Lurking Beth", "Count": 15, "Traits": ["Optional"] }
+			]
+		},
+
+		"Cragmensch": {
+			"MinWave": 25,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Cragmensch Brainer", "Count": 2 },
+				{ "Object": "Cragmensch Boulderer", "Count": 2 },
+				{ "Object": "Cragmensch Luminary" }
+			]
+		},
+
+		"Rimewyk": {
+			"MinWave": 25,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Rimewyk" },
+				{ "Object": "Plastronoid", "Count": 12 }
+			]
+		},
+
+		"Cave8": {
+			"MinWave": 25,
+			"Objects": [
+				{ "Object": "Molting Basilisk" },
+				{ "Object": "Snailmother" },
+				{ "Object": "Waveform Worm", "Count": 2 },
+				{ "Object": "Lagroot", "Count": 20, "Traits": ["Optional"] }
+			]
+		},
+
+		"Mechanimists2": {
+			"MinWave": 25,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Mechanimist Warden" },
+				{ "Object": "Mechanimist Temple Paladin" },
+				{ "Object": "Mechanimist Catechist", "Count": 3 },
+				{ "Object": "Psyberneticist", "Count": 2 }
+			]
+		},
+
+		"Templar2": {
+			"MinWave": 25,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Knight Templar" },
+				{ "Object": "Banner-Knight Templar" },
+				{ "Object": "Gunner-Knight Templar" },
+				{ "Object": "Infiltrator", "Count": 2 }
+			]
+		},
+
+		"TwinningLamprey": {
+			"MinWave": 25,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Twinning Lamprey" }
+			]
+		},
+
+		"Mamon": {
+			"MinWave": 25,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Mamon" },
+				{ "Object": "Goatfolk Thrall", "Count": 3 },
+				{ "Object": "Goatfolk Sower" },
+				{ "Object": "Wild Watervine Merchant" }
+			]
+		},
+
+		"Jotun": {
+			"MinWave": 25,
+			"Layout": "HealingPool",
+			"Objects": [
+				{ "Object": "Troll King 1" }
+			]
+		},
+
+		"SaadAmus": {
+			"MinWave": 25,
+			"Layout": "HealingPool",
+			"Objects": [
+				{ "Object": "Skybear" },
+				{ "Object": "Yempuris", "Traits": ["Optional"] },
+				{ "Object": "Phase Spider", "Traits": ["Optional"] }
+			]
+		},
+
+		"Asphodel": {
+			"MinWave": 25,
+			"Layout": "Sultan",
+			"Objects": [
+				{ "Object": "Asphodel" },
+				{ "Object": "Asphodelyte", "Count": 12 }
+			]
+		},
+
+		"ElderBeard": {
+			"MinWave": 25,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Elder Breather" }
+			]
+		},
+
+		"AllBeards": {
+			"MinWave": 25,
+			"Layout": "Big",
+			"Objects": [
+				{ "Object": "FireBreather" },
+				{ "Object": "IceBreather" },
+				{ "Object": "CorrosiveBreather" },
+				{ "Object": "NormalityBreather" },
+				{ "Object": "PoisonBreather" },
+				{ "Object": "SleepBreather" },
+				{ "Object": "StunBreather" },
+				{ "Object": "ConfusionBreather" }
+			]
+		},
+
+		"80Snapjaws": {
+			"MinWave": 25,
+			"Layout": "Big",
+			"Objects": [
+				{ "Object": "Snapjaw Feeder", "Count": 60 },
+				{ "Object": "Snapjaw Howler", "Count": 20 }
+			]
+		},
+
+		"EvilTwin": {
+			"Wave": 30,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "EvilTwin", "Traits": ["Special"] }
+			]
+		},
+
+		"Templar3": {
+			"MinWave": 30,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Knight Commander of the Holy Temple" },
+				{ "Object": "Knight Templar" },
+				{ "Object": "Banner-Knight Templar" },
+				{ "Object": "Gunner-Knight Templar" },
+				{ "Object": "Phylactery Squire" }
+			]
+		},
+
+		"Humans2": {
+			"MinWave": 30,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Trash Abbot" },
+				{ "Object": "Graverobber" }
+			]
+		},
+
+		"Rhinox": {
+			"MinWave": 30,
+			"Layout": "Cramped",
+			"Objects": [
+				{ "Object": "Rhinox" }
+			]
+		},
+
+		"Svardym2": {
+			"MinWave": 30,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Svardym Hatchling", "Count": 4 },
+				{ "Object": "Svardym Scrounge" },
+				{ "Object": "Svardym Jut" }
+			]
+		},
+
+		"CaravanGuards": {
+			"MinWave": 30,
+			"Layout": "1v1",
+			"Objects": [
+				{
+					"Object": "Caravan Guard",
+					"Count": 3,
+					"Objects": [
+						{ "Object": "Urberry" }
+					]
+				},
+				{ "Object": "Great Saltback", "Traits": ["Optional"] }
+			]
+		},
+
+		"Esther": {
+			"MinWave": 30,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Warden Esthers" }
+			]
+		},
+
+		"Indrix": {
+			"MinWave": 30,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Warden Indrix" }
+			]
+		},
+
+		"1-FF": {
+			"MinWave": 30,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Warden 1-FF" }
+			]
+		},
+
+		"MechanicalCherub": {
+			"MinWave": 30,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "CherubimSpawn5A" }
+			]
+		},
+
+		"Cragmensch2": {
+			"MinWave": 35,
+			"Layout": "Cramped",
+			"Objects": [
+				{ "Object": "Glittermensch Brainer", "Count": 2 },
+				{ "Object": "Glittermensch Boulderer", "Count": 2 },
+				{ "Object": "Glittermensch Luminary", "Count": 1 }
+			]
+		},
+
+		"Cave9": {
+			"MinWave": 35,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Lithofex", "Count": 2 },
+				{ "Object": "Quartziferous Mirror" },
+				{ "Object": "Mirror Bug", "Count": 3 }
+			]
+		},
+
+		"ElderFireAndIceBeard": {
+			"MinWave": 35,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "ElderFireBreather" },
+				{ "Object": "ElderIceBreather" }
+			]
+		},
+
+		"Svardym3": {
+			"MinWave": 35,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Svardym Hatchling", "Count": 4 },
+				{ "Object": "Svardym Jut", "Count": 2 },
+				{ "Object": "Svardym Eld" }
+			]
+		},
+
+		"Reef": {
+			"MinWave": 35,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Reef Hermit" },
+				{ "Object": "Quatravolt Glider" },
+				{ "Object": "Sultan Croc", "Count": 2 }
+			]
+		},
+
+		"Reef2": {
+			"MinWave": 35,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Plasma Jelly" },
+				{ "Object": "Kaleidoslug", "Count": 2 },
+				{ "Object": "Tongue Tyrant", "Count": 4 }
+			]
+		},
+
+		"TriningLamprey": {
+			"MinWave": 35,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Trining Lamprey" }
+			]
+		},
+
+		"Yrame": {
+			"MinWave": 35,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Warden Yrame" }
+			]
+		},
+
+		"Une": {
+			"MinWave": 35,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Une" }
+			]
+		},
+
+		"MechanimistPriests": {
+			"MinWave": 35,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "High Priest Eschelstadt" },
+				{ "Object": "Phinae Hoshaiah" }
+			]
+		},
+
+		"Trolls": {
+			"MinWave": 35,
+			"Layout": "HealingPool",
+			"Objects": [
+				{ "Object": "Troll King 1" },
+				{ "Object": "Troll King 2" },
+				{ "Object": "Troll King 3" }
+			]
+		},
+
+		"Agolgot": {
+			"Wave": 40,
+			"Layout": "Golgotha",
+			"Objects": [
+				{ "Object": "Agolgot" }
+			]
+		},
+
+		"Bethsaida": {
+			"Wave": 40,
+			"Layout": "HealingPool",
+			"Objects": [
+				{ "Object": "Bethsaida" }
+			]
+		},
+
+		"Rermadon": {
+			"Wave": 40,
+			"Layout": "Water",
+			"Objects": [
+				{ "Object": "Rermadon" }
+			]
+		},
+
+		"Shugruith": {
+			"Wave": 40,
+			"Layout": "Cramped",
+			"Objects": [
+				{ "Object": "Shugruith" }
+			]
+		},
+
+		"DawningApes": {
+			"MinWave": 40,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Dawning Ape", "Count": 2 },
+				{ "Object": "Astral Tabby", "Count": 2, "Traits": ["Optional"] }
+			]
+		},
+
+		"GyreWightApotheotes": {
+			"MinWave": 40,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Gyre Wight Apotheote", "Count": 2 }
+			]
+		},
+
+		"MoonStair": {
+			"MinWave": 40,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Unimax", "Count": 2 },
+				{ "Object": "Zero Jell", "Count": 2 }
+			]
+		},
+
+		"Galgal": {
+			"MinWave": 40,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Galgal" }
+			]
+		},
+
+		"TemplarMechaMelee": {
+			"MinWave": 40,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "VehicleTemplarMech1_Battle" }
+			]
+		},
+
+		"TemplarMechaRanged": {
+			"MinWave": 40,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "VehicleTemplarMech2_Battle" }
+			]
+		},
+
+		"AsphaltMines3": {
+			"MinWave": 40,
+			"Layout": "AsphaltMines",
+			"Objects": [
+				{ "Object": "Hamilcrab" },
+				{ "Object": "Great Magma Crab", "Count": 2 }
+			]
+		},
+
+		"MechanicalCherubim": {
+			"MinWave": 40,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "CherubimSpawn4A" },
+				{ "Object": "CherubimSpawn5A" }
+			]
+		},
+
+		"Cherub": {
+			"MinWave": 40,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "CherubimSpawn1A" }
+			]
+		},
+
+		"AllElderBeards": {
+			"MinWave": 40,
+			"Layout": "Big",
+			"Objects": [
+				{ "Object": "ElderFireBreather" },
+				{ "Object": "ElderIceBreather" },
+				{ "Object": "ElderCorrosiveBreather" },
+				{ "Object": "ElderNormalityBreather" },
+				{ "Object": "ElderPoisonBreather" },
+				{ "Object": "ElderSleepBreather" },
+				{ "Object": "ElderStunBreather" },
+				{ "Object": "ElderConfusionBreather" }
+			]
+		},
+
+		"IndrixAndMamon": {
+			"MinWave": 40,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Warden Indrix" },
+				{
+					"Object": "Mamon",
+					"Count": 1,
+					"Traits": ["Naked", "MaxWillpower"],
+					"Objects": [
+						{ "Object": "Urberry", "Count": 2 },
+						{ "Object": "SphynxSaltTonic", "Count": 3 }
+					]
+				}
+			]
+		},
+
+		"TombChildren": {
+			"MinWave": 40,
+			"Layout": "Sultan",
+			"Objects": [
+				{
+					"Object": "Nacham",
+					"Count": 1,
+					"Objects": [
+						{ "Object": "Dagasha's Spur" },
+						{ "Object": "Kah's Loop" }
+					]
+				},
+				{
+					"Object": "Vaam",
+					"Count": 1,
+					"Objects": [
+						{ "Object": "Dagasha's Spur" },
+						{ "Object": "Kah's Loop" },
+						{ "Object": "Phase Cannon", "Mods": ["ModMasterwork", "ModSturdy"] },
+						{ "Object": "Antimatter Cell", "Mods": ["ModRadioPowered", "ModHighCapacity", "ModSturdy"] }
+					]
+				},
+				{
+					"Object": "Dagasha",
+					"Count": 1,
+					"Objects": [
+						{ "Object": "Dagasha's Spur" },
+						{ "Object": "Kah's Loop" }
+					]
+				},
+				{
+					"Object": "Kah",
+					"Count": 1,
+					"Objects": [
+						{ "Object": "Dagasha's Spur" },
+						{ "Object": "Kah's Loop" }
+					]
+				}
+			]
+		},
+
+		"ArmoredSaadAmus": {
+			"MinWave": 50,
+			"Layout": "Sultan",
+			"Objects": [
+				{
+					"Object": "Skybear",
+					"Count": 1,
+					"Skills": ["Tactics", "Tactics_Run", "Tactics_Hurdle", "Tactics_Juke"],
+					"Traits": ["Naked", "MaxWillpower"],
+					"Objects": [
+						{ "Object": "Ceremonial Khopesh", "Mods": ["ModMasterwork", "ModSharp", "ModCounterweighted"] },
+						{ "Object": "Zetachrome Lune", "Mods": ["ModReinforced", "ModFlexiweaved", "ModSturdy"] },
+						{ "Object": "Zetachrome Apex", "Mods": ["ModTwoFaced", "ModVisored", "ModPadded"] },
+						{ "Object": "The Kesil Face", "Count": 2 },
+						{ "Object": "SkybearJetpack" },
+						{ "Object": "Precision Nanon Fingers", "Mods": ["ModSixFingered", "ModOverloaded", "ModSturdy"] },
+						{ "Object": "Precision Nanon Fingers", "Mods": ["ModMagnetized", "ModOverloaded", "ModSturdy"] },
+						{ "Object": "Zetachrome Pumps", "Mods": ["ModSturdy"] },
+						{ "Object": "Arsplice Seed" },
+						{ "Object": "BlazeTonic", "Count": 8 }
+					]
+				}
+			]
+		},
+
+		"LeeringStalker": {
+			"MinWave": 50,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Leering Stalker" }
+			]
+		},
+
+		"TemplarMechas": {
+			"MinWave": 50,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "VehicleTemplarMech1_Battle" },
+				{ "Object": "VehicleTemplarMech2_Battle" }
+			]
+		},
+
+		"TemplarMecha2": {
+			"MinWave": 50,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "VehicleTemplarMech3_Warleader" }
+			]
+		},
+
+		"AllMechanicalCherubim": {
+			"MinWave": 50,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "CherubimSpawn4A" },
+				{ "Object": "CherubimSpawn4B" },
+				{ "Object": "CherubimSpawn5A" },
+				{ "Object": "CherubimSpawn5B" }
+			]
+		},
+
+		"Cherubim": {
+			"MinWave": 50,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "CherubimSpawn1A" },
+				{ "Object": "CherubimSpawn2A" }
+			]
+		},
+
+		"AllWardens": {
+			"MinWave": 50,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Warden Esthers" },
+				{ "Object": "Warden Indrix" },
+				{ "Object": "Warden 1-FF" },
+				{ "Object": "Warden Yrame" },
+				{ "Object": "Une" }
+			]
+		},
+
+		"TauAndAoyg": {
+			"MinWave": 50,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "TauNoLonger" },
+				{ "Object": "AoygNoLonger" }
+			]
+		},
+
+		"Oboroqoru": {
+			"MinWave": 50,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Oboroqoru" }
+			]
+		},
+
+		"ThinkFastChucklenuts": {
+			"MinWave": 50,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "HandENuke", "Traits": ["Bomb"] }
+			]
+		},
+
+		"QasAndQon": {
+			"Wave": 60,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Qas" },
+				{ "Object": "Qon" }
+			]
+		},
+
+		"ChromePyramid": {
+			"MinWave": 60,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Chrome Pyramid" }
+			]
+		},
+
+		"AllCherubim": {
+			"MinWave": 60,
+			"Layout": "Big",
+			"Objects": [
+				{ "Object": "CherubimSpawn1A" },
+				{ "Object": "CherubimSpawn1B" },
+				{ "Object": "CherubimSpawn2A" },
+				{ "Object": "CherubimSpawn2B" },
+				{ "Object": "CherubimSpawn3A" },
+				{ "Object": "CherubimSpawn3B" }
+			]
+		},
+
+		"TemplarWarParty": {
+			"MinWave": 60,
+			"Layout": "Big",
+			"Objects": [
+				{
+					"Object": "Phylactery Squire",
+					"Count": 2,
+					"Objects": [
+						{ "Object": "SalveTonic" }
+					]
+				},
+				{ "Object": "Knight Templar", "Count": 2 },
+				{ "Object": "Gunner-Knight Templar", "Count": 2 },
+				{ "Object": "Banner-Knight Templar" },
+				{ "Object": "Grand Newfather" },
+				{ "Object": "Uplifted Knight Commander" },
+				{ "Object": "VehicleTemplarMech1_Battle" },
+				{ "Object": "VehicleTemplarMech2_Battle" },
+				{ "Object": "VehicleTemplarMech3_Warleader" }
+			]
+		},
+
+		"EvilGolem": {
+			"MinWave": 60,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Golem", "Traits": ["Special"] }
+			]
+		},
+
+		"3Nephilim": {
+			"Wave": 80,
+			"Layout": "1v1",
+			"Objects": [
+				{ "Object": "Nephilim", "Count": 3, "Traits": ["Special"] }
+			]
+		},
+
+		"Apocalypse": {
+			"Wave": 100,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Agolgot" },
+				{ "Object": "Bethsaida" },
+				{ "Object": "Rermadon" },
+				{ "Object": "Qas" },
+				{ "Object": "Qon" },
+				{ "Object": "Shugruith" }
+			]
+		},
+
+		"AllCherubim2": {
+			"MinWave": 100,
+			"Layout": "Big",
+			"Objects": [
+				{ "Object": "CherubimSpawn1A" },
+				{ "Object": "CherubimSpawn1B" },
+				{ "Object": "CherubimSpawn2A" },
+				{ "Object": "CherubimSpawn2B" },
+				{ "Object": "CherubimSpawn3A" },
+				{ "Object": "CherubimSpawn3B" },
+				{ "Object": "CherubimSpawn4A" },
+				{ "Object": "CherubimSpawn4B" },
+				{ "Object": "CherubimSpawn5A" },
+				{ "Object": "CherubimSpawn5B" }
+			]
+		},
+
+		"TemplarWarParty2": {
+			"MinWave": 100,
+			"Layout": "Big",
+			"Objects": [
+				{ "Object": "Knight Commander of the Holy Temple", "Count": 4 },
+				{ "Object": "Gunner-Knight Templar", "Count": 4 },
+				{ "Object": "Banner-Knight Templar", "Count": 4 },
+				{ "Object": "Grand Newfather", "Count": 2 },
+				{ "Object": "Uplifted Knight Commander", "Count": 2 },
+				{ "Object": "VehicleTemplarMech1_Battle", "Parts": ["Uplift"] },
+				{ "Object": "VehicleTemplarMech2_Battle", "Parts": ["Uplift"] }
+			]
+		},
+
+		"EvilGolems": {
+			"MinWave": 100,
+			"Layout": "Cover",
+			"Objects": [
+				{ "Object": "Golem", "Count": 2, "Traits": ["Special"] }
+			]
+		}
+	}
+}

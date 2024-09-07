@@ -1,0 +1,5 @@
+<bodies>
+	<bodyparttypes>
+		<bodyparttype Type="Conjoinment" Appendage="true" UsuallyOn="Body" Branching="Lateral,Longitudinal,Stratal,Vertical" ChimeraWeight="0"/>
+	</bodyparttypes>
+</bodies>

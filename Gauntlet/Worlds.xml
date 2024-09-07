@@ -1,0 +1,3 @@
+<worlds>
+	<world Name="Gauntlet" ZoneFactory="GauntletWorldZoneFactory" DisplayName="The Gauntlet" Plane="The Gauntlet"></world>
+</worlds>

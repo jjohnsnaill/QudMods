@@ -1,0 +1,3 @@
+<options>
+	<option ID="SwapMusic" DisplayText="Swap Music" Category="Memes" Type="Combo" Values="No,Some,Yes" Default="Yes"></option>
+</options>

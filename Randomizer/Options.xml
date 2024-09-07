@@ -1,0 +1,24 @@
+<options>
+	<option ID="FixGasInheritance" DisplayText="Fix objects inheriting gas behavior" Category="Randomizer" Type="Checkbox" Default="Yes"></option>
+	<option ID="RandomizeCreatures" DisplayText="Randomize creatures" Category="Randomizer" Type="Checkbox" Default="Yes"></option>
+	<option ID="RandomizeCherubim" DisplayText="Randomize cherubim" Category="Randomizer" Type="Checkbox" Default="Yes"></option>
+	<option ID="RandomizeItems" DisplayText="Randomize items" Category="Randomizer" Type="Checkbox" Default="Yes"></option>
+	<option ID="RandomizeFood" DisplayText="Randomize food" Category="Randomizer" Type="Checkbox" Default="Yes"></option>
+	<option ID="RandomizeCybernetics" DisplayText="Randomize cybernetics" Category="Randomizer" Type="Checkbox" Default="Yes"></option>
+	<option ID="RandomizeWalls" DisplayText="Randomize walls" Category="Randomizer" Type="Checkbox" Default="Yes"></option>
+	<option ID="RandomizeObstacles" DisplayText="Randomize obstacles" Category="Randomizer" Type="Checkbox" Default="No"></option>
+	<option ID="RandomizePools" DisplayText="Randomize liquid pools" Category="Randomizer" Type="Checkbox" Default="No"></option>
+	<option ID="RandomizeGas" DisplayText="Randomize gas" Category="Randomizer" Type="Checkbox" Default="No"></option>
+	<option ID="RandomizeWorld" DisplayText="Randomize world map {{R|(buggy)}}" Category="Randomizer" Type="Checkbox" Default="No"></option>
+	<option ID="RandomizeUniqueCreatures" DisplayText="Randomize unique characters" Category="Randomizer" Type="Combo" Values="Yes,No,Separate,Normalize" Default="Separate"></option>
+	<option ID="RandomizeUniqueItems" DisplayText="Randomize unique items" Category="Randomizer" Type="Combo" Values="Yes,No,Separate,Normalize" Default="Separate"></option>
+	<option ID="RandomizeInnateItems" DisplayText="Randomize innate equipment" Category="Randomizer" Type="Combo" Values="Yes,No,Separate,Normalize" Default="Separate"></option>
+	<option ID="RandomizeFurniture" DisplayText="Randomize furniture" Category="Randomizer" Type="Combo" Values="Yes,Exclude Campfires,No" Default="No"></option>
+	<option ID="MixWallsFurniture" DisplayText="Mix walls and furniture" Category="Randomizer" Type="Checkbox" Default="No"></option>
+	<option ID="MixFurnitureObstacles" DisplayText="Mix furniture and obstacles" Category="Randomizer" Type="Checkbox" Default="No"></option>
+	<option ID="AddFoodToItemPool" DisplayText="Add food to item pool" Category="Randomizer" Type="Checkbox" Default="Yes"></option>
+	<option ID="AddCyberneticsToItemPool" DisplayText="Add cybernetics to item pool" Category="Randomizer" Type="Checkbox" Default="Yes"></option>
+	<option ID="AddCreaturesToItemPool" DisplayText="Add creatures to item pool" Category="Randomizer" Type="Checkbox" Default="No"></option>
+	<option ID="AllCherubim" DisplayText="Oops! All cherubim" Category="Randomizer" Type="Checkbox" Default="No"></option>
+	<option ID="AllCultists" DisplayText="Oops! All cultists" Category="Randomizer" Type="Checkbox" Default="No"></option>
+</options>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<subtypes>
+
+	<class ID="Forms" ChargenTitle="choose form" SingularTitle="form">
+
+		<subtype Name="Unformed" Gear="" Tile="Creatures/sw_golem_ooze.bmp" DetailColor="w">
+			<extrainfo>Starts with no powers</extrainfo>
+			<extrainfo>One absorb per 8 mutation points</extrainfo>
+		</subtype>
+
+		<subtype Name="Molded" Gear="" Tile="Creatures/sw_golem_human.bmp" DetailColor="w">
+			<extrainfo>Starts with a random catalyst, atzmus and hamsa</extrainfo>
+			<extrainfo>One absorb per 12 mutation points</extrainfo>
+		</subtype>
+
+		<subtype Name="Experimental" Gear="" Tile="Creatures/sw_golem_oddity.bmp" DetailColor="w">
+			<extrainfo>Starts with 3 random powers</extrainfo>
+			<extrainfo>One absorb per 12 mutation points</extrainfo>
+		</subtype>
+
+	</class>
+
+</subtypes>

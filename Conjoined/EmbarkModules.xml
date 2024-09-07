@@ -1,0 +1,8 @@
+<embarkmodules>
+	<module Class="XRL.CharacterBuilds.Qud.QudConjoinedModule">
+		<window ID="Chargen/Conjoined" Prefab="CategoryMenus" Class="XRL.CharacterBuilds.Qud.UI.QudConjoinedModuleWindow">
+			<name>Conjoined</name>
+			<title>:choose conjoined creatures:</title>
+		</window>
+	</module>
+</embarkmodules>

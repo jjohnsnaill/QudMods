@@ -1,0 +1,5 @@
+<mutations>
+	<category Name="Physical">
+		<mutation Name="Conjoined" Cost="3" MaxSelected="5" Class="Conjoined" Exclusions="" BearerDescription="the conjoined" Tile="Conjoined.png"></mutation>
+	</category>
+</mutations>
