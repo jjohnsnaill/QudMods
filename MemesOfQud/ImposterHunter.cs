@@ -18,9 +18,10 @@ namespace Mods.MemesOfQud
 				if (list[i].opcode == OpCodes.Ldloc_0 && list[i + 1].opcode == OpCodes.Brfalse_S) //check if the hunters actually spawned
 				{
 					list.Insert(i + 3, CodeInstruction.Call(typeof(ImposterHunter), "PlaySound"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(ImposterHunter) + " FAILED");
 			return list;
 		}
 

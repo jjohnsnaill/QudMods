@@ -20,9 +20,10 @@ namespace Mods.MemesOfQud
 				{
 					list.Insert(i + 2, new CodeInstruction(OpCodes.Ldarg_1));
 					list.Insert(i + 3, CodeInstruction.Call(typeof(IllSound), "PlaySound"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(IllSound) + " FAILED");
 			return list;
 		}
 

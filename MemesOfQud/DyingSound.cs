@@ -19,9 +19,10 @@ namespace Mods.MemesOfQud
 				if (list[i].opcode == OpCodes.Ldc_I4_0 && list[i + 1].Is(OpCodes.Stfld, typeof(XRLCore).GetField("HPWarning")))
 				{
 					list.Insert(i + 2, CodeInstruction.Call(typeof(DyingSound), "PlaySound"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(DyingSound) + " FAILED");
 			return list;
 		}
 

@@ -1,5 +1,4 @@
 ﻿using HarmonyLib;
-using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using XRL.World;
@@ -21,9 +20,10 @@ namespace Mods.MemesOfQud
 				{
 					list.Insert(i + 1, new CodeInstruction(OpCodes.Pop));
 					list.Insert(i + 2, new CodeInstruction(OpCodes.Ldstr, "Sounds/Abilities/jetStart"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(JetSound) + " FAILED");
 			return list;
 		}
 

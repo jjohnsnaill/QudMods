@@ -35,9 +35,10 @@ namespace Mods.MemesOfQud
 					list.Insert(i + 1, new CodeInstruction(OpCodes.Ldarg_2));
 					list.Insert(i + 2, new CodeInstruction(OpCodes.Ldfld, typeof(IObjectCellInteractionEvent).GetField("Object")));
 					list.Insert(i + 3, CodeInstruction.Call(typeof(SlipSound), "PlaySound"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(SlipSound) + " FAILED");
 			return list;
 		}
 

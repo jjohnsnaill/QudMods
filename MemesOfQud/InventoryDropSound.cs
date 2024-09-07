@@ -22,9 +22,10 @@ namespace Mods.MemesOfQud
 					list.Insert(i, new CodeInstruction(OpCodes.Ldarg_0));
 					list.Insert(i + 1, CodeInstruction.Call(typeof(IPart), "get_ParentObject"));
 					list.Insert(i + 2, CodeInstruction.Call(typeof(InventoryDropSound), "PlaySound"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(InventoryDropSound) + " FAILED");
 			return list;
 		}
 

@@ -22,9 +22,10 @@ namespace Mods.MemesOfQud
 				{
 					list.Insert(i + 1, new CodeInstruction(OpCodes.Ldarg_1));
 					list.Insert(i + 2, CodeInstruction.Call(typeof(ConfusionSounds), "PlaySound"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(ConfusionSounds) + " FAILED");
 			return list;
 		}
 

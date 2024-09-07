@@ -19,9 +19,10 @@ namespace Mods.MemesOfQud
 				{
 					list.Insert(i, new CodeInstruction(OpCodes.Dup));
 					list.Insert(i + 1, CodeInstruction.Call(typeof(TransmuteSound), "PlaySound"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(TransmuteSound) + " FAILED");
 			return list;
 		}
 

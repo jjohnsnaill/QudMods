@@ -19,9 +19,10 @@ namespace Mods.MemesOfQud
 				{
 					list.Insert(i + 1, new CodeInstruction(OpCodes.Pop));
 					list.Insert(i + 2, CodeInstruction.Call(typeof(ClairvoyanceSound), "GetSound"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(ClairvoyanceSound) + " FAILED");
 			return list;
 		}
 

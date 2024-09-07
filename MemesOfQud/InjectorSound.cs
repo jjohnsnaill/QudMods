@@ -22,9 +22,10 @@ namespace Mods.MemesOfQud
 					list.Insert(i + 2, new CodeInstruction(OpCodes.Ldarg_1));
 					list.Insert(i + 3, new CodeInstruction(OpCodes.Ldfld, typeof(IActOnItemEvent).GetField("Actor")));
 					list.Insert(i + 4, CodeInstruction.Call(typeof(InjectorSound), "PlaySound"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(InjectorSound) + " FAILED");
 			return list;
 		}
 

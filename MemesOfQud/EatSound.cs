@@ -21,9 +21,10 @@ namespace Mods.MemesOfQud
 				{
 					list.Insert(i, new CodeInstruction(OpCodes.Dup));
 					list.Insert(i + 1, CodeInstruction.Call(typeof(EatSound), "PlaySound"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(EatSound) + " FAILED");
 			return list;
 		}
 

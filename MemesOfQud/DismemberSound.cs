@@ -21,9 +21,10 @@ namespace Mods.MemesOfQud
 					list.Insert(i + 1, new CodeInstruction(OpCodes.Ldarg_0));
 					list.Insert(i + 2, CodeInstruction.Call(typeof(IPart), "get_ParentObject"));
 					list.Insert(i + 3, CodeInstruction.Call(typeof(DismemberSound), "PlaySound"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(DismemberSound) + " FAILED");
 			return list;
 		}
 

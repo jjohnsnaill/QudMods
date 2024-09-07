@@ -18,9 +18,10 @@ namespace Mods.MemesOfQud
 				{
 					list.Insert(i + 1, new CodeInstruction(OpCodes.Pop));
 					list.Insert(i + 2, new CodeInstruction(OpCodes.Ldstr, "Sounds/Abilities/sprint"));
-					break;
+					return list;
 				}
 			}
+			UnityEngine.Debug.LogError(nameof(SprintSound) + " FAILED");
 			return list;
 		}
 	}
