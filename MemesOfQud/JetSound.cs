@@ -16,7 +16,7 @@ namespace Mods.MemesOfQud
 			List<CodeInstruction> list = new List<CodeInstruction>(instr);
 			for (int i = 0; i < list.Count; i++)
 			{
-				if (list[i].Is(OpCodes.Ldstr, "Sounds/StatusEffects/sfx_statusEffect_movementBuff_big"))
+				if (list[i].Is(OpCodes.Ldstr, "Sounds/StatusEffects/sfx_ability_mutation_flamingRay_attack"))
 				{
 					list.Insert(i + 1, new CodeInstruction(OpCodes.Pop));
 					list.Insert(i + 2, new CodeInstruction(OpCodes.Ldstr, "Sounds/Abilities/jetStart"));
