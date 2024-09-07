@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Reflection.Emit;
 using XRL;
 using XRL.Sound;
 using XRL.UI;
@@ -58,7 +57,14 @@ namespace Mods.MemesOfQud
 		[HarmonyPatch("PopupFailQuest")]
 		static void Fail()
 		{
-			PlayNotification();
+			if (Options.Sound)
+			{
+				SoundManager.PlaySound("fail", Volume: 0.5f);
+				foreach (MusicSource music in SoundManager.MusicSources.Values)
+				{
+					music.SetAudioVolume(0);
+				}
+			}
 		}
 
 		private static void PlayNotification()

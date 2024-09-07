@@ -7,7 +7,7 @@ using XRL.UI;
 namespace Mods.MemesOfQud
 {
 	[HarmonyPatch(typeof(PsychicHunterSystem))]
-	public class ImposterHunter
+	public class Imposter
 	{
 		[HarmonyPatch("CreateSeekerHunters")]
 		static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instr)
@@ -17,11 +17,11 @@ namespace Mods.MemesOfQud
 			{
 				if (list[i].opcode == OpCodes.Ldloc_0 && list[i + 1].opcode == OpCodes.Brfalse_S) //check if the hunters actually spawned
 				{
-					list.Insert(i + 3, CodeInstruction.Call(typeof(ImposterHunter), "PlaySound"));
+					list.Insert(i + 3, CodeInstruction.Call(typeof(Imposter), "PlaySound"));
 					return list;
 				}
 			}
-			UnityEngine.Debug.LogError(nameof(ImposterHunter) + " FAILED");
+			UnityEngine.Debug.LogError(nameof(Imposter) + " FAILED");
 			return list;
 		}
 

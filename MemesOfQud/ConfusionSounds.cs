@@ -36,6 +36,13 @@ namespace Mods.MemesOfQud
 			GetConfusion(__instance, ref Clip);
 		}
 
+		[HarmonyPrefix]
+		[HarmonyPatch(typeof(CombatJuice), "playWorldSound")]
+		static void SwapCombat(ref GameObject obj, ref string clip)
+		{
+			GetConfusion(obj, ref clip);
+		}
+
 		public static void GetConfusion(GameObject obj, ref string clip)
 		{
 			if (clip == null)
