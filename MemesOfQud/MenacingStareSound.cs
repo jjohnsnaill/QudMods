@@ -9,9 +9,9 @@ namespace Mods.MemesOfQud
 	public class MenacingStareSound
 	{
 		[HarmonyPatch("ApplyStare")]
-		static void Postfix(Cell C, int __result)
+		static void Postfix(Cell Cell, int __result)
 		{
-			if (__result < 1 || !C.IsVisible())
+			if (__result < 1 || !Cell.IsVisible())
 			{
 				return;
 			}

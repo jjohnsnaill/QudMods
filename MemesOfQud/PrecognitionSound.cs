@@ -17,14 +17,14 @@ namespace Mods.MemesOfQud
 			List<CodeInstruction> list = new List<CodeInstruction>(instr);
 			for (int i = 0; i < list.Count; i++)
 			{
-				if (list[i].Is(OpCodes.Call, typeof(Precognition).GetMethod("Save", new Type[] { })))
+				if (list[i].Is(OpCodes.Call, typeof(Precognition).GetMethod("Save")))
 				{
 					list.Insert(i, new CodeInstruction(OpCodes.Ldarg_0));
 					list.Insert(i + 1, CodeInstruction.Call(typeof(IPart), "get_ParentObject"));
 					list.Insert(i + 2, CodeInstruction.Call(typeof(PrecognitionSound), "PlayStart"));
 					i += 3;
 				}
-				else if (list[i].Is(OpCodes.Call, typeof(Popup).GetMethod("ShowYesNo", new Type[] { typeof(string), typeof(bool), typeof(DialogResult) })) || (list[i].Is(OpCodes.Call, typeof(Precognition).GetMethod("Load")) && list[i + 1].opcode == OpCodes.Ldarg_0 && list[i + 2].opcode == OpCodes.Ldarg_0))
+				else if (list[i].Is(OpCodes.Call, typeof(Popup).GetMethod("ShowYesNo", new Type[] { typeof(string), typeof(string), typeof(bool), typeof(DialogResult) })) || (list[i].Is(OpCodes.Call, typeof(Precognition).GetMethod("Load")) && list[i + 1].opcode == OpCodes.Ldarg_0 && list[i + 2].opcode == OpCodes.Ldarg_0))
 				{
 					list.Insert(i, new CodeInstruction(OpCodes.Ldarg_0));
 					list.Insert(i + 1, CodeInstruction.Call(typeof(IPart), "get_ParentObject"));
