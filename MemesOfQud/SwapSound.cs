@@ -109,6 +109,8 @@ namespace Mods.MemesOfQud
 
 					["Sounds/Abilities/sfx_ability_jump"] = new SoundReplacement("Sounds/Abilities/jump"),
 
+					["Sounds/Abilities/sfx_ability_cudgel_slam"] = new SoundReplacement("Sounds/Abilities/slam"),
+
 					["Sounds/Abilities/sfx_ability_gasMutation_passiveRelease"] = new SoundReplacement("Sounds/Abilities/gas"),
 
 					["Sounds/Abilities/sfx_ability_mutation_evilTwin_spawn"] = new SoundReplacement("imposter", 0.75f),

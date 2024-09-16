@@ -40,7 +40,11 @@ namespace Mods.MemesOfQud
 		public override void Read(GameObject Basis, SerializationReader Reader)
 		{
 			string species = ParentObject.GetPropertyOrTag("Species");
-			if (species == "crab")
+			if (species == "cat")
+			{
+				sound = "pantherk";
+			}
+			else if (species == "crab")
 			{
 				sound = "crab";
 			}
@@ -80,7 +84,11 @@ namespace Mods.MemesOfQud
 			}
 
 			string species = Blueprint.GetTag("Species");
-			if (species == "crab")
+			if (species == "cat")
+			{
+				__result.AddPart<SoundOnEnterZone>().sound = "pantherk";
+			}
+			else if (species == "crab")
 			{
 				__result.AddPart<SoundOnEnterZone>().sound = "crab";
 			}
