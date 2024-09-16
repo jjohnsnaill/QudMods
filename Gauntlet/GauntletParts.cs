@@ -4,7 +4,6 @@ using XRL;
 using XRL.UI;
 using XRL.World;
 using XRL.World.AI;
-using XRL.World.AI.GoalHandlers;
 using XRL.World.Effects;
 using XRL.World.Parts;
 
@@ -62,8 +61,11 @@ namespace Mods.Gauntlet
 					xp.BaseValue = 0;
 				}
 
-				obj.Brain.Factions = "Mean-100,Playerhater-99";
-				obj.Brain.AddOpinion<OpinionInscrutable>(The.Player);
+				if (obj.Brain != null)
+				{
+					obj.Brain.Factions = "Mean-100,Playerhater-99";
+					obj.Brain.AddOpinion<OpinionInscrutable>(The.Player);
+				}
 
 				obj.IntProperty["GauntletObject"] = 0;
 			}
