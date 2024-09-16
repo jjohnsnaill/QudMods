@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+	<object Name="Troll" Load="Merge">
+		<part Name="Brain" Hostile="true" Factions="Trolls-100" />
+		<part Name="TradeArtifactSecrets" />
+	</object>
+</objects>

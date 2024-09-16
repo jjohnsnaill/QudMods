@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<populations>
+	<population Name="SultanDungeons_Encounters_*Default" Load="Merge">
+		<group Name="Options" Load="Merge">
+			<group Name="Minion" Style="pickeach" Load="Replace">
+				<object Blueprint="=Minion" Number="2-3" />
+			</group>
+
+			<group Name="Artillery" Style="pickeach" Load="Replace">
+				<object Blueprint="=Artillery" Number="1" />
+			</group>
+
+			<group Name="Skirmisher" Style="pickeach" Load="Replace">
+				<object Blueprint="=Skirmisher" Number="1-2" />
+			</group>
+
+			<group Name="Squad" Style="pickeach" Load="Replace">
+				<object Blueprint="=Minion" Number="2" />
+				<group Name="StrongUnit" Style="pickone">
+					<object Blueprint="=Brute" Number="1" />
+					<object Blueprint="=Tank" Number="1" />
+				</group>
+				<object Blueprint="=Leader" Number="1" />
+			</group>
+		</group>
+	</population>
+</populations>

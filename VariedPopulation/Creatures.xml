@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+	<object Name="Aleksh_HungeringTar" Inherits="BaseOoze">
+		<part Name="Render" DisplayName="hungering tar" Tile="Creatures/tarjell.png" ColorString="&amp;K" DetailColor="w" />
+		<stat Name="Hitpoints" Value="30" />
+		<part Name="Brain" Hostile="false" />
+		<stat Name="Level" Value="8" />
+		<stat Name="AV" Value="3" />
+		<stat Name="HeatResistance" Value="40" />
+		<part Name="Description" Short="" />
+		<skill Name="Axe" />
+		<skill Name="Axe_HookAndDrag" />
+		<skill Name="Endurance_Swimming" />
+		<skill Name="Submersion" />
+		<part Name="AIShoreLounging" />
+		<inventoryobject Blueprint="Aleksh_HungeringTarBite" Number="1" />
+		<part Name="HungeringTar" />
+		<part Name="Aquatic" />
+		<tag Name="Role" Value="Tank" />
+		<tag Name="PlacementHint" Value="Aquatic" />
+		<tag Name="BleedLiquid" Value="asphalt-1000" />
+		<tag Name="BleedColor" Value="&amp;K" />
+		<tag Name="BleedPrefix" Value="{{K|tarry}}" />
+	</object>
+	<object Name="Aleksh_HungeringTarBite" Inherits="Bite">
+		<part Name="MeleeWeapon" Skill="Axe" />
+	</object>
+
+	<!--<object Name="Issachari Raider" PreviousName="Desert Raider" Inherits="BaseIssachari">
+		<part Name="Render" DisplayName="Issachari raider" RenderString="h" Tile="Creatures/sw_raider1.bmp" ColorString="&amp;Y" DetailColor="R" />
+		<stat Name="Hitpoints" Value="16" />
+		<stat Name="Level" Value="8" />
+		<inventoryobject Blueprint="Dagger" Number="1" />
+		<tag Name="DynamicObjectsTable:Saltdunes_Creatures" />
+		<tag Name="DynamicObjectsTable:Saltdunes_Creatures:Weight" Value="3" />
+	</object>
+	<object Name="Issachari Rifler" PreviousName="Desert Raider Rifleman" Inherits="BaseIssachari">
+		<part Name="Render" DisplayName="Issachari rifler" Tile="Creatures/sw_raider2.bmp" RenderString="h" ColorString="&amp;y" />
+		<part Name="Corpse" CorpseChance="0" CorpseBlueprint="Snapjaw Corpse" />
+		<part Name="Brain" Hostile="false" Factions="Issachari-100" />
+		<stat Name="Hitpoints" Value="16" />
+		<stat Name="Level" Value="8" />
+		<inventoryobject Blueprint="Desert Rifle" Number="1" />
+		<inventoryobject Blueprint="Lead Slug" Number="8" />
+		<inventoryobject Blueprint="Long Sword" Number="1" />
+		<tag Name="DynamicObjectsTable:Saltdunes_Creatures" />
+		<tag Name="DynamicObjectsTable:Saltdunes_Creatures:Weight" Value="3" />
+	</object>
+	<object Name="Young Ivory" Inherits="BasePlant">
+		<part Name="Render" RenderIfDark="true" Tile="Creatures/sw_young_ivory.bmp" DisplayName="{{Y|young ivory}}" RenderString="011" ColorString="&amp;Y" TileColor="&amp;y" DetailColor="Y" />
+		<part Name="Brain" Hostile="false" Wanders="false" Mobile="false" Factions="Roots-100" />
+		<part Name="PlantProperties" Rooted="false" />
+		<part Name="Corpse" CorpseChance="0" CorpseBlueprint="Dreadroot Tuber" />
+		<stat Name="Hitpoints" Value="3" />
+		<stat Name="Level" Value="3" />
+		<part Name="Description" Short="Packed into rents in the shale are spinescent shoots of blooming ivory." />
+		<part Name="Hidden" Difficulty="15" />
+		<part Name="Impaler" />
+		<tag Name="Species" Value="root" />
+		<tag Name="ExcludeFromHostiles" />
+		<tag Name="NoVillageFarming" />
+		<tag Name="Role" Value="Lurker" />
+		<stag Name="Plank" Value="stave" />
+		<tag Name="LairAmbientBed" Value="Sounds/Ambiences/amb_creature_root" />
+	</object>-->
+	<object Name="Aleksh_DuneWraith" Inherits="BaseRobot">
+		<part Name="Body" Anatomy="HoverRobot" />
+		<part Name="Render" DisplayName="dune wraith" ColorString="&amp;c" Tile="Creatures/dunewraith.png" DetailColor="w" />
+		<part Name="Brain" Hostile="false" />
+		<stat Name="Level" Value="9" />
+		<stat Name="AV" Value="5" />
+		<stat Name="Hitpoints" Value="20" />
+		<part Name="Description" Short="" />
+		<inventoryobject Blueprint="Aleksh_DuneWraithFist" Number="2" />
+		<tag Name="Role" Value="Tank" />
+		<tag Name="Species" Value="hover robot" />
+	</object>
+	<object Name="Aleksh_DuneWraithFist" Inherits="MetalFist">
+	</object>
+	<object Name="Aleksh_DuneWraithSpawner" Inherits="Widget">
+		<part Name="DuneWraithSpawner" />
+	</object>
+
+	<object Name="Aleksh_BananaSlug" Inherits="BaseSlug">
+		<part Name="Render" DisplayName="banana slug" ColorString="&amp;W" Tile="Creatures/bananaslug.png" DetailColor="Y" />
+		<part Name="Brain" Hostile="false" Factions="Mollusks-100" />
+		<stat Name="Level" Value="14" />
+		<stat Name="AV" Value="4" />
+		<stat Name="DV" Value="5" />
+		<stat Name="Strength" sValue="16,1d3,(t-1)d3" />
+		<stat Name="Agility" sValue="14,1d3,(t-1)d2" />
+		<stat Name="Toughness" sValue="16,1d3,(t-1)d2" />
+		<stat Name="Intelligence" sValue="16,1d3,(t-1)d3" />
+		<stat Name="Willpower" sValue="12,1d3,(t-1)d2" />
+		<stat Name="Ego" sValue="12,1d3,(t-1)d2" />
+		<stat Name="Hitpoints" Value="28" />
+		<part Name="Description" Short="" />
+		<mutation Name="Psychometry" Level="8" />
+		<skill Name="Acrobatics" />
+		<skill Name="Acrobatics_Dodge" />
+		<skill Name="Acrobatics_Tumble" />
+		<skill Name="Tactics" />
+		<skill Name="Tactics_Juke" />
+		<skill Name="Endurance" />
+		<inventoryobject Blueprint="Girshworm_Crush" Number="1" />
+		<tag Name="Role" Value="Minion" />
+		<tag Name="DynamicObjectsTable:BananaGrove_Creatures" />
+	</object>
+
+	<object Name="Aleksh_Lad" Inherits="Animal">
+		<part Name="Render" DisplayName="Lad" ColorString="&amp;Y" Tile="Creatures/lad.png" DetailColor="Y" />
+		<part Name="Brain" Calm="true" Wanders="true" Factions="Newly Sentient Beings-100,Fish-100" />
+		<stat Name="Level" Value="1" />
+		<stat Name="AV" Value="0" />
+		<stat Name="DV" Value="10" />
+		<stat Name="Strength" Value="10" />
+		<stat Name="Agility" Value="10" />
+		<stat Name="Toughness" Value="10" />
+		<stat Name="Intelligence" Value="10" />
+		<stat Name="Willpower" Value="32" />
+		<stat Name="Ego" Value="32" />
+		<stat Name="Hitpoints" Value="10" />
+		<part Name="Description" Short="" />
+		<skill Name="Acrobatics" />
+		<skill Name="Acrobatics_Dodge" />
+		<skill Name="Persuasion_InspiringPresence" />
+		<skill Name="Submersion" />
+		<part Name="AIShoreLounging" />
+		<part Name="Aquatic" />
+		<part Name="Lovable" />
+		<inventoryobject Blueprint="Cat Bite" />
+		<part Name="Pettable" />
+		<tag Name="PetResponse" Value="=subject.T= =verb:bark=." />
+		<tag Name="SleepOnBed" />
+		<tag Name="NonMutant" />
+		<tag Name="Genotype" Value="True Kin" />
+		<tag Name="Role" Value="Hero" />
+		<tag Name="Gender" Value="male" />
+		<tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+		<xtagGrammar Proper="true" />
+	</object>
+
+	<object Name="Aleksh_RockSnail" Inherits="BaseSnail">
+		<part Name="Render" DisplayName="rock snail" Tile="Creatures/rocksnail.png" ColorString="&amp;K" DetailColor="y" />
+		<stat Name="AV" Value="6" />
+		<stat Name="Level" Value="9" />
+		<stat Name="Hitpoints" Value="25" />
+		<stat Name="MoveSpeed" Value="150" />
+		<part Name="Brain" Hostile="false" Factions="Mollusks-100" />
+		<inventoryobject Blueprint="Aleksh_RockSnailFlail" Number="1" />
+		<part Name="Description" Short="" />
+		<skill Name="Cudgel" />
+		<skill Name="Cudgel_Bludgeon" />
+		<skill Name="Tactics_Charge" />
+		<skill Name="Cudgel_ChargingStrike" />
+		<tag Name="Role" Value="Tank" />
+		<tag Name="DynamicObjectsTable:Mountains_Creatures" />
+	</object>
+	<object Name="Aleksh_RockSnailFlail" Inherits="NaturalWeapon">
+		<part Name="Render" DisplayName="rock-snail flail" Tile="Creatures/natural-weapon-pseudopod.bmp" ColorString="&amp;K" />
+		<part Name="MeleeWeapon" BaseDamage="2d2" Skill="Cudgel" Stat="Strength" Slot="Face" />
+	</object>
+
+	<object Name="Aleksh_VolcanicSnail" Inherits="BaseSnail">
+		<part Name="Render" DisplayName="volcanic snail" Tile="Creatures/rocksnail.png" ColorString="&amp;r" DetailColor="o" />
+		<stat Name="AV" Value="10" />
+		<stat Name="Level" Value="31" />
+		<stat Name="Hitpoints" Value="200" />
+		<part Name="Brain" Hostile="false" Factions="Mollusks-100" />
+		<inventoryobject Blueprint="Aleksh_VolcanicSnailFlail" Number="1" />
+		<part Name="Description" Short="" />
+		<mutation Name="Carapace" Level="10" />
+		<mutation Name="FlamingRay" Level="10" BodyPartType="Face" CreateObject="false" />
+		<stat Name="HeatResistance" Value="200" />
+		<skill Name="Cudgel" />
+		<skill Name="Cudgel_Bludgeon" />
+		<skill Name="Tactics_Charge" />
+		<skill Name="Cudgel_ChargingStrike" />
+		<tag Name="Role" Value="Brute" />
+	</object>
+	<object Name="Aleksh_VolcanicSnailFlail" Inherits="NaturalWeapon">
+		<part Name="Render" DisplayName="volcanic-snail flail" Tile="Creatures/natural-weapon-pseudopod.bmp" ColorString="&amp;r" />
+		<part Name="MeleeWeapon" BaseDamage="2d3" Skill="Cudgel" Stat="Strength" Slot="Face" />
+		<part Name="ElementalDamage" Damage="1d11+24" Attributes="Heat" />
+	</object>
+
+	<object Name="Aleksh_SpicerCannibal" Inherits="BaseCannibal">
+		<part Name="Render" DisplayName="spicer cannibal" Tile="Creatures/cannibalspicer.png" ColorString="&amp;y" DetailColor="R" />
+		<stat Name="Level" Value="13" />
+		<stat Name="AV" Value="2" />
+		<stat Name="Hitpoints" Value="35" />
+		<part Name="Description" Short="Sunshame has left =pronouns.possessive= skin pulpy and spider-white, and =pronouns.possessive= capillaries are shot with blood two shades too dark." />
+		<inventoryobject Blueprint="Steel Butcher Knife" />
+		<inventoryobject Blueprint="Leather Apron" />
+		<inventoryobject Blueprint="Cannibal Bite" />
+		<inventoryobject Blueprint="@Cookbooks" Chance="4" />
+		<skill Name="CookingAndGathering" />
+		<skill Name="CookingAndGathering_Butchery" />
+		<skill Name="CookingAndGathering_Spicer" />
+		<part Name="SpawnMetabolizing" />
+		<tag Name="Role" Value="Brute" />
+		<tag Name="DynamicObjectsTable:Mountains_Creatures" />
+	</object>
+
+	<object Name="Aleksh_Gastrohog" Inherits="BaseSwine">
+		<part Name="Render" DisplayName="gastrohog" Tile="Creatures/truffleboar.png" ColorString="&amp;w" DetailColor="W" />
+		<part Name="Corpse" CorpseChance="100" CorpseBlueprint="Boar Corpse" />
+		<stat Name="Level" Value="20" />
+		<stat Name="AV" Value="7" />
+		<stat Name="Hitpoints" Value="90" />
+		<part Name="Brain" Hostile="false" Factions="Swine-100" />
+		<part Name="Description" Short="" />
+		<inventoryobject Blueprint="Aleksh_GastrohogHoof" Number="2" />
+		<inventoryobject Blueprint="Hoarshroom" Number="1-2" />
+		<skill Name="Cudgel" />
+		<skill Name="Cudgel_Bludgeon" />
+		<skill Name="Cudgel_Slam" />
+		<skill Name="Endurance" />
+		<skill Name="Endurance_Juicer" />
+		<skill Name="CookingAndGathering" />
+		<skill Name="CookingAndGathering_Harvestry" />
+		<tag Name="Role" Value="Tank" />
+		<tag Name="Species" Value="pig" />
+		<part Name="SpawnMetabolizing" />
+		<tag Name="DynamicObjectsTable:Jungle_Creatures" />
+	</object>
+	<object Name="Aleksh_GastrohogHoof" Inherits="NaturalWeapon">
+		<part Name="Render" DisplayName="hoof" Tile="Creatures/natural-weapon-hoof1.bmp" ColorString="&amp;y" />
+		<part Name="MeleeWeapon" BaseDamage="2d2" Skill="Cudgel" Stat="Strength" Slot="Foot" />
+	</object>
+
+	<object Name="Aleksh_NachashAssassin" Inherits="MutatedTree">
+		<part Name="Render" DisplayName="nachash tree" Tile="Terrain/sw_fuzzy_circle_4.bmp" ColorString="&amp;g" DetailColor="w" Occluding="false" />
+		<builder Name="RandomTile" Tiles="Terrain/sw_tree_curly_1.bmp,Terrain/sw_tree_curly_2.bmp,Terrain/sw_tree_curly_3.bmp,Terrain/sw_tree_curly_4.bmp" />
+		<stat Name="AV" Value="10" />
+		<stat Name="Level" Value="32" />
+		<stat Name="Hitpoints" Value="160" />
+		<stat Name="Strength" Boost="2" />
+		<tag Name="Noswap" />
+		<stat Name="HeatResistance" Value="15" />
+		<stat Name="ColdResistance" Value="15" />
+		<stat Name="ElectricResistance" Value="15" />
+		<stat Name="AcidResistance" Value="15" />
+		<part Name="Brain" Hostile="false" Mobile="true" Wanders="false" Hibernating="true" MinKillRadius="1" MaxKillRadius="1" />
+		<part Name="NachashAssassin" />
+		<inventoryobject Blueprint="Irritable Palm Frond" Number="2" />
+		<part Name="Description" Short="Moss-slick shoots coil at the crown of a slouching trunk like the she-medusa. Air musses them into more disarray." />
+		<skill Name="Tactics" />
+		<skill Name="Cudgel" />
+		<skill Name="Cudgel_Slam" />
+		<intproperty Name="SlamDistanceBonus" Value="-1" />
+		<intproperty Name="HideCon" Value="1" />
+		<tag Name="Role" Value="Lurker" />
+		<tag Name="CloneNoNameChange" />
+		<tag Name="TakeDamageSound" Value="Sounds/Damage/sfx_damage_tree" />
+		<tag Name="DeathSounds" Value="Sounds/Damage/sfx_destroy_tree" />
+		<tag Name="DynamicObjectsTable:DeepJungle_Creatures" />
+	</object>
+
+	<object Name="Aleksh_ScramblingFungus" Inherits="MutatedFungus">
+		<part Name="Render" DisplayName="scrambling fungus" Tile="Creatures/toxicshroomy.png" ColorString="&amp;G" DetailColor="Y" />
+		<part Name="Brain" Mobile="true" Calm="true" Wanders="true" Factions="Fungi-100" />
+		<stat Name="Willpower" sValue="18,1d2,(t)d1" />
+		<stat Name="MoveSpeed" Value="70" />
+		<part Name="FungusProperties" Rooted="false" />
+		<part Name="Description" Short="" />
+		<stat Name="Level" Value="18" />
+		<stat Name="Hitpoints" Value="35" />
+		<mutation Name="CorrosiveGasGeneration" Level="10" />
+		<mutation Name="PoisonGasGeneration" Level="10" />
+		<part Name="AIGasSpam" />
+		<skill Name="Tactics" />
+		<removepart Name="NoKnockdown" />
+		<tag Name="ImmuneToFungus" />
+		<tag Name="Role" Value="Minion" />
+		<tag Name="DynamicObjectsTable:Fungal_Creatures" />
+	</object>
+
+	<!--<object Name="Aleksh_FriendToFungiSpawner" Inherits="Creature">
+		<part Name="FriendToFungiSpawner" />
+		<part Name="Physics" />
+		<tag Name="Creature" />
+		<tag Name="BaseObject" Value="*noinherit" />
+		<tag Name="AggregateWith" Value="Fungi" />
+	</object>-->
+
+	<object Name="Aleksh_TrollHero" Inherits="Troll">
+		<part Name="Render" DisplayName="troll hero" Tile="Creatures/troll.png" ColorString="&amp;W" DetailColor="w" />
+		<stat Name="AV" Value="6" />
+		<stat Name="Level" Value="20" />
+		<stat Name="Hitpoints" Value="100" />
+		<skill Name="HeavyWeapons" />
+		<part Name="RandomLoot" LootCreated="true" />
+		<part Name="GivesRep" />
+		<part Name="GiantHands" />
+		<part Name="Description" Short="A hoary humanoid slumps beneath the weight of =pronouns.possessive= broad and cragged back. Fibers of unkempt hair enswathe the great pale shoulder-rocks, and rumpled lids lay half-shut over the discs of =pronouns.possessive= sluggish eyes." />
+		<builder Name="TrollHero1" />
+		<tag Name="Role" Value="Hero" />
+		<tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
+	</object>
+
+	<object Name="Aleksh_PrimeShape" Inherits="Creature">
+		<part Name="Render" DisplayName="prime shape" Tile="Creatures/primeshape.png" ColorString="&amp;K" DetailColor="O" />
+		<part Name="Brain" Calm="true" Wanders="true" Factions="Entropic-100" />
+		<part Name="Body" Anatomy="Motes" />
+		<part Name="Physics" FreezeTemperature="-99999" BrittleTemperature="-99999" />
+		<stat Name="Level" Value="60" />
+		<stat Name="Hitpoints" Value="1500" />
+		<stat Name="Strength" sValue="24,1d2,(t)d2" />
+		<stat Name="Agility" sValue="24,1d2,(t)d2" />
+		<stat Name="Toughness" sValue="24,1d2,(t)d2" />
+		<stat Name="Intelligence" sValue="24,1d2,(t)d2" />
+		<stat Name="Willpower" sValue="24,1d2,(t)d2" />
+		<stat Name="Ego" sValue="16,1d2,(t)d2" />
+		<stat Name="MoveSpeed" Value="-100" />
+		<stat Name="AV" Value="18" />
+		<stat Name="DV" Value="35" />
+		<part Name="MentalShield" />
+		<part Name="CycleColors" />
+		<part Name="SoundRender" Sound="Sounds/Abilities/sfx_ability_spacetimeVortex_lp"> </part>
+		<mutation Name="Collapse" Level="10" />
+		<mutation Name="SunderMind" Level="10" />
+		<mutation Name="MassMind" Level="10" />
+		<mutation Name="Clairvoyance" Level="10" />
+		<tag Name="Gender" Value="neuter" />
+		<tag Name="IgnoresGravity" />
+		<tag Name="Role" Value="Artillery" />
+		<tag Name="BleedLiquid" Value="warmstatic-1000,water-500" />
+		<tag Name="BleedColor" Value="&amp;Y" />
+		<tag Name="BleedPrefix" Value="{{Y|entropic}}" />
+	</object>
+
+	<object Name="Aleksh_MetalBird" Inherits="BaseRobot">
+		<part Name="Body" Anatomy="Bird" />
+		<part Name="Render" DisplayName="metal bird" ColorString="&amp;c" Tile="Creatures/metalbird.png" DetailColor="M" />
+		<part Name="Brain" Factions="Robots-100,Birds-100" />
+		<stat Name="Level" Value="48" />
+		<stat Name="AV" Value="20" />
+		<stat Name="DV" Value="5" />
+		<stat Name="Hitpoints" Value="700" />
+		<stat Name="MoveSpeed" Value="75" />
+		<skill Name="Axe" />
+		<skill Name="Axe_Cleave" />
+		<part Name="Description" Short="" />
+		<mutation Name="Wings" Level="15"/>
+		<mutation Name="MissileStrike" Level="15" />
+		<inventoryobject Blueprint="Aleksh_MetalBirdTalons" Number="2" />
+		<tag Name="Role" Value="Artillery" />
+		<tag Name="Species" Value="bird" />
+		<tag Name="DynamicObjectsTable:MoonStair_Creatures" />
+	</object>
+	<object Name="Aleksh_MetalBirdTalons" Inherits="NaturalWeapon">
+		<part Name="Render" DisplayName="metal talons" Tile="Creatures/natural-weapon-claw.bmp" ColorString="&amp;c" />
+		<part Name="MeleeWeapon" HitBonus="5" BaseDamage="3d4" Skill="Axe" Stat="Strength" Slot="Foot" />
+		<part Name="Metal" />
+	</object>
+</objects>

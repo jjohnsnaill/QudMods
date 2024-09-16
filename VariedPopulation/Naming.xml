@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<naming>
+	<namestyles>
+		<namestyle Name="Troll" HyphenationChance="35" TwoNameChance="35" Load="Merge">
+			<prefixes Amount="1" Load="Replace">
+				<prefix Name="lur" />
+				<prefix Name="fjo" />
+				<prefix Name="fjor" />
+				<prefix Name="mur" />
+				<prefix Name="nor" />
+				<prefix Name="ha" />
+				<prefix Name="ra" />
+				<prefix Name="ur" />
+				<prefix Name="jo" />
+				<prefix Name="ar" />
+				<prefix Name="so" />
+				<prefix Name="bal" />
+				<prefix Name="bel" />
+				<prefix Name="tho" />
+				<prefix Name="njo" />
+				<prefix Name="njor" />
+			</prefixes>
+			<infixes Amount="0" Load="Remove" >
+			</infixes>
+			<postfixes Amount="1" Load="Replace">
+				<postfix Name="mmu" />
+				<postfix Name="tun" />
+				<postfix Name="sef" />
+				<postfix Name="ga" />
+				<postfix Name="gar" />
+				<postfix Name="sa" />
+				<postfix Name="sar" />
+				<postfix Name="din" />
+				<postfix Name="cis" />
+				<postfix Name="nir" />
+				<postfix Name="rigg" />
+			</postfixes>
+		</namestyle>
+
+		<namestyle Name="Troll Hero Title" Load="Merge">
+			<templates Load="Replace">
+				<template Name="Who *Occupation*" />
+			</templates>
+			<templatevars Load="Replace">
+				<templatevar Name="Occupation" Load="Replace">
+					<value Name="Duets with Flame" />
+					<value Name="Leads the Way of Frost" />
+					<value Name="Approaches Storms" />
+					<value Name="Splits the Earth" />
+					<value Name="Yearns for Knowledge" />
+					<value Name="Follows the Windy Path" />
+					<value Name="Wades the Seas" />
+					<value Name="Mastered the Art" />
+				</templatevar>
+			</templatevars>
+		</namestyle>
+	</namestyles>
+</naming>

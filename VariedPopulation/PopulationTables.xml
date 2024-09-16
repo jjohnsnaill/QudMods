@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<populations>
+	<population Name="SaltDesertZoneGlobals" Load="Merge">
+		<object Chance="60" Number="8-12" Blueprint="Aleksh_DuneWraithSpawner" />
+	</population>
+
+	<population Name="Tarry1" Load="Merge">
+		<group Name="Contents" Load="Merge">
+			<object Blueprint="Aleksh_HungeringTar" Number="1-2" Hint="Aquatic" />
+		</group>
+	</population>
+	<population Name="Tarry2" Load="Merge">
+		<group Name="Contents" Load="Merge">
+			<object Blueprint="Aleksh_HungeringTar" Number="2-3" Hint="Aquatic" />
+		</group>
+	</population>
+	<population Name="Tarry3" Load="Merge">
+		<group Name="Contents" Load="Merge">
+			<object Blueprint="Aleksh_HungeringTar" Number="2-3" Hint="Aquatic" />
+		</group>
+	</population>
+
+	<population Name="BananaGroveZoneGlobals" Load="Merge">
+		<object Chance="75" Number="2-4" Blueprint="Aleksh_BananaSlug" />
+	</population>
+	<population Name="BananaGroveCreatures" Load="Merge">
+		<group Name="Creatures" Load="Merge">
+			<object Weight="10" Number="1-2" Blueprint="Aleksh_BananaSlug" />
+		</group>
+	</population>
+	<population Name="LairOwners_BananaGrove" Load="Merge">
+		<group Name="Options" Load="Merge">
+			<object Blueprint="Aleksh_BananaSlug" />
+		</group>
+	</population>
+
+	<population Name="AsphaltMines" Load="Merge">
+		<group Name="Creatures" Load="Replace">
+			<object Chance="90" Number="5-10" Blueprint="Aleksh_HungeringTar" />
+			<object Chance="90" Number="5-10" Blueprint="Eyeless Crab" />
+			<object Chance="75" Number="3-5" Blueprint="Fire Snout" />
+			<object Chance="40" Number="1-2" Blueprint="Albino ape" />
+			<object Chance="5" Number="1" Blueprint="Eyeless King Crab" />
+
+			<group Chance="30" Style="pickone" Name="Uncommon">
+				<object Weight="8" Number="1-3" Blueprint="Drillbot" />
+				<object Weight="4" Number="1-3" Blueprint="Quillipede" />
+				<object Weight="4" Number="1" Blueprint="Humor" />
+				<group Weight="2" Style="pickeach" Name="Cragmensch">
+					<object Chance="100" Number="1-3" Blueprint="Cragmensch Brainer" />
+					<object Chance="60" Number="1" Blueprint="Cragmensch Luminary" />
+					<object Chance="100" Number="1-3" Blueprint="Cragmensch Boulderer" />
+					<object Chance="75" Number="2-4" Blueprint="Garbage" />
+					<object Chance="75" Number="1" Blueprint="Campfire" />
+					<object Chance="75" Number="1-3" Blueprint="Campfire Remains" />
+					<object Chance="50" Blueprint="Chest3" />
+				</group>
+			</group>
+		</group>
+	</population>
+
+	<population Name="MountainsZoneGlobals-Reachable" Load="Merge">
+		<group Chance="100" Name="Creatures" Load="Replace">
+			<object Chance="50" Number="1-4" Blueprint="Goat"/>
+			<object Chance="25" Number="1-3" Blueprint="Cannibal"/>
+			<object Chance="25" Number="1-2" Blueprint="Aleksh_SpicerCannibal"/>
+			<object Chance="25" Number="1-2" Blueprint="Aleksh_RockSnail"/>
+			<object Chance="25" Number="1-2" Blueprint="Dog"/>
+			<object Chance="4" Number="1" Blueprint="Disciple of the Sightless Way" />
+		</group>
+		<group Name="ManySnapjaws" Load="Remove">
+		</group>
+	</population>
+
+	<population Name="DeepJungleZoneGlobals-Reachable" Load="Merge">
+		<object Chance="75" Number="1-5" Blueprint="Aleksh_NachashAssassin" />
+	</population>
+	<population Name="DeepJungleZoneGlobals-Vegetation" Load="Merge">
+		<group Name="Contents" Load="Merge">
+			<group Name="Normal Trees" Load="Replace">
+				<object Chance="95" Number="300-400" Blueprint="Nimbus Beam" />
+				<object Chance="95" Number="100-180" Blueprint="Nachash Tree" />
+				<object Chance="95" Number="200-300" Blueprint="Ziv Bough" />
+				<object Chance="95" Number="100-180" Blueprint="Shimscale Mangrove Tree" />
+				<object Chance="40" Number="20-40" Blueprint="Star Palm" />
+				<object Chance="15" Number="6-12" Blueprint="Starapple Tree" />
+			</group>
+		</group>
+	</population>
+
+	<population Name="MountainsPerSector" Load="Merge">
+		<group Name="Creatures" Load="Merge">
+			<table Name="SnapjawParty2" Load="Remove" />
+		</group>
+	</population>
+
+	<population Name="RainbowWoodPerSector" Load="Merge">
+		<group Name="Creatures" Load="Merge">
+			<table Weight="6000" Name="Nothing" Load="Replace" />
+			<object Weight="4000" Number="1-3" Blueprint="Aleksh_ScramblingFungus" />
+		</group>
+	</population>
+
+	<population Name="Tier4BossEncounter" Load="Merge">
+		<group Name="Creatures" Load="Replace">
+			<object Weight="10" Number="1" Blueprint="Aleksh_TrollHero" />
+			<table Weight="2" Name="Tier3BossEncounter" />
+			<table Weight="2" Name="Tier5BossEncounter" />
+		</group>
+	</population>
+	<population Name="Tier5BossEncounter" Load="Merge">
+		<group Name="Creatures" Load="Merge">
+			<table Name="Tier5CaveCreatures" Load="Remove" />
+			<object Weight="10" Number="1" Blueprint="Aleksh_TrollHero" />
+		</group>
+	</population>
+
+	<population Name="Aleksh_DeepCaves">
+		<object Chance="100" Number="1-3" Blueprint="Vantabloom" />
+		<object Chance="5" Number="4-7" Blueprint="Vantabloom" />
+		<object Chance="4" Blueprint="SparkingBaetyl" />
+
+		<object Chance="20" Number="1" Blueprint="Aleksh_PrimeShape" />
+
+		<group Chance="5" Name="Rift" Style="pickeach">
+			<object Number="1" Blueprint="Space-Time Rift" />
+
+			<group Name="RiftItems" Style="pickone" Number="2" >
+				<table Number="1-2" Name="DynamicInheritsTable:PhysicalObject:Tier6" />
+				<table Number="1-2" Name="DynamicInheritsTable:PhysicalObject:Tier7" />
+				<table Number="1-2" Name="DynamicInheritsTable:PhysicalObject:Tier8" />
+			</group>
+		</group>
+
+		<group Chance="4" Name="Adventurer" Style="pickeach">
+			<object Blueprint="Bones" Number="1" Hint="Adjacent" />
+			<table Name="DeadHumanoidWithGear" Hint="AdjacentToStartsWith:Bones" />
+		</group>
+	</population>
+</populations>

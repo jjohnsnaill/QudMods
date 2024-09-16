@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<naming>
+	<namestyles>
+		<namestyle Name="Baboon" Load="Merge">
+			<scopes Load="Merge">
+				<scope Name="FactionAndCulture" Faction="Apes" Culture="Baboon" Priority="110" Combine="false" />
+			</scopes>
+		</namestyle>
+		<namestyle Name="Baboon Hero Title" Load="Merge">
+			<scopes Load="Merge">
+				<scope Name="Main2" Type="Title" Special="Hero" Faction="Apes" Culture="Baboon" Priority="210" Combine="false" />
+			</scopes>
+		</namestyle>
+
+		<namestyle Name="Antelope" Load="Merge">
+			<scopes Load="Merge">
+				<scope Name="FactionAndCulture" Faction="Prey" Culture="Antelope" Priority="110" Combine="false" />
+			</scopes>
+		</namestyle>
+
+		<namestyle Name="Urchin" Load="Merge">
+			<scopes Load="Merge">
+				<scope Name="FactionAndCulture" Faction="Fish" Culture="Urchin" Priority="110" Combine="false" />
+			</scopes>
+		</namestyle>
+
+		<namestyle Name="Troll" Load="Merge">
+			<scopes Load="Merge">
+				<scope Name="FactionAndCulture" Faction="Hermits" Culture="Troll" Priority="110" Combine="false" />
+			</scopes>
+		</namestyle>
+		<namestyle Name="Troll Hero Title" Load="Merge">
+			<scopes Load="Merge">
+				<scope Name="Main2" Type="Title" Special="Hero" Faction="Hermits" Culture="Troll" Priority="210" Combine="false" />
+			</scopes>
+		</namestyle>
+	</namestyles>
+</naming>
