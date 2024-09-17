@@ -125,7 +125,7 @@ namespace XRL.World.ObjectBuilders
 					Object.AddSkill("Tactics_Charge");
 					Object.AddSkill("Endurance_Longstrider");
 					Object.AddSkill("Acrobatics");
-					Object.AddSkill("Acrobatics_Spry");
+					Object.AddSkill("Acrobatics_Dodge");
 
 					if (Stat.Rnd.Next(2) == 0)
 					{

@@ -25,20 +25,14 @@ namespace XRL.World.Parts.Mutation
 		{
 			if (!base.WantEvent(ID, cascade))
 			{
-				return ID == AIGetOffensiveAbilityListEvent.ID;
+				return ID == AIGetOffensiveAbilityListEvent.ID || ID == PooledEvent<CommandEvent>.ID;
 			}
 			return true;
 		}
 
-		public override void Register(GameObject Object, IEventRegistrar Registrar)
-		{
-			Registrar.Register("CommandMissileStrike");
-			base.Register(Object, Registrar);
-		}
-
 		public override string GetDescription()
 		{
-			return "You launch a missile.";
+			return "You launch a missile at a location.";
 		}
 
 		public override string GetLevelText(int Level)
@@ -53,23 +47,28 @@ namespace XRL.World.Parts.Mutation
 
 		public override void CollectStats(Templates.StatCollector stats, int Level)
 		{
+			stats.Set("Range", 12);
 			stats.CollectCooldownTurns(MyActivatedAbility(ActivatedAbilityID), GetCooldown(Level));
 		}
 
 		public override bool HandleEvent(AIGetOffensiveAbilityListEvent E)
 		{
-			if (E.Distance > 3 && IsMyActivatedAbilityAIUsable(ActivatedAbilityID))
+			if (E.Distance > 3 && E.Distance <= 12 && IsMyActivatedAbilityAIUsable(ActivatedAbilityID))
 			{
 				E.Add("CommandMissileStrike");
 			}
 			return base.HandleEvent(E);
 		}
 
-		public override bool FireEvent(Event E)
+		public override bool HandleEvent(CommandEvent E)
 		{
-			if (E.ID == "CommandMissileStrike")
+			if (E.Command == "CommandMissileStrike")
 			{
-				Cell cell = PickDestinationCell(Locked: false, Label: "Launch Missile");
+				Cell cell = PickDestinationCell(12, Locked: false, Label: "Launch Missile");
+				if (cell == null)
+				{
+					return false;
+				}
 
 				GameObject widget = GameObjectFactory.Factory.CreateObject("Widget");
 				widget.AddPart(new DelayedMissileStrike(ParentObject, 4, ParentObject.GetPhase()));
@@ -94,7 +93,7 @@ namespace XRL.World.Parts.Mutation
 				UseEnergy(1000, "Physical Mutation MissileStrike");
 				CooldownMyActivatedAbility(ActivatedAbilityID, GetCooldown(Level));
 			}
-			return base.FireEvent(E);
+			return base.HandleEvent(E);
 		}
 
 		public override bool Mutate(GameObject GO, int Level)
@@ -112,8 +111,8 @@ namespace XRL.World.Parts.Mutation
 
 	public class DelayedMissileStrike : IPart
 	{
-		public int turns;
 		public GameObject owner;
+		public int turns;
 		public int phase;
 
 		public DelayedMissileStrike(GameObject owner, int turns, int phase)

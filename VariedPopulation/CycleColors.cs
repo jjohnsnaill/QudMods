@@ -14,19 +14,26 @@ namespace XRL.World.Parts
 
 		public override bool Render(RenderEvent E)
 		{
-			if (XRLCore.CurrentFrame >= nextFrame)
+			if (XRLCore.CurrentFrame >= nextFrame && XRLCore.CurrentFrame < nextFrame + 30)
 			{
-				nextFrame = XRLCore.CurrentFrame + 4;
-				if (nextFrame >= 62)
+				nextFrame = XRLCore.CurrentFrame + 3;
+				if (nextFrame >= 61)
 				{
-					nextFrame -= 62;
+					nextFrame -= 61;
 				}
-				if (++lastColor >= Crayons.BrightColors.Length)
+				if (++lastColor >= 5)
 				{
 					lastColor = 0;
 				}
 			}
-			E.DetailColor = Crayons.BrightColors[lastColor];
+			switch (lastColor)
+			{
+				case 0: E.DetailColor = "r"; break;
+				case 1: E.DetailColor = "R"; break;
+				case 2: E.DetailColor = "o"; break;
+				case 3: E.DetailColor = "O"; break;
+				case 4: E.DetailColor = "W"; break;
+			}
 
 			return base.Render(E);
 		}

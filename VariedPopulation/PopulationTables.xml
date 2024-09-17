@@ -35,18 +35,24 @@
 	</population>
 
 	<population Name="AsphaltMines" Load="Merge">
-		<group Name="Creatures" Load="Replace">
+		<group Name="Creatures" Load="Merge">
 			<object Chance="90" Number="5-10" Blueprint="Aleksh_HungeringTar" />
-			<object Chance="90" Number="5-10" Blueprint="Eyeless Crab" />
-			<object Chance="75" Number="3-5" Blueprint="Fire Snout" />
-			<object Chance="40" Number="1-2" Blueprint="Albino ape" />
-			<object Chance="5" Number="1" Blueprint="Eyeless King Crab" />
+
+			<object Chance="90" Number="5-10" Blueprint="Eyeless Crab" Load="Replace" />
+			<object Chance="75" Number="3-5" Blueprint="Fire Snout" Load="Replace" />
+			<object Chance="40" Number="1-2" Blueprint="Albino ape" Load="Replace" />
+			<object Chance="5" Number="1" Blueprint="Eyeless King Crab" Load="Replace" />
+
+			<object Blueprint="Drillbot" Load="Remove" />
+			<object Blueprint="Quillipede" Load="Remove" />
+			<object Blueprint="Humor" Load="Remove" />
+			<group Name="Cragmensch" Load="Remove"></group>
 
 			<group Chance="30" Style="pickone" Name="Uncommon">
 				<object Weight="8" Number="1-3" Blueprint="Drillbot" />
 				<object Weight="4" Number="1-3" Blueprint="Quillipede" />
 				<object Weight="4" Number="1" Blueprint="Humor" />
-				<group Weight="2" Style="pickeach" Name="Cragmensch">
+				<group Weight="2" Style="pickeach" Name="Cragmensch Party">
 					<object Chance="100" Number="1-3" Blueprint="Cragmensch Brainer" />
 					<object Chance="60" Number="1" Blueprint="Cragmensch Luminary" />
 					<object Chance="100" Number="1-3" Blueprint="Cragmensch Boulderer" />
@@ -60,15 +66,34 @@
 	</population>
 
 	<population Name="MountainsZoneGlobals-Reachable" Load="Merge">
-		<group Chance="100" Name="Creatures" Load="Replace">
-			<object Chance="50" Number="1-4" Blueprint="Goat"/>
-			<object Chance="25" Number="1-3" Blueprint="Cannibal"/>
-			<object Chance="25" Number="1-2" Blueprint="Aleksh_SpicerCannibal"/>
-			<object Chance="25" Number="1-2" Blueprint="Aleksh_RockSnail"/>
-			<object Chance="25" Number="1-2" Blueprint="Dog"/>
+		<group Chance="100" Name="Creatures" Load="Merge">
+			<object Chance="50" Number="1-4" Blueprint="Goat" Load="Replace" />
+			<object Chance="25" Number="1-3" Blueprint="Cannibal" Load="Replace" />
+			<object Chance="25" Number="1-2" Blueprint="Dog" Load="Replace" />
+
+			<object Chance="25" Number="1-2" Blueprint="Aleksh_SpicerCannibal" />
+			<object Chance="25" Number="1-2" Blueprint="Aleksh_RockSnail" />
+
+			<object Blueprint="Novice of the Sightless Way 2" Load="Remove" />
 			<object Chance="4" Number="1" Blueprint="Disciple of the Sightless Way" />
 		</group>
 		<group Name="ManySnapjaws" Load="Remove">
+		</group>
+	</population>
+	<population Name="MountainsPerSector" Load="Merge">
+		<group Name="Creatures" Load="Merge">
+			<table Name="SnapjawParty2" Load="Remove" />
+		</group>
+	</population>
+	<population Name="LairOwners_Mountains" Load="Merge">
+		<group Name="Options" Load="Merge">
+			<object Blueprint="Goat" Load="Remove" />
+			<object Blueprint="Cannibal" Load="Remove" />
+			<object Blueprint="Dog" Load="Remove" />
+			<object Weight="30" Blueprint="Aleksh_TrollHero" />
+			<object Weight="7" Blueprint="Aleksh_RockSnail" />
+			<object Weight="5" Blueprint="Aleksh_SpicerCannibal" />
+			<object Weight="3" Blueprint="Conjoined Girshling" />
 		</group>
 	</population>
 
@@ -77,20 +102,14 @@
 	</population>
 	<population Name="DeepJungleZoneGlobals-Vegetation" Load="Merge">
 		<group Name="Contents" Load="Merge">
-			<group Name="Normal Trees" Load="Replace">
-				<object Chance="95" Number="300-400" Blueprint="Nimbus Beam" />
-				<object Chance="95" Number="100-180" Blueprint="Nachash Tree" />
-				<object Chance="95" Number="200-300" Blueprint="Ziv Bough" />
-				<object Chance="95" Number="100-180" Blueprint="Shimscale Mangrove Tree" />
-				<object Chance="40" Number="20-40" Blueprint="Star Palm" />
-				<object Chance="15" Number="6-12" Blueprint="Starapple Tree" />
+			<group Name="Normal Trees" Load="Merge">
+				<object Chance="95" Number="300-400" Blueprint="Nimbus Beam" Load="Replace" />
+				<object Chance="95" Number="100-180" Blueprint="Nachash Tree" Load="Replace" />
+				<object Chance="95" Number="200-300" Blueprint="Ziv Bough" Load="Replace" />
+				<object Chance="95" Number="100-180" Blueprint="Shimscale Mangrove Tree" Load="Replace" />
+				<object Chance="40" Number="20-40" Blueprint="Star Palm" Load="Replace" />
+				<object Chance="15" Number="6-12" Blueprint="Starapple Tree" Load="Replace" />
 			</group>
-		</group>
-	</population>
-
-	<population Name="MountainsPerSector" Load="Merge">
-		<group Name="Creatures" Load="Merge">
-			<table Name="SnapjawParty2" Load="Remove" />
 		</group>
 	</population>
 
@@ -102,10 +121,9 @@
 	</population>
 
 	<population Name="Tier4BossEncounter" Load="Merge">
-		<group Name="Creatures" Load="Replace">
+		<group Name="Creatures" Load="Merge">
+			<object Blueprint="Eyeless King Crab" Load="Remove" />
 			<object Weight="10" Number="1" Blueprint="Aleksh_TrollHero" />
-			<table Weight="2" Name="Tier3BossEncounter" />
-			<table Weight="2" Name="Tier5BossEncounter" />
 		</group>
 	</population>
 	<population Name="Tier5BossEncounter" Load="Merge">
@@ -132,9 +150,56 @@
 			</group>
 		</group>
 
-		<group Chance="4" Name="Adventurer" Style="pickeach">
-			<object Blueprint="Bones" Number="1" Hint="Adjacent" />
-			<table Name="DeadHumanoidWithGear" Hint="AdjacentToStartsWith:Bones" />
+		<table Chance="4" Name="DeadHumanoidWithGear" />
+	</population>
+
+
+
+	<population Name="SultanDungeons_Encounters_*Default" Load="Merge">
+		<group Name="Options" Load="Merge">
+			<group Name="Minion" Style="pickeach" Load="Replace">
+				<object Blueprint="=Minion" Number="2" />
+			</group>
+
+			<group Name="Artillery" Style="pickeach" Load="Replace">
+				<object Blueprint="=Artillery" Number="1" />
+			</group>
+
+			<group Name="Skirmisher" Style="pickeach" Load="Replace">
+				<object Blueprint="=Skirmisher" Number="1" />
+			</group>
+
+			<group Name="Squad" Style="pickeach" Load="Replace">
+				<object Blueprint="=Minion" Number="1" />
+				<group Name="StrongUnit" Style="pickone">
+					<object Blueprint="=Brute" Number="1" />
+					<object Blueprint="=Tank" Number="1" />
+				</group>
+				<object Blueprint="=Leader" Number="1" />
+			</group>
+		</group>
+	</population>
+	<population Name="SultanDungeons_Cubbies_*Default" Load="Merge">
+		<group Name="Contents" Load="Merge">
+			<group Name="RandomItems" Load="Replace">
+				<table Number="1" Chance="100,50" Name="DynamicInheritsTable:Item:Tier{zonetier}" />
+			</group>
+		</group>
+	</population>
+
+	<population Name="Lairs_Encounters_*Default" Load="Merge">
+		<group Name="Options" Load="Replace">
+			<group Name="Minion" Style="pickeach" Load="Replace">
+				<object Blueprint="=Minion" Number="2" />
+			</group>
+
+			<group Name="Artillery" Style="pickeach" Load="Replace">
+				<object Blueprint="=Artillery" Number="1" />
+			</group>
+
+			<group Name="Skirmisher" Style="pickeach" Load="Replace">
+				<object Blueprint="=Skirmisher" Number="1" />
+			</group>
 		</group>
 	</population>
 </populations>

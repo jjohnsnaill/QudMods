@@ -19,6 +19,7 @@ namespace Mods.VariedPopulation
 
 			ZoneBlueprint bp = new ZoneBlueprint(WorldFactory.Factory.getWorld("JoppaWorld").CellBlueprintsByName["DefaultJoppaCell"].LevelBlueprint[1, 1, 49]);
 			bp.Builders.Remove("ZoneTemplate:Caves");
+			bp.Builders.Remove("Music");
 
 			ZoneBuilderBlueprint template = new ZoneBuilderBlueprint("Population")
 			{
@@ -28,6 +29,7 @@ namespace Mods.VariedPopulation
 				}
 			};
 			bp.Builders.Add(new OrderedBuilderBlueprint(template, 3999));
+			bp.Builders.Add(new OrderedBuilderBlueprint(new ZoneBuilderBlueprint("Music"), 3999));
 
 			Request.Blueprints.Add(bp);
 

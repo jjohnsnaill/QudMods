@@ -15,7 +15,7 @@ namespace XRL.World.Parts
 
 		public override void Read(GameObject Basis, SerializationReader Reader)
 		{
-			recipe = Reader.ReadComposite<CookingRecipe>();
+			recipe = (CookingRecipe)Reader.ReadComposite();
 		}
 
 		public override bool AllowStaticRegistration()

@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using ConsoleLib.Console;
+using Genkit;
+using System.Collections.Generic;
 using XRL.Core;
+using XRL.UI;
 using XRL.World.AI.GoalHandlers;
 using XRL.World.Capabilities;
 
@@ -22,15 +25,9 @@ namespace XRL.World.Parts.Mutation
 		{
 			if (!base.WantEvent(ID, cascade))
 			{
-				return ID == AIGetOffensiveAbilityListEvent.ID;
+				return ID == AIGetOffensiveAbilityListEvent.ID || ID == PooledEvent<CommandEvent>.ID;
 			}
 			return true;
-		}
-
-		public override void Register(GameObject Object, IEventRegistrar Registrar)
-		{
-			Registrar.Register("CommandCollapse");
-			base.Register(Object, Registrar);
 		}
 
 		public override string GetDescription()
@@ -50,30 +47,35 @@ namespace XRL.World.Parts.Mutation
 
 		public override void CollectStats(Templates.StatCollector stats, int Level)
 		{
+			stats.Set("Range", 12);
 			stats.CollectCooldownTurns(MyActivatedAbility(ActivatedAbilityID), GetCooldown(Level));
 		}
 
 		public override bool HandleEvent(AIGetOffensiveAbilityListEvent E)
 		{
-			if (IsMyActivatedAbilityAIUsable(ActivatedAbilityID))
+			if (E.Distance <= 12 && IsMyActivatedAbilityAIUsable(ActivatedAbilityID))
 			{
 				E.Add("CommandCollapse");
 			}
 			return base.HandleEvent(E);
 		}
 
-		public override bool FireEvent(Event E)
+		public override bool HandleEvent(CommandEvent E)
 		{
-			if (E.ID == "CommandCollapse")
+			if (E.Command == "CommandCollapse")
 			{
-				Cell cell = PickDestinationCell(Locked: false, Label: "Collapse");
+				Cell cell = PickDestinationCell(12, Locked: false, Label: "Collapse");
+				if (cell == null)
+				{
+					return false;
+				}
 
 				GameObject widget = GameObjectFactory.Factory.CreateObject("Widget");
 				widget.AddPart(new DelayedCollapse(ParentObject, 3));
 
 				cell.AddObject(widget);
-				PlayWorldSound("Sounds/Creatures/Ability/sfx_creature_girshNephilim_irisdualBeam_windup", CostMultiplier: 0.2f, CostMaximum: 20);
-				if (cell.IsVisible())
+				cell.PlayWorldSound("Sounds/Creatures/Ability/sfx_creature_girshNephilim_irisdualBeam_windup", CostMultiplier: 0.2f, CostMaximum: 20);
+				if (Options.UseParticleVFX && cell.IsVisible())
 				{
 					CombatJuice.playPrefabAnimation(cell.Location, "Impacts/ImpactVFXNeutronImpact", null, null, async: true);
 				}
@@ -87,7 +89,7 @@ namespace XRL.World.Parts.Mutation
 				UseEnergy(1000, "Mental Mutation Collapse");
 				CooldownMyActivatedAbility(ActivatedAbilityID, GetCooldown(Level));
 			}
-			return base.FireEvent(E);
+			return base.HandleEvent(E);
 		}
 
 		public override bool Mutate(GameObject GO, int Level)
@@ -122,6 +124,24 @@ namespace XRL.World.Parts.Mutation
 		public override bool WantEvent(int ID, int Cascade)
 		{
 			return ID == EndTurnEvent.ID;
+		}
+
+		public override bool FinalRender(RenderEvent E, bool bAlt)
+		{
+			E.WantsToPaint = true;
+			return base.FinalRender(E, bAlt);
+		}
+
+		public override void OnPaint(ScreenBuffer buffer)
+		{
+			Cell cell = ParentObject.CurrentCell;
+			ConsoleChar consoleChar = buffer.get(cell.X, cell.Y);
+			if (consoleChar != null && XRLCore.CurrentFrame % 12 < 6)
+			{
+				consoleChar.Tile = null;
+				consoleChar.Char = '\u0009';
+				consoleChar.Foreground = The.Color.B;
+			}
 		}
 
 		public override bool HandleEvent(EndTurnEvent E)
