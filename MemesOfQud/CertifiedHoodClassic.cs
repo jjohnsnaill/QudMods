@@ -10,7 +10,7 @@ namespace Mods.MemesOfQud
 		[HarmonyPatch("SetChannelTrack")]
 		static void Prefix(string Track, string Channel)
 		{
-			if (Options.Music && Track != null && !Channel.StartsWith("ambient_bed") && SoundManager.MusicSources.TryGetValue(Channel, out MusicSource music) && music.Track != Track)
+			if (Options.Music && !Track.IsNullOrEmpty() && !Channel.StartsWith("ambient_bed") && SoundManager.MusicSources.TryGetValue(Channel, out MusicSource music) && music.Track != Track)
 			{
 				SoundManager.PlaySound("certifiedHoodClassic");
 			}
