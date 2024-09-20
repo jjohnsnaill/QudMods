@@ -33,7 +33,7 @@ namespace XRL.World.Parts
 			int tier = ZoneManager.zoneGenerationContextTier;
 
 			List<GameObject> list = new List<GameObject>();
-			int chanceFor3 = 75;
+			int chanceFor3 = 85;
 			if (tier >= 0 && tier <= 1)
 			{
 				chanceFor3 = 15;
@@ -48,7 +48,7 @@ namespace XRL.World.Parts
 			}
 			else if (tier >= 6 && tier <= 7)
 			{
-				chanceFor3 = 65;
+				chanceFor3 = 70;
 			}
 
 			int rand = Stat.Random(1, 100);

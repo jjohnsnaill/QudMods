@@ -49,10 +49,10 @@
 			<group Name="Cragmensch" Load="Remove"></group>
 
 			<group Chance="30" Style="pickone" Name="Uncommon">
-				<object Weight="8" Number="1-3" Blueprint="Drillbot" />
-				<object Weight="4" Number="1-3" Blueprint="Quillipede" />
-				<object Weight="4" Number="1" Blueprint="Humor" />
-				<group Weight="2" Style="pickeach" Name="Cragmensch Party">
+				<object Weight="40" Number="1-3" Blueprint="Drillbot" />
+				<object Weight="20" Number="1-3" Blueprint="Quillipede" />
+				<object Weight="20" Number="1" Blueprint="Humor" />
+				<group Weight="10" Style="pickeach" Name="Cragmensch Party">
 					<object Chance="100" Number="1-3" Blueprint="Cragmensch Brainer" />
 					<object Chance="60" Number="1" Blueprint="Cragmensch Luminary" />
 					<object Chance="100" Number="1-3" Blueprint="Cragmensch Boulderer" />
@@ -64,6 +64,32 @@
 			</group>
 		</group>
 	</population>
+	<population Name="DeepAsphaltMines" Load="Merge">
+		<group Name="Creatures" Load="Merge">
+			<object Chance="90" Number="1-3" Blueprint="Aleksh_VolcanicSnail" />
+			<object Chance="30" Number="1-2" Blueprint="Red Jell" />
+
+			<object Chance="90" Number="2-6" Blueprint="Great Magma Crab" Load="Replace" />
+
+			<object Blueprint="Fire ant" Load="Remove" />
+			<object Blueprint="Worker ant" Load="Remove" />
+			<object Blueprint="Fire Ant Queen" Load="Remove" />
+
+			<group Chance="90" Style="pickone" Name="Ants">
+				<table Weight="20" Number="4-8" Name="Aleksh_Ants" />
+				<group Weight="10" Style="pickeach" Name="WithQueen">
+					<object Number="1" Blueprint="Fire Ant Queen" />
+					<table Number="2-4" Name="Aleksh_Ants" />
+				</group>
+			</group>
+		</group>
+	</population>
+	<population Name="Aleksh_Ants">
+		<group Name="Creatures" Style="pickone">
+			<object Weight="1" Blueprint="Fire ant" />
+			<object Weight="1" Blueprint="Worker ant" />
+		</group>
+	</population>
 
 	<population Name="MountainsZoneGlobals-Reachable" Load="Merge">
 		<group Chance="100" Name="Creatures" Load="Merge">
@@ -73,6 +99,7 @@
 
 			<object Chance="25" Number="1-2" Blueprint="Aleksh_SpicerCannibal" />
 			<object Chance="25" Number="1-2" Blueprint="Aleksh_RockSnail" />
+			<object Chance="5" Number="1-2" Blueprint="Troll Foal" />
 
 			<object Blueprint="Novice of the Sightless Way 2" Load="Remove" />
 			<object Chance="4" Number="1" Blueprint="Disciple of the Sightless Way" />
@@ -97,8 +124,13 @@
 		</group>
 	</population>
 
-	<population Name="DeepJungleZoneGlobals-Reachable" Load="Merge">
-		<object Chance="75" Number="1-5" Blueprint="Aleksh_NachashAssassin" />
+	<population Name="DeepJungleZoneGlobals-Creatures" Load="Merge">
+		<object Chance="8" Number="1-2" Blueprint="Aleksh_Gastrohog" />
+	</population>
+	<population Name="DeepJunglePerSector" Load="Merge">
+		<group Name="Creatures" Load="Merge">
+			<object Weight="460" Number="1-5" Blueprint="Aleksh_NachashAssassin" />
+		</group>
 	</population>
 	<population Name="DeepJungleZoneGlobals-Vegetation" Load="Merge">
 		<group Name="Contents" Load="Merge">
@@ -115,8 +147,15 @@
 
 	<population Name="RainbowWoodPerSector" Load="Merge">
 		<group Name="Creatures" Load="Merge">
-			<table Weight="6000" Name="Nothing" Load="Replace" />
+			<table Weight="5600" Name="Nothing" Load="Replace" />
 			<object Weight="4000" Number="1-3" Blueprint="Aleksh_ScramblingFungus" />
+			<object Weight="400" Number="1-2" Blueprint="Aleksh_SapCap" />
+		</group>
+	</population>
+	<population Name="FungalJunglePopulation" Load="Merge">
+		<group Name="Creatures" Load="Merge">
+			<object Number="2-8" Blueprint="Aleksh_ScramblingFungus" />
+			<object Chance="50" Number="1-2" Blueprint="Aleksh_SapCap" />
 		</group>
 	</population>
 
@@ -151,6 +190,132 @@
 		</group>
 
 		<table Chance="4" Name="DeadHumanoidWithGear" />
+	</population>
+
+	<population Name="MoonStairZoneGlobals-Creatures" Load="Merge">
+		<object Chance="2" Number="1" Blueprint="Chrome Pyramid" Load="Replace" />
+		<object Chance="2" Number="1" Blueprint="Aleksh_MetalBird" />
+		<object Chance="4" Number="1-2" Blueprint="Aleksh_AstralFrog" />
+	</population>
+
+	<population Name="SaltMarshZoneGlobals" Load="Merge">
+		<object Chance="50" Number="1-2" Blueprint="Aleksh_MarshFrog" />
+	</population>
+	<population Name="LairOwners_Saltmarsh" Load="Merge">
+		<group Name="Options" Load="Merge">
+			<object Blueprint="Aleksh_MarshFrog" />
+		</group>
+	</population>
+
+	<population Name="FungalBiome1" Load="Merge">
+		<group Name="Creatures" Load="Merge">
+			<object Chance="75" Number="1-2" Blueprint="Aleksh_SapCap" />
+		</group>
+	</population>
+	<population Name="FungalBiome2" Load="Merge">
+		<group Name="Creatures" Load="Merge">
+			<object Chance="85" Number="2-3" Blueprint="Aleksh_SapCap" />
+		</group>
+	</population>
+	<population Name="FungalBiome3" Load="Merge">
+		<group Name="Creatures" Load="Merge">
+			<object Chance="100" Number="3-4" Blueprint="Aleksh_SapCap" />
+		</group>
+	</population>
+
+	<population Name="JungleZoneGlobals" Load="Merge">
+		<group Name="CreatureEncounter" Load="Merge">
+			<group Name="Creatures" Load="Merge">
+				<object Blueprint="Boar" Load="Remove" />
+				<object Blueprint="Leech" Load="Remove" />
+
+				<object Chance="10" Number="1" Blueprint="Aleksh_Gastrohog" />
+				<object Chance="10" Number="1-2" Blueprint="Aleksh_Airboar" />
+			</group>
+		</group>
+	</population>
+	<!--<population Name="JungleZoneGlobals" Load="Merge">
+		<group Name="CreatureEncounter" Load="Merge">
+			<group Name="Creatures" Number="2-4" Style="pickone" Load="Merge">
+				<object Weight="20" Number="2-4" Blueprint="Salamander" Load="Replace" />
+				<object Weight="30" Number="2-4" Blueprint="GiantDragonfly" Load="Replace" />
+				<object Weight="40" Number="1-2" Blueprint="Honey Skunk" Load="Replace" />
+				<object Weight="40" Number="1-2" Blueprint="Albino ape" Load="Replace" />
+				<object Weight="20" Number="1-2" Blueprint="Horned Chameleon" Load="Replace" />
+				<object Weight="20" Number="1-2" Blueprint="Quillipede" Load="Replace" />
+				<object Weight="40" Number="1" Blueprint="Beetlebum" Load="Replace" />
+				<object Weight="30" Number="2-4" Blueprint="Ice frog" Load="Replace" />
+				<object Weight="30" Number="1-2" Blueprint="Bloated Leech" Load="Replace" />
+				<object Weight="15" Number="1" Blueprint="Chitinous Puma" Load="Replace" />
+				<object Weight="10" Number="1" Blueprint="Slumberling" Load="Replace" />
+				<object Weight="5" Number="1" Blueprint="Hide-Sheathed Hermit" Load="Replace" />
+				<object Weight="5" Number="1" Blueprint="Sawhander" Load="Replace" />
+				<object Weight="5" Number="1" Blueprint="Novice of the Sightless Way 2" Load="Replace" />
+
+				<object Blueprint="Boar" Load="Remove" />
+				<object Blueprint="Leech" Load="Remove" />
+				<object Blueprint="Woodsprog" Load="Remove" />
+
+				<object Weight="10" Number="1" Blueprint="Aleksh_Gastrohog" />
+				<object Weight="15" Number="1-2" Blueprint="Aleksh_Airboar" />
+			</group>
+		</group>
+	</population>-->
+	<population Name="GoatfolkParty" Load="Merge">
+		<group Name="HeroOrNot" Load="Merge">
+			<group Name="NoHero" Load="Merge">
+				<table Name="GoatfolkParty" Load="Remove" />
+			</group>
+			<group Name="Hero" Load="Merge">
+				<table Name="GoatfolkParty" Load="Remove" />
+			</group>
+		</group>
+	</population>
+
+	<population Name="RiversZoneGlobals" Load="Merge">
+		<object Chance="20" Number="1" Blueprint="Aleksh_Airboar" />
+		<object Chance="15" Number="1" Blueprint="Bloated Pearlfrog" Load="Replace" />
+	</population>
+
+	<population Name="Aleksh_SkyEncounters">
+		<object Chance="2" Number="1-8" Blueprint="White Esh" />
+		<object Chance="25" Number="1-4" Blueprint="Glowcrow" />
+		<object Chance="25" Number="1-4" Blueprint="GiantDragonfly" />
+		<object Chance="30" Number="1-4" Blueprint="Aleksh_Airboar" />
+	</population>
+	<population Name="Aleksh_SaltDesertSkyEncounters">
+		<object Chance="25" Number="1-8" Blueprint="Dawnglider" />
+		<object Chance="20" Number="1-4" Blueprint="Aleksh_Airboar" />
+	</population>
+	<population Name="Aleksh_RuinsSkyEncounters">
+		<object Chance="30" Number="1-4" Blueprint="Glowmoth" />
+		<object Chance="30" Number="1-4" Blueprint="Aleksh_Airboar" />
+	</population>
+	<population Name="Aleksh_BananaGroveSkyEncounters">
+		<object Chance="75" Number="1-8" Blueprint="Adiyy" />
+		<object Chance="10" Number="1" Blueprint="Strip Fly" />
+	</population>
+	<population Name="Aleksh_GolgothaSkyEncounters">
+		<object Chance="75" Number="1-8" Blueprint="Agolfly" />
+	</population>
+	<population Name="Aleksh_DeepJungleSkyEncounters">
+		<table Chance="30" Number="5-15" Name="StatSaps" />
+		<table Chance="20" Number="1-4" Name="Interdictor" />
+		<object Chance="5" Number="1-8" Blueprint="White Esh" />
+	</population>
+	<population Name="Aleksh_LakeHinnomSkyEncounters">
+		<object Chance="20" Number="5-15" Blueprint="White Esh" />
+	</population>
+	<population Name="Aleksh_MoonStairSkyEncounters">
+		<object Chance="10" Number="1-2" Blueprint="Dream Wren" />
+		<object Chance="5" Number="1" Blueprint="Gamma Moth" />
+		<object Chance="5" Number="1" Blueprint="Chrome Pyramid" />
+		<object Chance="5" Number="1" Blueprint="Aleksh_MetalBird" />
+	</population>
+	<population Name="Aleksh_HighSkyEncounters">
+		<object Chance="30" Number="1-2" Blueprint="Aleksh_PrimeShape" />
+		<object Chance="20" Number="1" Blueprint="Chrome Pyramid" />
+		<object Chance="20" Number="1-2" Blueprint="Aleksh_MetalBird" />
 	</population>
 
 

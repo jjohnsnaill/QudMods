@@ -1,5 +1,4 @@
 ﻿using ConsoleLib.Console;
-using Genkit;
 using System.Collections.Generic;
 using XRL.Core;
 using XRL.UI;
@@ -64,7 +63,7 @@ namespace XRL.World.Parts.Mutation
 		{
 			if (E.Command == "CommandCollapse")
 			{
-				Cell cell = PickDestinationCell(12, Locked: false, Label: "Collapse");
+				Cell cell = PickDestinationCell(12, RequireCombat: true, Label: "Collapse", Snap: true);
 				if (cell == null)
 				{
 					return false;

@@ -1,13 +1,29 @@
 ﻿using HarmonyLib;
 using System.Collections.Generic;
+using XRL;
 using XRL.World;
+using XRL.World.WorldBuilders;
 using XRL.World.ZoneFactories;
 
 namespace Mods.VariedPopulation
 {
 	[HarmonyPatch]
-	public class DeepCave
+	[JoppaWorldBuilderExtension]
+	public class WorldAdditions : IJoppaWorldBuilderExtension
 	{
+		public override void OnAfterBuild(JoppaWorldBuilder Builder)
+		{
+			var location = Builder.popMutableLocationOfTerrain("Saltdunes", centerOnly: false);
+			var id = Builder.ZoneIDFromXY("JoppaWorld", location.X, location.Y);
+
+			var secret = Builder.AddSecret(id, "the location of Lad", new string[2] { "lair", "oddity" }, "Lairs", "$aleksh_lad");
+
+			GameObject obj = GameObject.Create("Aleksh_Lad");
+			The.ZoneManager.AddZonePostBuilder(id, "AddObjectBuilder", "Object", The.ZoneManager.CacheObject(obj));
+
+			The.ZoneManager.AddZonePostBuilder(ZoneID.Assemble("JoppaWorld", 76, 5, 1, 1, 7), "OsefPortal");
+		}
+
 		[HarmonyPrefix]
 		[HarmonyPatch(typeof(JoppaWorldZoneFactory), "AddBlueprintsFor")]
 		static bool AddBlueprintsFor(ZoneRequest Request)

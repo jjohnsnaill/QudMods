@@ -26,7 +26,7 @@
 		<part Name="MeleeWeapon" Skill="Axe" />
 	</object>
 
-	<object Name="Aleksh_IssachariBannerlord" Inherits="BaseIssachari">
+	<!--<object Name="Aleksh_IssachariBannerlord" Inherits="BaseIssachari">
 		<part Name="Render" DisplayName="Issachari bannerlord" Tile="Creatures/issacharibannerlord.png" ColorString="&amp;Y" DetailColor="R" />
 		<stat Name="Hitpoints" Value="35" />
 		<stat Name="Level" Value="10" />
@@ -40,6 +40,7 @@
 		<inventoryobject Blueprint="Desert Kris" Number="2" />
 		<tag Name="DynamicObjectsTable:Saltdunes_Creatures" />
 	</object>
+
 	<object Name="Aleksh_IssachariAkimbo" Inherits="BaseIssachari">
 		<part Name="Render" DisplayName="Issachari akimbo" Tile="Creatures/issachariakimbo.png" ColorString="&amp;y" DetailColor="R" />
 		<part Name="Brain" Hostile="false" Factions="Issachari-100" />
@@ -48,7 +49,7 @@
 		<inventoryobject Blueprint="Borderlands Revolver" Number="2" />
 		<inventoryobject Blueprint="Lead Slug" Number="50" />
 		<tag Name="DynamicObjectsTable:Saltdunes_Creatures" />
-	</object>
+	</object>-->
 
 	<object Name="Aleksh_DuneWraith" Inherits="BaseRobot">
 		<part Name="Body" Anatomy="HoverRobot" />
@@ -95,7 +96,7 @@
 	</object>
 
 	<object Name="Aleksh_Lad" Inherits="Animal">
-		<part Name="Render" DisplayName="Lad" ColorString="&amp;Y" Tile="Creatures/lad.png" DetailColor="Y" />
+		<part Name="Render" DisplayName="Lad" Tile="Creatures/lad.png" ColorString="&amp;Y" DetailColor="Y" />
 		<part Name="Brain" Calm="true" Wanders="true" Factions="Newly Sentient Beings-100,Fish-100" Feelings="All:600" />
 		<stat Name="Level" Value="1" />
 		<stat Name="AV" Value="0" />
@@ -116,12 +117,12 @@
 		<part Name="Aquatic" />
 		<part Name="Lovable" />
 		<inventoryobject Blueprint="Cat Bite" />
-		<part Name="Pettable" />
+		<part Name="Pettable" PettableIfPositiveFeeling="True" />
 		<tag Name="PetResponse" Value="=subject.T= =verb:bark=." />
 		<tag Name="SleepOnBed" />
 		<tag Name="Genotype" Value="True Kin" />
 		<tag Name="Role" Value="Hero" />
-		<tag Name="Gender" Value="male" />
+		<tag Name="Gender" Value="neuter" />
 		<tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
 		<xtagGrammar Proper="true" />
 	</object>
@@ -191,13 +192,14 @@
 	<object Name="Aleksh_Gastrohog" Inherits="BaseSwine">
 		<part Name="Render" DisplayName="gastrohog" Tile="Creatures/truffleboar.png" ColorString="&amp;w" DetailColor="W" />
 		<part Name="Corpse" CorpseChance="100" CorpseBlueprint="Boar Corpse" />
-		<stat Name="Level" Value="20" />
-		<stat Name="AV" Value="7" />
-		<stat Name="Hitpoints" Value="90" />
+		<stat Name="Level" Value="19" />
+		<stat Name="AV" Value="6" />
+		<stat Name="Hitpoints" Value="70" />
 		<part Name="Brain" Hostile="false" Factions="Swine-100" />
 		<part Name="Description" Short="Blankets of matted fur coat the rotund silhouette. Culinary prowess has expanded =pronouns.possessive= pig-form to the evolutionary conclusion; the hog is massive." />
 		<inventoryobject Blueprint="Aleksh_GastrohogHoof" Number="2" />
-		<inventoryobject Blueprint="Hoarshroom" Number="1-2" />
+		<inventoryobject Blueprint="Hoarshroom" Number="1" />
+		<mutation Name="ThickFur" />
 		<skill Name="Cudgel" />
 		<skill Name="Cudgel_Bludgeon" />
 		<skill Name="Cudgel_Slam" />
@@ -209,10 +211,35 @@
 		<tag Name="Species" Value="pig" />
 		<part Name="SpawnMetabolizing" />
 		<tag Name="DynamicObjectsTable:Jungle_Creatures" />
+		<tag Name="DynamicObjectsTable:DeepJungle_Creatures" />
 	</object>
 	<object Name="Aleksh_GastrohogHoof" Inherits="NaturalWeapon">
 		<part Name="Render" DisplayName="hoof" Tile="Creatures/natural-weapon-hoof1.bmp" ColorString="&amp;y" />
 		<part Name="MeleeWeapon" BaseDamage="2d2" Skill="Cudgel" Stat="Strength" Slot="Foot" />
+	</object>
+
+	<object Name="Aleksh_Airboar" Inherits="BaseSwine">
+		<part Name="Render" DisplayName="airboar" Tile="Creatures/airboar.png" ColorString="&amp;y" DetailColor="Y" />
+		<part Name="Corpse" CorpseChance="15" CorpseBlueprint="Boar Corpse" />
+		<stat Name="Level" Value="16" />
+		<stat Name="AV" Value="4" />
+		<stat Name="Hitpoints" Value="42" />
+		<part Name="Brain" Hostile="false" Factions="Swine-100,Winged Mammals-100" />
+		<part Name="Description" Short="" />
+		<inventoryobject Blueprint="Aleksh_AirboarBite" />
+		<mutation Name="Wings" Level="6" />
+		<skill Name="Acrobatics" />
+		<!-- <skill Name="Acrobatics_Jump" /> -->
+		<skill Name="LongBlades" />
+		<skill Name="LongBladesLunge" />
+		<skill Name="LongBladesSwipe" />
+		<skill Name="LongBladesDuelingStance" />
+		<tag Name="Role" Value="Controller" />
+		<tag Name="Species" Value="pig" />
+		<tag Name="DynamicObjectsTable:Jungle_Creatures" />
+	</object>
+	<object Name="Aleksh_AirboarBite" Inherits="Bite">
+		<part Name="MeleeWeapon" BaseDamage="1d6" Skill="LongBlades" />
 	</object>
 
 	<object Name="Aleksh_NachashAssassin" Inherits="MutatedTree">
@@ -261,6 +288,7 @@
 		<tag Name="Role" Value="Minion" />
 		<tag Name="DynamicObjectsTable:Fungal_Creatures" />
 	</object>
+
 	<object Name="Aleksh_SapCap" Inherits="MutatedFungus">
 		<part Name="Render" DisplayName="sap cap" Tile="Creatures/shroomy.png" ColorString="&amp;W" DetailColor="w" />
 		<part Name="Brain" Mobile="true" Wanders="true" Factions="Fungi-100" />
@@ -298,7 +326,7 @@
 		<part Name="RandomLoot" LootCreated="true" />
 		<part Name="GivesRep" />
 		<part Name="GiantHands" />
-		<mutation Name="DarkVision" Level="1" />
+		<mutation Name="DarkVision" />
 		<part Name="Description" Short="A hoary humanoid slumps beneath the weight of =pronouns.possessive= broad and cragged back. Fibers of unkempt hair enswathe the great pale shoulder-rocks, and rumpled lids lay half-shut over the discs of =pronouns.possessive= sluggish eyes." />
 		<builder Name="TrollHero1" />
 		<tag Name="Role" Value="Hero" />
@@ -331,7 +359,7 @@
 		<mutation Name="Clairvoyance" Level="10" />
 		<tag Name="Gender" Value="neuter" />
 		<tag Name="IgnoresGravity" />
-		<tag Name="Role" Value="Artillery" />
+		<tag Name="Role" Value="Controller" />
 		<tag Name="DynamicInheritsTable:Creature:Tier8:Weight" Value="0" />
 		<tag Name="DynamicInheritsTable:Creature:Tier7:Weight" Value="0" />
 		<tag Name="DynamicInheritsTable:Creature:Tier6:Weight" Value="0" />
@@ -358,10 +386,10 @@
 		<skill Name="Axe" />
 		<skill Name="Axe_Cleave" />
 		<part Name="Description" Short="" />
-		<mutation Name="Wings" Level="15"/>
+		<mutation Name="Wings" Level="15" />
 		<mutation Name="MissileStrike" Level="15" />
 		<inventoryobject Blueprint="Aleksh_MetalBirdTalons" Number="2" />
-		<tag Name="Role" Value="Artillery" />
+		<tag Name="Role" Value="Controller" />
 		<tag Name="Species" Value="bird" />
 		<tag Name="DynamicObjectsTable:MoonStair_Creatures" />
 	</object>
@@ -369,5 +397,47 @@
 		<part Name="Render" DisplayName="metal talons" Tile="Creatures/natural-weapon-claw.bmp" ColorString="&amp;c" />
 		<part Name="MeleeWeapon" HitBonus="5" BaseDamage="3d4" Skill="Axe" Stat="Strength" Slot="Foot" />
 		<part Name="Metal" />
+	</object>
+
+	<object Name="Aleksh_MarshFrog" Inherits="BaseFrog">
+		<part Name="Render" DisplayName="marsh frog" Tile="Creatures/lilyfrog.png" ColorString="&amp;g" DetailColor="m" />
+		<part Name="Body" Anatomy="Frog" />
+		<part Name="Brain" Calm="true" Factions="Frogs-100,Flowers-50" />
+		<stat Name="AV" Value="1" />
+		<stat Name="Hitpoints" Value="12" />
+		<stat Name="Level" Value="2" />
+		<skill Name="Endurance_Swimming" />
+		<part Name="Description" Short="" />
+		<part Name="LightSource" Lit="true" Radius="2" />
+		<inventoryobject Blueprint="Aleksh_MarshFrogBite" Number="1" />
+		<inventoryobject Blueprint="Glowpad_Burn" Number="1" />
+		<xtagWaterRitual SellSkill="false" />
+		<tag Name="Role" Value="Brute" />
+		<tag Name="DynamicObjectsTable:SaltMarsh_Creatures" />
+	</object>
+	<object Name="Aleksh_MarshFrogBite" Inherits="Bite">
+		<part Name="MeleeWeapon" BaseDamage="1d2" Skill="LongBlades" />
+	</object>
+
+	<object Name="Aleksh_AstralFrog" Inherits="BaseFrog">
+		<part Name="Render" DisplayName="astral frog" Tile="Creatures/astralfrog.png" ColorString="&amp;K" DetailColor="b" />
+		<part Name="Body" Anatomy="Frog" />
+		<part Name="Brain" Hostile="true" />
+		<stat Name="AV" Value="3" />
+		<stat Name="Hitpoints" Value="50" />
+		<stat Name="Level" Value="29" />
+		<mutation Name="Astral" />
+		<mutation Name="PhasingTongue" Level="10" />
+		<skill Name="Acrobatics_Jump" />
+		<part Name="Description" Short="" />
+		<inventoryobject Blueprint="Aleksh_AstralFrogBite" Number="1" />
+		<tag Name="Role" Value="Controller" />
+		<tag Name="DynamicObjectsTable:MoonStair_Creatures" />
+		<intproperty Name="JumpRangeModifier" Value="4" />
+	</object>
+	<object Name="Aleksh_AstralFrogBite" Inherits="Bite">
+		<part Name="Render" DisplayName="{{b|astral}} bite" />
+		<part Name="MeleeWeapon" HitBonus="4" BaseDamage="0" Skill="LongBlades" />
+		<part Name="ElementalDamage" Damage="3d5" Attributes="Cosmic" />
 	</object>
 </objects>

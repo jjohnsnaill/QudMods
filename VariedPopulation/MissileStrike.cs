@@ -64,7 +64,7 @@ namespace XRL.World.Parts.Mutation
 		{
 			if (E.Command == "CommandMissileStrike")
 			{
-				Cell cell = PickDestinationCell(12, Locked: false, Label: "Launch Missile");
+				Cell cell = PickDestinationCell(12, RequireCombat: true, Label: "Launch Missile", Snap: true);
 				if (cell == null)
 				{
 					return false;
