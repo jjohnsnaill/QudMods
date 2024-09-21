@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <populations>
 	<population Name="SaltDesertZoneGlobals" Load="Merge">
-		<object Chance="60" Number="8-12" Blueprint="Aleksh_DuneWraithSpawner" />
+		<object Chance="60" Number="2-8" Blueprint="Aleksh_DuneWraithSpawner" />
 	</population>
 
 	<population Name="Tarry1" Load="Merge">

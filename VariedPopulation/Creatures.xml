@@ -65,8 +65,16 @@
 	</object>
 	<object Name="Aleksh_DuneWraithFist" Inherits="MetalFist">
 	</object>
-	<object Name="Aleksh_DuneWraithSpawner" Inherits="Widget">
+	<!-- can't inherit Widget, villages don't clear those -->
+	<object Name="Aleksh_DuneWraithSpawner" Inherits="Object">
 		<part Name="DuneWraithSpawner" />
+		<part Name="Render" Visible="false" DisplayName="[Spawner]" RenderString="*" RenderLayer="0" />
+		<part Name="Physics" Weight="10000" Takeable="false" Solid="false" IsReal="false" />
+		<part Name="NoDamage" />
+		<part Name="NoMove" />
+		<tag Name="BaseObject" Value="*noinherit" />
+		<tag Name="ExcludeFromDynamicEncounters" />
+		<tag Name="Non" />
 	</object>
 
 	<object Name="Aleksh_BananaSlug" Inherits="BaseSlug">

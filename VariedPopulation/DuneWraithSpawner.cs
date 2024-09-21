@@ -20,6 +20,19 @@ namespace XRL.World.Parts
 			long time = XRLCore.Core.Game.TimeTicks % 1200;
 			if (ParentObject.InActiveZone() && (time <= 300 || time > 950 || The.Player.HasEffect<Lost>()))
 			{
+				if (ParentObject.CurrentCell.IsSolid())
+				{
+					return;
+				}
+
+				foreach (Cell cell in ParentObject.CurrentCell.GetAdjacentCells(2))
+				{
+					if (cell.HasCombatObject())
+					{
+						return;
+					}
+				}
+
 				ParentObject.CurrentCell.AddObject(GameObject.Create("Aleksh_DuneWraith"));
 				ParentObject.Obliterate();
 			}
