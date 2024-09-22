@@ -137,7 +137,7 @@ namespace XRL.CharacterBuilds.Qud.UI
 					description.Append(creatures[i].GetStat("Speed", new Statistic()).Value);
 					description.Append(" QN}} {{c|");
 
-					description.Append(creatures[i].GetStat("MoveSpeed", new Statistic()).Value);
+					description.Append(200 - creatures[i].GetStat("MoveSpeed", new Statistic()).Value);
 					description.Append(" MS}}\n\n{{y|");
 
 					description.Append(GetStatRange(creatures[i].GetStat("Strength", new Statistic()), level, role));

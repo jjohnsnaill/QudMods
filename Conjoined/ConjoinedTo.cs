@@ -22,7 +22,12 @@ namespace XRL.World.Parts
 
 		public override IPart DeepCopy(GameObject Parent)
 		{
-			return null;
+			ParentObject.SetIntProperty("ConjoinmentSevered", 1);
+			return new ConjoinedTo()
+			{
+				who = Parent,
+				ParentObject = Parent
+			};
 		}
 
 		public override bool WantEvent(int ID, int cascade)
@@ -69,7 +74,7 @@ namespace XRL.World.Parts
 
 		public override bool HandleEvent(BeforeDestroyObjectEvent E)
 		{
-			Conjoined conjoined = (Conjoined)who.GetPart<Mutations>().GetMutation("Conjoined");
+			Conjoined conjoined = who?.GetPart<Conjoined>();
 
 			if (conjoined != null && who.Body != null)
 			{

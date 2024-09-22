@@ -1,4 +1,8 @@
 <embarkmodules>
 	<module Class="Mods.PlayableGolem.PlayableGolemModule">
+		<window ID="Chargen/PlayableGolem" Prefab="HorizScroll" Class="Mods.PlayableGolem.PlayableGolemModuleWindow">
+			<name>Bodies</name>
+			<title>:choose golem body:</title>
+		</window>
 	</module>
 </embarkmodules>

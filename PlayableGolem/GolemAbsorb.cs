@@ -85,7 +85,7 @@ namespace Mods.PlayableGolem
 
 			while (true)
 			{
-				int option = Popup.ShowOptionList("Choose a power", list, AllowEscape: true);
+				int option = Popup.PickOption("Choose a power", Options: list, AllowEscape: true);
 
 				if (option < 0)
 				{
@@ -420,7 +420,7 @@ namespace Mods.PlayableGolem
 				{
 					list.Add(next);
 				}
-				option = Popup.ShowOptionList("Choose what to absorb", options, null, 0, null, 60, RespectOptionNewlines: true, AllowEscape: true, 0, "", null, null, icons, null, list);
+				option = Popup.PickOption("Choose what to absorb", Options: options, Icons: icons, Buttons: list, RespectOptionNewlines: true, AllowEscape: true);
 				if (option == -2)
 				{
 					pos = Math.Max(pos - page, 0);

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <genotypes>
 
-	<genotype Name="Golem" MutationPoints="0" StatPoints="0" AllowedMutationCategories="" RandomWeight="5" DisplayName="Golem" Subtypes="Forms" Class="" Tile="Creatures/sw_golem_mound.bmp" DetailColor="w" BodyObject="Golem" BaseHPGain="1-4" BaseSPGain="50" BaseMPGain="1" Species="golem" CharacterBuilderModules="XRL.CharacterBuilds.Qud.QudCallingModule,XRL.CharacterBuilds.Qud.QudCasteModule,XRL.CharacterBuilds.Qud.QudMutationsModule,XRL.CharacterBuilds.Qud.QudCyberneticsModule,XRL.CharacterBuilds.Qud.QudAttributesModule">
+	<genotype Name="Golem" RandomWeight="5" DisplayName="Golem" Subtypes="Forms" Tile="Creatures/sw_golem_mound.bmp" DetailColor="w" BodyObject="Golem" BaseHPGain="1-4" BaseSPGain="50" BaseMPGain="1" Species="golem" CharacterBuilderModules="XRL.CharacterBuilds.Qud.QudCallingModule,XRL.CharacterBuilds.Qud.QudCasteModule,XRL.CharacterBuilds.Qud.QudMutationsModule,XRL.CharacterBuilds.Qud.QudCyberneticsModule,XRL.CharacterBuilds.Qud.QudAttributesModule">
 		<skills>
 			<skill Name="Tactics_Run" />
 			<skill Name="Survival_Camp" />
 		</skills>
-		<extrainfo>Absorbs objects and liquids to gain powers</extrainfo>
+		<extrainfo>Absorbs things to gain powers</extrainfo>
 		<extrainfo>(Replaces buying mutations)</extrainfo>
 		<extrainfo>Weak to start, high potential</extrainfo>
 		<extrainfo>Access to cybernetics</extrainfo>

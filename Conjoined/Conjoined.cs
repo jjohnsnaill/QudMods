@@ -140,7 +140,8 @@ namespace XRL.World.Parts.Mutation
 				{
 					copy.Brain.PartyLeader = ParentObject;
 				}
-				copy.AddPart<ConjoinedTo>().who = ParentObject;
+				copy.GetPart<ConjoinedTo>().who = ParentObject;
+				copy.RemoveIntProperty("ConjoinmentSevered");
 				creatures[i] = copy;
 
 				conjoinmentIDs[i] = original.conjoinmentIDs[i];
@@ -272,8 +273,7 @@ namespace XRL.World.Parts.Mutation
 
 				for (int i = 0; i < creatures.Length; i++)
 				{
-					int level = creatures[i].Statistics["Level"].Value;
-					if (ParentObject.Statistics["Level"].Value < level)
+					if (creatures[i].TryGetIntProperty("SpawnAtLevel", out int level) && ParentObject.Statistics["Level"].Value < level)
 					{
 						future.Append(creatures[i].A + creatures[i].ShortDisplayName + " will emerge at level " + level + ".\n");
 					}
@@ -428,17 +428,22 @@ namespace XRL.World.Parts.Mutation
 
 		public bool SpawnCreature(int index)
 		{
-			if (ParentObject.Statistics["Level"].Value < creatures[index].GetIntProperty("SpawnAtLevel"))
+			if (creatures[index].TryGetIntProperty("SpawnAtLevel", out int level))
 			{
-				return false;
+				if (ParentObject.Statistics["Level"].Value < level)
+				{
+					return false;
+				}
+				ParentObject.RemoveIntProperty("SpawnAtLevel");
 			}
-			ParentObject.RemoveIntProperty("SpawnAtLevel");
+
 			if (creatures[index].Physics != null)
 			{
 				creatures[index].Physics.Temperature = ParentObject.Physics.Temperature;
 			}
 			ParentObject.CurrentCell.AddObject(creatures[index]);
 			XRLCore.Core.Game.ActionManager.AddActiveObject(creatures[index]);
+
 			return true;
 		}
 
@@ -482,12 +487,12 @@ namespace XRL.World.Parts.Mutation
 
 		public static void Pull(GameObject what, GameObject to)
 		{
-			int distI = to.CurrentZone.resolvedX - what.CurrentZone.resolvedX;
+			int distI = to.CurrentZone.ResolvedX - what.CurrentZone.ResolvedX;
 			if (distI < -1 || distI > 1)
 			{
 				return;
 			}
-			distI = to.CurrentZone.resolvedY - what.CurrentZone.resolvedY;
+			distI = to.CurrentZone.ResolvedY - what.CurrentZone.ResolvedY;
 			if (distI < -1 || distI > 1)
 			{
 				return;

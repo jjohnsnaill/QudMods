@@ -7,6 +7,7 @@ using System.Text;
 using XRL;
 using XRL.CharacterBuilds;
 using XRL.CharacterBuilds.Qud;
+using XRL.Language;
 using XRL.Rules;
 using XRL.UI;
 using XRL.World;
@@ -19,28 +20,50 @@ using XRL.World.Units;
 
 namespace Mods.PlayableGolem
 {
-	[HarmonyPatch]
-	public class PlayableGolemModule : AbstractEmbarkBuilderModule
+	public class PlayableGolemModuleData : AbstractEmbarkBuilderModuleData
 	{
+		public string selection;
+	}
+
+	[HarmonyPatch]
+	public class PlayableGolemModule : EmbarkBuilderModule<PlayableGolemModuleData>
+	{
+		public override bool shouldBeEnabled()
+		{
+			return builder?.GetModule<QudGenotypeModule>()?.data?.Genotype == "Golem";
+		}
+
+		public override string DataErrors()
+		{
+			if (data.selection.IsNullOrEmpty())
+			{
+				return "You have not selected a body.";
+			}
+			return null;
+		}
+
+		public override void assembleWindowDescriptors(List<EmbarkBuilderModuleWindowDescriptor> windows)
+		{
+			//TODO: actually get the index of the mutations module
+			windows.InsertRange(8, this.windows.Values);
+		}
+
+		public override void InitFromSeed(string seed)
+		{
+
+		}
+
 		public override object handleBootEvent(string id, XRLGame game, EmbarkInfo info, object element = null)
 		{
 			if (id == QudGameBootModule.BOOTEVENT_BOOTPLAYEROBJECTBLUEPRINT)
 			{
-				if (The.Game.Running && builder.GetModule<QudGenotypeModule>()?.data?.Genotype == "Golem")
-				{
-					return GolemBodySelection.GetBodyBySpecies().GetRandomElement().Value;
-				}
+				return data.selection;
 			}
 			else if (id == QudGameBootModule.BOOTEVENT_BOOTPLAYERTILE)
 			{
-				if (The.Game.Running && builder.GetModule<QudGenotypeModule>()?.data?.Genotype == "Golem")
-				{
-					string tile = The.Game.GetStringGameState("PlayerTile", null);
-					The.Game.RemoveStringGameState("PlayerTile");
-					return tile;
-				}
+				return GameObjectFactory.Factory.Blueprints[data.selection].GetPartParameter<string>("Render", "Tile");
 			}
-			else if (id == QudGameBootModule.BOOTEVENT_BOOTPLAYEROBJECT && builder.GetModule<QudGenotypeModule>()?.data?.Genotype == "Golem")
+			else if (id == QudGameBootModule.BOOTEVENT_BOOTPLAYEROBJECT)
 			{
 				GameObject player = (GameObject)element;
 				player.RemovePart("Interior");
@@ -70,14 +93,12 @@ namespace Mods.PlayableGolem
 					}
 				}
 
-				The.Game.SetStringGameState("PlayerTile", player.Render.Tile);
-
 				//player.IsGiganticCreature = false;
 
 				// fixes the golem's hitpoints being set below 1, and its highest intelligence being tracked too early
 				player.RemovePart("Leveler");
 
-				int bonusToughness = player.Statistics["Toughness"].BaseValue / 500 * 2 - 2;
+				int bonusToughness = player.Statistics["Hitpoints"].BaseValue / 500 * 2 - 2;
 
 				player.Statistics["Level"].BaseValue = 1;
 				player.FinalizeStats();
@@ -544,6 +565,82 @@ namespace Mods.PlayableGolem
 
 			return true;
 		}
+
+		[HarmonyPrefix]
+		[HarmonyPatch(typeof(Leveler), "RapidAdvancement")]
+		static bool GolemRapidAdvancement(int Amount, GameObject ParentObject)
+		{
+			if (Amount > 0 && ParentObject.TryGetPart(out GolemAbsorb golem))
+			{
+				int cost;
+				if (ParentObject.TryGetIntProperty("SpentMP", out int discount))
+				{
+					cost = discount >= golem.cost ? 0 : golem.cost - discount;
+				}
+				else
+				{
+					cost = golem.cost;
+				}
+
+				SyncMutationLevelsEvent.Send(ParentObject);
+				bool prompt = ParentObject.IsPlayer() && ParentObject.Stat("MP") >= cost;
+				bool bought = false;
+
+				if (prompt && Popup.ShowYesNo("Your genome enters an excited state! Spend {{rules|" + cost + "}} mutation points to absorb something first?", "Sounds/UI/ui_notification_question", false) == DialogResult.Yes)
+				{
+					bought = GolemAbsorb.Absorb(ParentObject, cost);
+				}
+
+				var mutations = ParentObject.GetPhysicalMutations();
+				if (mutations.Count > 0)
+				{
+					string[] options = new string[mutations.Count];
+					for (int i = 0; i < mutations.Count; i++)
+					{
+						options[i] = mutations[i].DisplayName + " ({{C|" + mutations[i].Level + "}})";
+					}
+
+					if (ParentObject.IsPlayer())
+					{
+						int index = Popup.PickOption("Choose a physical " + GetMutationTermEvent.GetFor(ParentObject) + " to rapidly advance.", Sound: "Sounds/Misc/sfx_characterMod_mutation_windowPopup", Options: options);
+						Popup.Show("You have rapidly advanced " + mutations[index].DisplayName + " by " + Grammar.Cardinal(Amount) + " ranks to rank {{C|" + (mutations[index].Level + Amount) + "}}!", Sound: "Sounds/Misc/sfx_characterMod_mutation_rankUp_quickSuccession");
+						mutations[index].RapidLevel(Amount);
+					}
+					else
+					{
+						mutations.GetRandomElement().RapidLevel(Amount);
+					}
+				}
+				else if (bought)
+				{
+					Popup.Show("You have no physical " + Grammar.Pluralize(GetMutationTermEvent.GetFor(ParentObject)) + " to rapidly advance!");
+				}
+
+				return false;
+			}
+
+			return true;
+		}
+
+		//TODO: remove
+		[HarmonyTranspiler]
+		[HarmonyPatch(typeof(Stomach), "UpdateHunger")]
+		static IEnumerable<CodeInstruction> HungerFix(IEnumerable<CodeInstruction> instr)
+		{
+			List<CodeInstruction> list = new List<CodeInstruction>(instr);
+			for (int i = 0; i < list.Count; i++)
+			{
+				if (list[i].Is(OpCodes.Ldstr, "Robot"))
+				{
+					list.Insert(i + 2, new CodeInstruction(OpCodes.Ldarg_0));
+					list.Insert(i + 3, CodeInstruction.Call(typeof(IPart), "get_ParentObject"));
+					list.Insert(i + 4, CodeInstruction.Call(typeof(PlayableGolemModule), "NotGolem"));
+					break;
+				}
+			}
+			return list;
+		}
+		static bool NotGolem(bool result, GameObject obj) => result && obj.GetGenotype() != "Golem";
 
 		[HarmonyTranspiler]
 		[HarmonyPatch(typeof(GameObjectGolemQuestRandomUnit), "Apply")]

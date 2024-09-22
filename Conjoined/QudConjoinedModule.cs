@@ -68,7 +68,7 @@ namespace XRL.CharacterBuilds.Qud
 			{
 				return "You have selected too many creatures.";
 			}
-			return base.DataErrors();
+			return null;
 		}
 
 		public override void assembleWindowDescriptors(List<EmbarkBuilderModuleWindowDescriptor> windows)

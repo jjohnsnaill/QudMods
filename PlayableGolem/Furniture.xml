@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+	<object Name="SultanSarcophagusWPeriod6" Load="Merge">
+		<part Name="Enclosing" SizeInsensitive="true" />
+	</object>
+	<object Name="SultanSarcophagusEPeriod6" Load="Merge">
+		<part Name="Enclosing" SizeInsensitive="true" />
+	</object>
+</objects>
