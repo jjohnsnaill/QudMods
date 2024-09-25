@@ -59,11 +59,10 @@
 		<stat Name="AV" Value="5" />
 		<stat Name="Hitpoints" Value="20" />
 		<part Name="Description" Short="" />
-		<inventoryobject Blueprint="Aleksh_DuneWraithFist" Number="2" />
+		<inventoryobject Blueprint="MetalFist" Number="2" />
+		<part Name="Swarmer" />
 		<tag Name="Role" Value="Tank" />
 		<tag Name="Species" Value="hover robot" />
-	</object>
-	<object Name="Aleksh_DuneWraithFist" Inherits="MetalFist">
 	</object>
 	<!-- can't inherit Widget, villages don't clear those -->
 	<object Name="Aleksh_DuneWraithSpawner" Inherits="Object">
@@ -82,16 +81,17 @@
 		<part Name="Brain" Hostile="false" Factions="Mollusks-100" Feelings="Trees:-200,Insects:-200,Farmers:-200" />
 		<stat Name="Level" Value="14" />
 		<stat Name="AV" Value="4" />
-		<stat Name="DV" Value="5" />
+		<stat Name="DV" Value="6" />
 		<stat Name="Strength" sValue="16,1d3,(t-1)d3" />
-		<stat Name="Agility" sValue="14,1d3,(t-1)d2" />
+		<stat Name="Agility" sValue="16,1d3,(t-1)d2" />
 		<stat Name="Toughness" sValue="16,1d3,(t-1)d2" />
 		<stat Name="Intelligence" sValue="16,1d3,(t-1)d3" />
 		<stat Name="Willpower" sValue="12,1d3,(t-1)d2" />
 		<stat Name="Ego" sValue="12,1d3,(t-1)d2" />
-		<stat Name="Hitpoints" Value="28" />
+		<stat Name="Hitpoints" Value="33" />
 		<part Name="Description" Short="" />
 		<mutation Name="Psychometry" Level="8" />
+		<skill Name="Cudgel" />
 		<skill Name="Acrobatics" />
 		<skill Name="Acrobatics_Dodge" />
 		<skill Name="Acrobatics_Tumble" />
@@ -343,9 +343,9 @@
 
 	<object Name="Aleksh_PrimeShape" Inherits="Creature">
 		<part Name="Render" DisplayName="prime shape" Tile="Creatures/primeshape.png" ColorString="&amp;K" DetailColor="O" />
-		<part Name="Brain" Calm="true" Wanders="true" Factions="Entropic-100" Feelings="Player:-600" />
+		<part Name="Brain" Wanders="true" Factions="Entropic-100" Feelings="Player:-600" />
 		<part Name="Body" Anatomy="Motes" />
-		<part Name="Physics" FreezeTemperature="-99999" BrittleTemperature="-99999" />
+		<part Name="Physics" Organic="false" FreezeTemperature="-99999" BrittleTemperature="-99999" />
 		<stat Name="Level" Value="60" />
 		<stat Name="Hitpoints" Value="1500" />
 		<stat Name="Strength" sValue="24,1d2,(t)d2" />
@@ -367,7 +367,9 @@
 		<mutation Name="Clairvoyance" Level="10" />
 		<tag Name="Gender" Value="neuter" />
 		<tag Name="IgnoresGravity" />
-		<tag Name="Role" Value="Controller" />
+		<tag Name="Role" Value="Leader" />
+
+		<!-- remove from most but not all dynamic encounters -->
 		<tag Name="DynamicInheritsTable:Creature:Tier8:Weight" Value="0" />
 		<tag Name="DynamicInheritsTable:Creature:Tier7:Weight" Value="0" />
 		<tag Name="DynamicInheritsTable:Creature:Tier6:Weight" Value="0" />
@@ -377,9 +379,21 @@
 		<tag Name="DynamicInheritsTable:Creature:Tier2:Weight" Value="0" />
 		<tag Name="DynamicInheritsTable:Creature:Tier1:Weight" Value="0" />
 		<tag Name="DynamicInheritsTable:Creature:Tier0:Weight" Value="0" />
+		<tag Name="DynamicInheritsTable:PhysicalObject:Tier8:Weight" Value="0" />
+		<tag Name="DynamicInheritsTable:PhysicalObject:Tier7:Weight" Value="0" />
+		<tag Name="DynamicInheritsTable:PhysicalObject:Tier6:Weight" Value="0" />
+		<tag Name="DynamicInheritsTable:PhysicalObject:Tier5:Weight" Value="0" />
+		<tag Name="DynamicInheritsTable:PhysicalObject:Tier4:Weight" Value="0" />
+		<tag Name="DynamicInheritsTable:PhysicalObject:Tier3:Weight" Value="0" />
+		<tag Name="DynamicInheritsTable:PhysicalObject:Tier2:Weight" Value="0" />
+		<tag Name="DynamicInheritsTable:PhysicalObject:Tier1:Weight" Value="0" />
+		<tag Name="DynamicInheritsTable:PhysicalObject:Tier0:Weight" Value="0" />
+
 		<tag Name="BleedLiquid" Value="warmstatic-1000,water-500" />
 		<tag Name="BleedColor" Value="&amp;Y" />
 		<tag Name="BleedPrefix" Value="{{Y|entropic}}" />
+		<tag Name="ExcludeFromVillagePopulations" />
+		<tag Name="NoLibrarian" />
 	</object>
 
 	<object Name="Aleksh_MetalBird" Inherits="BaseRobot">
