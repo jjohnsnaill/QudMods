@@ -8,6 +8,7 @@ using XRL.Rules;
 using XRL.UI;
 using XRL.UI.Framework;
 using XRL.World;
+using XRL.World.Parts.Mutation;
 using XRL.World.Quests.GolemQuest;
 
 namespace Mods.PlayableGolem
@@ -38,7 +39,7 @@ namespace Mods.PlayableGolem
 		{
 			int index = Stat.Rnd.Next(prefabComponent.choices.Count - 1);
 			prefabComponent.scrollContext.GetContextAt(index).ActivateAndEnable();
-			module.data.selection = prefabComponent.choices[index].Id;
+			SelectBody(prefabComponent.choices[index]);
 		}
 
 		public IEnumerable<ChoiceWithColorIcon> GetBodies()
@@ -85,6 +86,24 @@ namespace Mods.PlayableGolem
 				description.Append(GetStatRange(body.GetStat("Ego", new Statistic()), 1));
 				description.Append(" EGO}}");
 
+				bool more = false;
+				foreach (var mutation in body.Mutations)
+				{
+					if (mutation.Key == "DarkVision" || mutation.Key == "NightVision")
+						continue;
+
+					if (!more)
+					{
+						description.Append('\n');
+						more = true;
+					}
+					else
+					{
+						description.Append(", ");
+					}
+					description.Append(((BaseMutation)mutation.Value.Reflector?.GetNewInstance()).DisplayName);
+				}
+
 				yield return new ChoiceWithColorIcon()
 				{
 					Id = bp,
@@ -93,7 +112,7 @@ namespace Mods.PlayableGolem
 					IconPath = body.GetPartParameter<string>("Render", "Tile"),
 					IconForegroundColor = ColorUtility.ColorMap[body.GetPartParameter("Render", "TileColor", "&y")[1]],
 					IconDetailColor = ColorUtility.ColorMap[body.GetPartParameter("Render", "DetailColor", "y")[0]],
-					Chosen = (choice) => module.data.selection == choice.Id
+					Chosen = (choice) => module.data?.selection == choice.Id
 				};
 			}
 		}

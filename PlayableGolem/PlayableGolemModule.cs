@@ -30,7 +30,7 @@ namespace Mods.PlayableGolem
 	{
 		public override bool shouldBeEnabled()
 		{
-			return builder?.GetModule<QudGenotypeModule>()?.data?.Genotype == "Golem";
+			return builder?.GetModule<QudGenotypeModule>()?.data?.Genotype == "Golem" && builder.GetModule<QudSubtypeModule>()?.data?.Subtype != null;
 		}
 
 		public override string DataErrors()
@@ -44,8 +44,15 @@ namespace Mods.PlayableGolem
 
 		public override void assembleWindowDescriptors(List<EmbarkBuilderModuleWindowDescriptor> windows)
 		{
-			//TODO: actually get the index of the mutations module
-			windows.InsertRange(8, this.windows.Values);
+			for (int i = 0; i < windows.Count; i++)
+			{
+				if (windows[i].viewID == "Chargen/ChooseSubtypes")
+				{
+					windows.InsertRange(i + 1, this.windows.Values);
+					return;
+				}
+			}
+			windows.InsertRange(7, this.windows.Values);
 		}
 
 		public override void InitFromSeed(string seed)
@@ -61,7 +68,10 @@ namespace Mods.PlayableGolem
 			}
 			else if (id == QudGameBootModule.BOOTEVENT_BOOTPLAYERTILE)
 			{
-				return GameObjectFactory.Factory.Blueprints[data.selection].GetPartParameter<string>("Render", "Tile");
+				if (data?.selection != null)
+				{
+					return GameObjectFactory.Factory.Blueprints[data.selection].GetPartParameter<string>("Render", "Tile");
+				}
 			}
 			else if (id == QudGameBootModule.BOOTEVENT_BOOTPLAYEROBJECT)
 			{
