@@ -73,7 +73,14 @@ namespace XRL.CharacterBuilds.Qud
 
 		public override void assembleWindowDescriptors(List<EmbarkBuilderModuleWindowDescriptor> windows)
 		{
-			//TODO: actually get the index of the mutations module
+			for (int i = 0; i < windows.Count; i++)
+			{
+				if (windows[i].viewID == "Chargen/Mutations")
+				{
+					windows.InsertRange(i + 1, this.windows.Values);
+					return;
+				}
+			}
 			windows.InsertRange(8, this.windows.Values);
 		}
 

@@ -54,7 +54,7 @@ namespace XRL.World.ZoneFactories
 			zone.DisplayName = "The Gauntlet";
 			zone.IncludeContextInZoneDisplay = false;
 			zone.IncludeStratumInZoneDisplay = false;
-			zone.SetMusic("BarathrumsStudy");
+			zone.SetMusic("Music/Barathrums Study");
 			zone.Built = true;
 
 			The.Game.ZoneManager.SetZoneProperty(Request.ZoneID, "SpecialUpMessage", "You’re in a pocket dimension with no worldmap.");
@@ -116,7 +116,7 @@ namespace XRL.World.ZoneFactories
 			{
 				QudHistoryFactory.GenerateNewRegions(history, 1, i);
 
-				HistoricEntity sultan = history.GetNewEntity(history.currentYear);
+				HistoricEntity sultan = history.CreateEntity(history.currentYear);
 				sultan.ApplyEvent(new InitializeSultan(i));
 				sultan.ApplyEvent(new SetEntityProperty("isCandidate", "true"));
 				sultan.ApplyEvent(new FoundAsBabe(), 1);
@@ -125,7 +125,7 @@ namespace XRL.World.ZoneFactories
 			}
 			QudHistoryFactory.AddSultanCultNames(history);
 			QudHistoryFactory.AddResheph(history);
-			QudHistoryFactory.GenerateNewVillage(history, 0, VillageZero: true);
+			QudHistoryFactory.GenerateNewVillage(history, 0, "Saltmarsh", VillageZero: true);
 
 			game.sultanHistory = history;
 

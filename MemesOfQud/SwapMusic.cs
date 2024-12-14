@@ -35,36 +35,44 @@ namespace Mods.MemesOfQud
 				return track;
 			}
 
-			if (track == "Golgotha (Graveyard)")
+			if (track == "Music/Golgotha (Graveyard)")
 			{
 				return "golgotha";
 			}
 
 			if (Options.GetOption("SwapMusic") == "Yes")
 			{
-				if (track == "MoghrayiRemembrance")
+				if (track == "Music/MoghrayiRemembrance")
 				{
 					return "desert";
 				}
-				if (track == "Caves1")
+				if (track == "Music/Caves1")
 				{
 					return "caves";
 				}
-				if (track == "StoicPorridge")
+				if (track == "Music/StoicPorridge")
 				{
 					return "gritGate";
 				}
-				if (track == "Lazarus")
+				if (track == "Music/Lazarus")
 				{
 					return "lab";
 				}
+				/*if (track == "Music/Among The Tombs of Eaters" && obj.CurrentZone.Z < 10)
+				{
+					return "tomb";
+				}
+				if (track == "Music/Deeper Eaters" && obj.CurrentZone.Z < 10)
+				{
+					return "tomb";
+				}*/
 				foreach (CellBlueprint bp in The.ZoneManager.GetCellBlueprints(obj.CurrentZone.ZoneID))
 				{
 					if (bp.Name == "Hills" || bp.Inherits == "Hills" || bp.Name == "Mountains" || bp.Inherits == "Mountains")
 					{
 						return "hills";
 					}
-					if ((bp.Name == "LakeHinnomCell" || bp.Inherits == "LakeHinnomCell" || bp.Name == "PalladiumReefCell" || bp.Inherits == "PalladiumReefCell") && track == "Substrate")
+					if ((bp.Name == "LakeHinnomCell" || bp.Inherits == "LakeHinnomCell" || bp.Name == "PalladiumReefCell" || bp.Inherits == "PalladiumReefCell") && track == "Music/Substrate")
 					{
 						return "reef";
 					}

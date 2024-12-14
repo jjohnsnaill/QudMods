@@ -1,8 +1,11 @@
 ﻿using Genkit;
 using HarmonyLib;
+using System;
 using System.Collections.Generic;
 using XRL;
 using XRL.Rules;
+using XRL.Sound;
+using XRL.UI;
 
 namespace Mods.MemesOfQud
 {
@@ -13,7 +16,7 @@ namespace Mods.MemesOfQud
 		private static long lastPlayed;
 
 		[HarmonyPrefix]
-		[HarmonyPatch("PlayWorldSound")]
+		[HarmonyPatch("PlayWorldSound", new Type[] { typeof(string), typeof(int), typeof(bool), typeof(float), typeof(Point2D), typeof(float), typeof(float), typeof(float) })]
 		static void WorldSound(ref string Clip, int Distance, bool Occluded, ref float VolumeIntensity, Location2D Cell, ref float PitchVariance, ref float Pitch)
 		{
 			if (Clip != null)
@@ -87,8 +90,10 @@ namespace Mods.MemesOfQud
 					["Sounds/Missile/Fires/Bows/sfx_missile_electroBow_fire"] = new SoundReplacement("bow"),
 					["Sounds/Missile/Fires/Bows/sfx_missile_turbow_fire"] = new SoundReplacement("bow"),
 
-					["hiss_high"] = new SoundReplacement("hiss_low"),
-					["Sounds/Abilities/sfx_ability_cryokinesis_active"] = new SoundReplacement("hiss_low"),
+					["Sounds/Abilities/sfx_ability_mutation_freezingRay_attack"] = new SoundReplacement("hiss_high"),
+					["Sounds/Abilities/sfx_ability_cryokinesis_active"] = new SoundReplacement("hiss_high"),
+
+					["Sounds/StatusEffects/sfx_statusEffect_genericBuff"] = new SoundReplacement("Sounds/Abilities/egoProject", 0.75f),
 
 					["Sounds/StatusEffects/sfx_statusEffect_frozen"] = new SoundReplacement("Sounds/StatusEffects/frozen"),
 					["Sounds/StatusEffects/sfx_statusEffect_poisoned"] = new SoundReplacement("Sounds/StatusEffects/poison"),
@@ -116,6 +121,7 @@ namespace Mods.MemesOfQud
 					["Sounds/Abilities/sfx_ability_mutation_evilTwin_spawn"] = new SoundReplacement("imposter", 0.75f),
 
 					["Sounds/Abilities/sfx_ability_spitSlime_spit"] = new SoundReplacement("Sounds/Abilities/spit1", "Sounds/Abilities/spit2", "Sounds/Abilities/spit3"),
+					["Sounds/Abilities/sfx_ability_creature_liquid_spit"] = new SoundReplacement("Sounds/Abilities/spit1", "Sounds/Abilities/spit2", "Sounds/Abilities/spit3"),
 					["Sounds/Abilities/sfx_ability_mutation_flamingRay_attack"] = new SoundReplacement("Sounds/Abilities/burn1", "Sounds/Abilities/burn2"),
 					["Sounds/Abilities/sfx_ability_mutation_lightManipulation_laser_fire"] = new SoundReplacement("Sounds/Abilities/lightManipulation"),
 					["Sounds/Abilities/sfx_ability_mutation_disintegration_disintegrate"] = new SoundReplacement("Sounds/Abilities/disintegrate"),
@@ -132,23 +138,26 @@ namespace Mods.MemesOfQud
 					["Sounds/Creatures/Ability/sfx_creature_girshNephilim_irisdualBeam_windup"] = new SoundReplacement("Sounds/Abilities/irisdualBeamWindup"),
 					["Sounds/Creatures/Ability/sfx_creature_girshNephilim_irisdualBeam_attack"] = new SoundReplacement("Sounds/Abilities/irisdualBeam"),
 
-					["Sounds/Misc/sfx_quest_gain"] = new SoundReplacement(""),
-					["Sounds/Misc/sfx_quest_total_fail"] = new SoundReplacement(""),
+					["Sounds/Misc/sfx_quest_gain"] = new SoundReplacement("notification"),
+					["Sounds/Misc/sfx_quest_step_complete"] = new SoundReplacement("notification"),
+					["Sounds/Misc/sfx_quest_total_complete"] = new SoundReplacement("quest"),
+					["Sounds/Misc/sfx_quest_total_fail"] = new SoundReplacement("fail", 0.5f),
 
 					["Sounds/UI/ui_notification_death"] = new SoundReplacement(""),
 
 					["Sounds/Abilities/sfx_ability_mutation_psychometry_activate"] = new SoundReplacement("startup", 0.75f),
-					["startup"] = new SoundReplacement("startup", 0.75f),
+					["Sounds/Interact/sfx_interact_artifact_windup"] = new SoundReplacement("startup", 0.75f),
 
-					["whine_up"] = new SoundReplacement("whine_up", 0.75f),
-					["completion"] = new SoundReplacement("whine_up", 0.75f),
+					["Sounds/Interact/sfx_interact_artifact_windup"] = new SoundReplacement("whine_up", 0.75f),
+					["Sounds/Interact/sfx_interact_artifact_ready"] = new SoundReplacement("whine_up", 0.75f),
 
-					["whine_down"] = new SoundReplacement("whine_down", 0.75f),
-					["shutdown"] = new SoundReplacement("whine_down", 0.75f),
+					["Sounds/Interact/sfx_interact_artifact_windDown"] = new SoundReplacement("whine_down", 0.75f),
+					["Sounds/Interact/sfx_interact_artifact_abort_bloop"] = new SoundReplacement("whine_down", 0.75f),
 
-					["Clink1"] = new SoundReplacement("tinker1", "tinker2", "tinker3"),
-					["Clink2"] = new SoundReplacement("tinker1", "tinker2", "tinker3"),
-					["Clink3"] = new SoundReplacement("tinker1", "tinker2", "tinker3"),
+					["sfx_tinker_idle_clink"] = new SoundReplacement("tinker1", "tinker2", "tinker3"),
+					["sfx_tinker_idle_spark"] = new SoundReplacement("spark1", "spark2"),
+
+					["sfx_bellOfRest_toll"] = new SoundReplacement("bell", 0.3f),
 				};
 			}
 
@@ -159,6 +168,13 @@ namespace Mods.MemesOfQud
 				if (swap.volume > 0)
 				{
 					volume = swap.volume;
+				}
+				if (Options.Sound && (clip == "quest" || clip == "fail"))
+				{
+					foreach (MusicSource music in SoundManager.MusicSources.Values)
+					{
+						music.SetAudioVolume(0);
+					}
 				}
 				return null;
 			}
@@ -244,15 +260,9 @@ namespace Mods.MemesOfQud
 			{
 				clip = "Sounds/Abilities/spacetimeVortex";
 			}
-			else if (clip == "compartment_close_whine_up")
+			else if (clip.StartsWith("Sounds/Throw"))
 			{
-				clip = "compartment_close";
-				return "whine_up";
-			}
-			else if (clip == "compartment_open_whine_down")
-			{
-				clip = "compartment_open";
-				return "whine_down";
+				clip = Stat.Rnd2.Next(2) == 0 ? "Sounds/Abilities/throw1" : "Sounds/Abilities/throw2";
 			}
 
 			return null;

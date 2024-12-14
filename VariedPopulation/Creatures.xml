@@ -7,7 +7,7 @@
 		<stat Name="Level" Value="8" />
 		<stat Name="AV" Value="3" />
 		<stat Name="HeatResistance" Value="40" />
-		<part Name="Description" Short="" />
+		<part Name="Description" Short="Ossified heaps of tar, sinew, and ash coalesce; nearly blotting out the skyline in their wake. Searing twilights bubble towards the surface, promising to mask the world in visual ambiguity." />
 		<skill Name="Axe" />
 		<skill Name="Axe_HookAndDrag" />
 		<skill Name="Endurance_Swimming" />
@@ -116,7 +116,11 @@
 		<stat Name="Willpower" Value="32" />
 		<stat Name="Ego" Value="32" />
 		<stat Name="Hitpoints" Value="20" />
-		<part Name="Description" Short="" />
+		<part Name="Description" Short="'Through starry stair, through brackish reef,
+Through rainbow wood, through jungle leaf.
+I saw that day, the noble Saad;
+Bestowed ‘pon me, a strapping lad!'
+-D. Davidson" />
 		<skill Name="Acrobatics" />
 		<skill Name="Acrobatics_Dodge" />
 		<skill Name="Persuasion_InspiringPresence" />
@@ -357,6 +361,7 @@
 		<stat Name="MoveSpeed" Value="-100" />
 		<stat Name="AV" Value="18" />
 		<stat Name="DV" Value="35" />
+		<stat Name="Speed" Min="50" />
 		<part Name="MentalShield" />
 		<part Name="CycleColors" />
 		<part Name="SoundRender" Sound="Sounds/Abilities/sfx_ability_spacetimeVortex_lp"> </part>
@@ -407,7 +412,7 @@
 		<stat Name="MoveSpeed" Value="75" />
 		<skill Name="Axe" />
 		<skill Name="Axe_Cleave" />
-		<part Name="Description" Short="" />
+		<part Name="Description" Short="Heat-choked wings click into place, straddling the tightrope of artistry and objectivity. Inscrutable reasonings link such a synthesis towards the carnal, the ephemeral, and the eventual. Bidding to inherit some ancient bloodline, primal forces had plunged the unthinking into cosmic slick. Now, they roam; dejected husks of yesteryear." />
 		<mutation Name="Wings" Level="15" />
 		<mutation Name="MissileStrike" Level="15" />
 		<inventoryobject Blueprint="Aleksh_MetalBirdTalons" Number="2" />

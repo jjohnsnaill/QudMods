@@ -25,7 +25,7 @@ namespace Mods.VariedPopulation
 		}
 
 		[HarmonyPrefix]
-		[HarmonyPatch(typeof(JoppaWorldZoneFactory), "AddBlueprintsFor")]
+		[HarmonyPatch(typeof(BlueprintZoneFactory), "AddBlueprintsFor")]
 		static bool AddBlueprintsFor(ZoneRequest Request)
 		{
 			if (Request.Z < 61)

@@ -124,7 +124,7 @@ namespace Mods.Gauntlet
 
 			if (wave >= 24)
 			{
-				SoundManager.PlayMusic("Imminent II", CrossfadeDuration: 1);
+				SoundManager.PlayMusic("Music/Imminent II", CrossfadeDuration: 1);
 			}
 
 			foreach (GameObject obj in zone.GetObjects())
@@ -467,7 +467,7 @@ namespace Mods.Gauntlet
 
 			if (wave >= 25)
 			{
-				SoundManager.PlayMusic(wave >= 40 ? "Arrival of the Official Party" : "Battle at Grit Gate", CrossfadeDuration: 1);
+				SoundManager.PlayMusic(wave >= 40 ? "Music/Arrival of the Official Party" : "Music/Attack on Grit Gate", CrossfadeDuration: 1);
 			}
 		}
 
@@ -567,19 +567,16 @@ namespace Mods.Gauntlet
 						unit.RemovePart("Vehicle");
 						unit.RemoveEffect<Unpiloted>();
 
-						Description desc = unit.GetPart<Description>();
-						StringBuilder descSB = Event.NewStringBuilder(desc._Short);
 						RulesDescription rules = unit.RequirePart<RulesDescription>();
 
 						GolemBodySelection body = new GolemBodySelection() { Material = unit };
 						body.Apply(unit);
-						body.VariableReplace(unit, descSB);
 
 						// initialize Units
 						new GolemCatalystSelection();
 
-						GauntletUtils.AddCatalyst(unit, descSB, rules, rand);
-						GauntletUtils.AddAtzmus(unit, descSB, rules, rand);
+						GauntletUtils.AddCatalyst(unit, rules, rand);
+						GauntletUtils.AddAtzmus(unit, rules, rand);
 
 						string[] zetachrome = new string[]
 						{
@@ -591,12 +588,11 @@ namespace Mods.Gauntlet
 
 						GolemArmamentSelection armament = new GolemArmamentSelection() { Material = GameObjectFactory.Factory.CreateObject(zetachrome.GetRandomElement(rand)) };
 						armament.Apply(unit);
-						armament.VariableReplace(unit, descSB);
 
-						GauntletUtils.AddIncantation(unit, descSB, rules, rand);
-						GauntletUtils.AddHamsa(unit, descSB, rules, rand);
+						GauntletUtils.AddIncantation(unit, rules, rand);
+						GauntletUtils.AddHamsa(unit, rules, rand);
 
-						desc._Short = descSB.ToString();
+						GolemQuestSelection.ProcessDescription(unit);
 					}
 
 					if (unit == null)

@@ -99,7 +99,7 @@ namespace Mods.Gauntlet
 			obj.ReceiveObject(ammo);
 		}
 
-		public static void AddCatalyst(GameObject golem, StringBuilder desc, RulesDescription rules, Random rand)
+		public static void AddCatalyst(GameObject golem, RulesDescription rules, Random rand)
 		{
 			var liquid = GolemMaterialSelection<string, string>.Units.GetRandomElement(rand);
 			foreach (GameObjectUnit unit in liquid.Value(liquid.Key))
@@ -110,7 +110,6 @@ namespace Mods.Gauntlet
 					rules.Text += '\n' + unit.GetDescription(true);
 				}
 			}
-			desc.Replace("=catalyst=", LiquidVolume.GetLiquid(liquid.Key)?.Name ?? liquid.Key);
 		}
 
 		public static GameObjectBlueprint GetValidAtzmus(Random rand)
@@ -140,10 +139,9 @@ namespace Mods.Gauntlet
 			return list.GetRandomElement(rand);
 		}
 
-		public static void AddAtzmus(GameObject golem, StringBuilder desc, RulesDescription rules, Random rand)
+		public static void AddAtzmus(GameObject golem, RulesDescription rules, Random rand)
 		{
 			GameObject atzmus = GameObjectFactory.Factory.CreateObject(GetValidAtzmus(rand));
-			desc.Replace("=atzmus.creature.an=", atzmus.an());
 
 			List<BaseMutation> list = atzmus.GetPart<Mutations>()?.MutationList;
 			if (!list.IsNullOrEmpty())
@@ -207,7 +205,7 @@ namespace Mods.Gauntlet
 			}
 		}
 
-		public static void AddIncantation(GameObject golem, StringBuilder desc, RulesDescription rules, Random rand)
+		public static void AddIncantation(GameObject golem, RulesDescription rules, Random rand)
 		{
 			var journal = GolemMaterialSelection<JournalAccomplishment, MuralCategory>.Units.GetRandomElement(rand);
 
@@ -262,7 +260,7 @@ namespace Mods.Gauntlet
 			return list.GetRandomElement(rand);
 		}
 
-		public static void AddHamsa(GameObject golem, StringBuilder desc, RulesDescription rules, Random rand)
+		public static void AddHamsa(GameObject golem, RulesDescription rules, Random rand)
 		{
 			// initialize Units
 			new GolemHamsaSelection();
@@ -270,14 +268,11 @@ namespace Mods.Gauntlet
 			var trait = GolemMaterialSelection<GameObject, string>.Units.GetRandomElement(rand);
 			GameObject hamsa = GameObjectFactory.Factory.CreateObject(GetValidHamsa(trait.Key, rand));
 			// may be an unobtainable trait
-			if (hamsa != null)
+			/*if (hamsa == null)
 			{
-				desc.Replace("=hamsa.an=", hamsa.an(AsIfKnown: true, NoConfusion: true, BaseOnly: true));
-			}
-			else
-			{
+				desc.Replace("=hamsa=", "something otherworldly");
 				desc.Replace("=hamsa.an=", "something otherworldly");
-			}
+			}*/
 
 			GameObjectUnit unit = trait.Value(hamsa ?? golem).GetRandomElement(rand);
 			unit.Apply(golem);

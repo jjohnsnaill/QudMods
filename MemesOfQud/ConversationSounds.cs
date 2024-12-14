@@ -1,8 +1,10 @@
 ﻿using HarmonyLib;
+using XRL;
 using XRL.Rules;
 using XRL.Sound;
 using XRL.UI;
 using XRL.World.Conversations;
+using XRL.World.Quests;
 
 namespace Mods.MemesOfQud
 {
@@ -13,7 +15,7 @@ namespace Mods.MemesOfQud
 		[HarmonyPatch("Entered")]
 		static void Entered(IConversationElement __instance)
 		{
-			if (!Options.Sound)
+			if (!Options.Sound || The.Game.GetSystem<AscensionSystem>()?.Stage > 1)
 			{
 				return;
 			}

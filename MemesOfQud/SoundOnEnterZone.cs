@@ -1,104 +1,68 @@
 ﻿using HarmonyLib;
-using System;
-using System.Reflection;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 using XRL.World;
+using XRL.World.Parts;
 
 namespace Mods.MemesOfQud
 {
-	public class SoundOnEnterZone : IPart
-	{
-		[NonSerialized]
-		public string sound;
-		[NonSerialized]
-		public Zone previousZone;
-
-		public override bool WantEvent(int ID, int cascade)
-		{
-			return ID == EnteredCellEvent.ID;
-		}
-
-		public override bool AllowStaticRegistration()
-		{
-			return true;
-		}
-
-		public override bool HandleEvent(EnteredCellEvent E)
-		{
-			if (previousZone != E.Cell.ParentZone)
-			{
-				E.Cell.PlayWorldSound(sound);
-				previousZone = E.Cell.ParentZone;
-			}
-			return true;
-		}
-
-		public override void Write(GameObject Basis, SerializationWriter Writer)
-		{
-			//TODO: don't save this part at all
-		}
-
-		public override void Read(GameObject Basis, SerializationReader Reader)
-		{
-			string species = ParentObject.GetPropertyOrTag("Species");
-			if (species == "cat")
-			{
-				sound = "pantherk";
-			}
-			else if (species == "crab")
-			{
-				sound = "crab";
-			}
-			else if (species == "pig")
-			{
-				sound = "swine";
-			}
-			else if (species == "tortoise")
-			{
-				sound = "testudine";
-			}
-			previousZone = ParentObject.CurrentZone;
-		}
-	}
-
 	[HarmonyPatch]
-	public class AddPartOnCreate
+	public class SoundOnEnterZone
 	{
-		static MethodBase TargetMethod()
+		[HarmonyPatch(typeof(Physics))]
+		[HarmonyPatch("EnterCell")]
+		static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instr)
 		{
-			MethodInfo[] methods = typeof(GameObjectFactory).GetMethods();
-			for (int i = 0; i < methods.Length; i++)
+			List<CodeInstruction> list = new List<CodeInstruction>(instr);
+			for (int i = 0; i < list.Count; i++)
 			{
-				if (methods[i].Name == "CreateObject" && methods[i].GetParameters()[0].ParameterType == typeof(GameObjectBlueprint))
+				if (list[i].Is(OpCodes.Call, typeof(Physics).GetMethod("set_CurrentCell")))
 				{
-					return methods[i];
+					list.Insert(i, new CodeInstruction(OpCodes.Ldarg_0));
+					list.Insert(i + 1, CodeInstruction.Call(typeof(IPart), "get_ParentObject"));
+					list.Insert(i + 2, new CodeInstruction(OpCodes.Ldarg_1));
+					list.Insert(i + 3, CodeInstruction.Call(typeof(SoundOnEnterZone), "PlaySound"));
+
+					break;
 				}
 			}
-			return null;
+			return list;
 		}
 
-		static void Postfix(GameObjectBlueprint Blueprint, GameObject __result)
+		private static void PlaySound(GameObject obj, Cell cell)
 		{
-			if (Blueprint == null || __result == null)
-			{
-				return;
-			}
-
-			string species = Blueprint.GetTag("Species");
+			string species = obj.GetPropertyOrTag("Species");
 			if (species == "cat")
 			{
-				__result.AddPart<SoundOnEnterZone>().sound = "pantherk";
+				if (cell.ParentZone.ZoneID != obj.GetStringProperty("LastPlayedSoundIn"))
+				{
+					cell.PlayWorldSound("pantherk");
+					obj.SetStringProperty("LastPlayedSoundIn", cell.ParentZone.ZoneID);
+				}
 			}
 			else if (species == "crab")
 			{
-				__result.AddPart<SoundOnEnterZone>().sound = "crab";
+				if (cell.ParentZone.ZoneID != obj.GetStringProperty("LastPlayedSoundIn"))
+				{
+					cell.PlayWorldSound("crab");
+					obj.SetStringProperty("LastPlayedSoundIn", cell.ParentZone.ZoneID);
+				}
 			}
 			else if (species == "pig")
 			{
-				__result.AddPart<SoundOnEnterZone>().sound = "swine";
+				if (cell.ParentZone.ZoneID != obj.GetStringProperty("LastPlayedSoundIn"))
+				{
+					cell.PlayWorldSound("swine");
+					obj.SetStringProperty("LastPlayedSoundIn", cell.ParentZone.ZoneID);
+				}
 			}
 			else if (species == "tortoise")
 			{
-				__result.AddPart<SoundOnEnterZone>().sound = "testudine";
+				if (cell.ParentZone.ZoneID != obj.GetStringProperty("LastPlayedSoundIn"))
+				{
+					cell.PlayWorldSound("testudine");
+					obj.SetStringProperty("LastPlayedSoundIn", cell.ParentZone.ZoneID);
+				}
 			}
 		}
 	}

@@ -35,7 +35,7 @@ namespace Mods.UnitedFactions
 		[HarmonyPatch(typeof(Factions), "Get")]
 		static void Get(ref string Name)
 		{
-			if (MergedFactions.TryGetValue(Name, out string replaced))
+			if (Name != null && MergedFactions.TryGetValue(Name, out string replaced))
 			{
 				Name = replaced;
 			}
@@ -45,7 +45,7 @@ namespace Mods.UnitedFactions
 		[HarmonyPatch(typeof(Factions), "GetIfExists")]
 		static void GetIfExists(ref string Name)
 		{
-			if (MergedFactions.TryGetValue(Name, out string replaced))
+			if (Name != null && MergedFactions.TryGetValue(Name, out string replaced))
 			{
 				Name = replaced;
 			}
@@ -55,7 +55,7 @@ namespace Mods.UnitedFactions
 		[HarmonyPatch(typeof(GameObjectFactory), "GetFactionMembers")]
 		static void GetFactionMembers(ref string Faction)
 		{
-			if (MergedFactions.TryGetValue(Faction, out string replaced))
+			if (Faction != null && MergedFactions.TryGetValue(Faction, out string replaced))
 			{
 				Faction = replaced;
 			}
@@ -65,7 +65,7 @@ namespace Mods.UnitedFactions
 		[HarmonyPatch(typeof(Faction), "TryAddFactionFeeling")]
 		static bool TryAddFactionFeeling(string Faction, ref bool __result)
 		{
-			if (MergedFactions.ContainsKey(Faction))
+			if (Faction != null && MergedFactions.ContainsKey(Faction))
 			{
 				__result = true;
 				return false;

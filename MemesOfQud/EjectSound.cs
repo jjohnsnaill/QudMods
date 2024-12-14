@@ -60,7 +60,7 @@ namespace Mods.MemesOfQud
 			bool first = true;
 			for (int i = 0; i < list.Count; i++)
 			{
-				if (list[i].Is(OpCodes.Ldstr, "Battle at Grit Gate"))
+				if (list[i].Is(OpCodes.Ldstr, "Music/Battle at Grit Gate"))
 				{
 					list.Insert(++i, first ? CodeInstruction.Call(typeof(EjectSound), "StopMusic") : CodeInstruction.Call(typeof(EjectSound), "GetMusic"));
 					first = false;
@@ -80,12 +80,12 @@ namespace Mods.MemesOfQud
 		private static void PlayMusic()
 		{
 			if (Options.GetOption("SwapMusic") != "No")
-				SoundManager.PlayMusic("circus", Crossfade: false);
+				SoundManager.PlayMusic("Music/circus", Crossfade: false);
 		}
 
 		private static string GetMusic(string track)
 		{
-			return Options.GetOption("SwapMusic") == "No" ? track : "circus";
+			return Options.GetOption("SwapMusic") == "No" ? track : "Music/circus";
 		}
 
 		private static string StopMusic(string track)

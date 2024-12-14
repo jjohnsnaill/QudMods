@@ -1,5 +1,4 @@
-﻿using XRL.Core;
-using XRL.World.Effects;
+﻿using XRL.World.Effects;
 
 namespace XRL.World.Parts
 {
@@ -15,9 +14,9 @@ namespace XRL.World.Parts
 			return true;
 		}
 
-		public override void TurnTick(long TurnNumber)
+		public override void TurnTick(long TimeTick, int Amount)
 		{
-			long time = XRLCore.Core.Game.TimeTicks % 1200;
+			long time = TimeTick % 1200;
 			if (ParentObject.InActiveZone() && (time <= 300 || time > 950 || The.Player.HasEffect<Lost>()))
 			{
 				if (ParentObject.CurrentCell.IsSolid())
