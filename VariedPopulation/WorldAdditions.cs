@@ -28,12 +28,17 @@ namespace Mods.VariedPopulation
 		[HarmonyPatch(typeof(BlueprintZoneFactory), "AddBlueprintsFor")]
 		static bool AddBlueprintsFor(ZoneRequest Request)
 		{
-			if (Request.Z < 61)
+			if (Request.Z < 61 || Request.WorldID != "JoppaWorld")
 			{
 				return true;
 			}
 
-			ZoneBlueprint bp = new ZoneBlueprint(WorldFactory.Factory.getWorld("JoppaWorld").CellBlueprintsByName["DefaultJoppaCell"].LevelBlueprint[1, 1, 49]);
+			if (ZoneManager.GetTerrainObjectForZone(Request.WorldX, Request.WorldY, Request.WorldID)?.Blueprint == "TerrainEynRoj" && Request.X == 1 && Request.Y == 1)
+			{
+				return true;
+			}
+
+			ZoneBlueprint bp = new ZoneBlueprint(WorldFactory.Factory.getWorld(Request.WorldID).CellBlueprintsByName["DefaultJoppaCell"].LevelBlueprint[1, 1, 49]);
 			bp.Builders.Remove("ZoneTemplate:Caves");
 			bp.Builders.Remove("Music");
 

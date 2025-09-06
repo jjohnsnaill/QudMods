@@ -9,6 +9,24 @@ namespace XRL.World.Parts
 			return true;
 		}
 
+		public override bool WantEvent(int ID, int cascade)
+		{
+			return ID == AfterZoneBuiltEvent.ID;
+		}
+
+		public override bool HandleEvent(AfterZoneBuiltEvent E)
+		{
+			if (ParentObject.Blueprint == "Aleksh_DuneWraithSpawner")
+			{
+				GameObject obj = GameObject.Create("Widget");
+				obj.AddPart<DuneWraithSpawner>();
+				ParentObject.CurrentCell.AddObject(obj);
+				ParentObject.Obliterate();
+			}
+
+			return base.HandleEvent(E);
+		}
+
 		public override bool WantTurnTick()
 		{
 			return true;

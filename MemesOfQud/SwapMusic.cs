@@ -42,15 +42,15 @@ namespace Mods.MemesOfQud
 
 			if (Options.GetOption("SwapMusic") == "Yes")
 			{
-				if (track == "Music/MoghrayiRemembrance")
+				if (track == "Music/Moghrayi Remembrance Circle")
 				{
 					return "desert";
 				}
-				if (track == "Music/Caves1")
+				if (track == "Music/Binaural Concept")
 				{
 					return "caves";
 				}
-				if (track == "Music/StoicPorridge")
+				if (track == "Music/Stoic Porridge")
 				{
 					return "gritGate";
 				}
