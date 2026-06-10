@@ -10,12 +10,6 @@ namespace XRL.World.Parts.Mutation
 {
 	public class MissileStrike : BaseMutation
 	{
-		public MissileStrike()
-		{
-			DisplayName = "Missile Strike";
-			Type = "Physical";
-		}
-
 		public override bool AllowStaticRegistration()
 		{
 			return true;

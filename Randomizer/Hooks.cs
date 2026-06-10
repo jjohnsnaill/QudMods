@@ -119,7 +119,7 @@ namespace Mods.Randomizer
 			List<CodeInstruction> list = new List<CodeInstruction>(instr);
 			for (int i = 0; i < list.Count; i++)
 			{
-				if (list[i].Is(OpCodes.Call, typeof(Options).GetMethod("get_DisableAchievements")))
+				if (list[i].Is(OpCodes.Ldsfld, typeof(Options).GetField("DisableAchievements")))
 				{
 					list.Insert(i + 3, new CodeInstruction(OpCodes.Pop));
 					list.Insert(i + 4, new CodeInstruction(OpCodes.Ldc_I4_0));

@@ -9,12 +9,6 @@ namespace XRL.World.Parts.Mutation
 {
 	public class PhasingTongue : BaseMutation
 	{
-		public PhasingTongue()
-		{
-			DisplayName = "Phasing Tongue";
-			Type = "Physical";
-		}
-
 		public override bool AllowStaticRegistration()
 		{
 			return true;

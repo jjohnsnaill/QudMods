@@ -479,7 +479,7 @@ namespace Mods.PlayableGolem
 
 					list.Add(new GameObjectMutationUnit
 					{
-						Name = mutation.DisplayName,
+						Name = mutation.GetDisplayName(),
 						Class = mutation.Name,
 						Level = 1, //Math.Max(mutation.BaseLevel, 1),
 						ShouldShowLevel = mutation.ShouldShowLevel()
@@ -607,13 +607,13 @@ namespace Mods.PlayableGolem
 					string[] options = new string[mutations.Count];
 					for (int i = 0; i < mutations.Count; i++)
 					{
-						options[i] = mutations[i].DisplayName + " ({{C|" + mutations[i].Level + "}})";
+						options[i] = mutations[i].GetDisplayName() + " ({{C|" + mutations[i].Level + "}})";
 					}
 
 					if (ParentObject.IsPlayer())
 					{
 						int index = Popup.PickOption("Choose a physical " + GetMutationTermEvent.GetFor(ParentObject) + " to rapidly advance.", Sound: "Sounds/Misc/sfx_characterMod_mutation_windowPopup", Options: options);
-						Popup.Show("You have rapidly advanced " + mutations[index].DisplayName + " by " + Grammar.Cardinal(Amount) + " ranks to rank {{C|" + (mutations[index].Level + Amount) + "}}!", Sound: "Sounds/Misc/sfx_characterMod_mutation_rankUp_quickSuccession");
+						Popup.Show("You have rapidly advanced " + mutations[index].GetDisplayName() + " by " + Grammar.Cardinal(Amount) + " ranks to rank {{C|" + (mutations[index].Level + Amount) + "}}!", Sound: "Sounds/Misc/sfx_characterMod_mutation_rankUp_quickSuccession");
 						mutations[index].RapidLevel(Amount);
 					}
 					else

@@ -18,11 +18,6 @@ namespace XRL.World.Parts.Mutation
 		[NonSerialized]
 		public int[] conjoinmentIDs;
 
-		public Conjoined()
-		{
-			DisplayName = "Conjoined";
-		}
-
 		public override void Register(GameObject Object, IEventRegistrar Registrar)
 		{
 			Registrar.Register("Dismember");

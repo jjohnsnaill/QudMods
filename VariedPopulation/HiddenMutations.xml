@@ -1,0 +1,9 @@
+<mutations Hidden="true" ExcludeFromPool="true">
+	<category Name="Physical">
+		<mutation Name="Missile Strike" Cost="1" Class="MissileStrike" BearerDescription="the ballistic" />
+		<mutation Name="Phasing Tongue" Cost="1" Class="PhasingTongue" BearerDescription="those with phasing tongues" />
+	</category>
+	<category Name="Mental">
+		<mutation Name="Collapse" Cost="1" Class="Collapse" BearerDescription="those who collapse space" />
+	</category>
+</mutations>

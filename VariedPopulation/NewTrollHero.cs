@@ -8,7 +8,7 @@ using XRL.World.Parts.Mutation;
 
 namespace XRL.World.ObjectBuilders
 {
-	public class TrollHero1 : IObjectBuilder
+	public class NewTrollHero : IObjectBuilder
 	{
 		public override void Apply(GameObject Object, string Context)
 		{

@@ -156,7 +156,7 @@ namespace Mods.Gauntlet
 
 					options.Add(new GameObjectMutationUnit
 					{
-						Name = mutation.DisplayName,
+						Name = mutation.GetDisplayName(),
 						Class = mutation.Name,
 						Level = Math.Max(mutation.BaseLevel, 1),
 						ShouldShowLevel = mutation.ShouldShowLevel()

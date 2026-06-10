@@ -333,7 +333,7 @@ Bestowed ‘pon me, a strapping lad!'
 		<part Name="GiantHands" />
 		<mutation Name="DarkVision" />
 		<part Name="Description" Short="A hoary humanoid slumps beneath the weight of =pronouns.possessive= broad and cragged back. Fibers of unkempt hair enswathe the great pale shoulder-rocks, and rumpled lids lay half-shut over the discs of =pronouns.possessive= sluggish eyes." />
-		<builder Name="TrollHero1" />
+		<builder Name="NewTrollHero" />
 		<tag Name="Role" Value="Hero" />
 		<tag Name="ExcludeFromDynamicEncounters" Value="*noinherit" />
 	</object>

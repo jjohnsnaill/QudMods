@@ -24,7 +24,7 @@ namespace Mods.Randomizer
 				if (types[i].IsGenericType || types[i].Name[0] == '<')
 					continue;
 
-				if (!types[i].FullName.StartsWith("XRL.World") && types[i] != typeof(PsychicHunterSystem) && types[i] != typeof(LiquidPutrescence) && types[i] != typeof(ImportedFoodorDrink))
+				if (!types[i].FullName.StartsWith("XRL.World") && types[i] != typeof(PsychicHunterSystem) && types[i] != typeof(BaseLiquid) && types[i] != typeof(ImportedFoodorDrink))
 					continue;
 
 				MethodInfo[] methods = types[i].GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
@@ -52,25 +52,28 @@ namespace Mods.Randomizer
 		{
 			List<CodeInstruction> list = new List<CodeInstruction>(instr);
 			List<GetPartCall> calls = new List<GetPartCall>(16);
-			List<string> hasParts = new List<string>(16) { "Physics", "Render", "Description" };
+			List<string> hasParts;
 
 			if (Options.GetOption("FixGasInheritance") == "Yes")
-				hasParts.Add("Gas");
+				hasParts = new List<string>(16) { "Physics", "Render", "Description", "Gas" };
+			else
+				hasParts = new List<string>(16) { "Physics", "Render", "Description" };
 
-			for (int i = 0; i < list.Count; i++)
+			// the last instruction is always Ret
+			for (int i = 0; i < list.Count - 1; i++)
 			{
-				if (calls.Count > 0 && i < list.Count - 1)
+				CodeInstruction curr = list[i];
+				CodeInstruction next = list[i + 1];
+
+				if (calls.Count > 0 && !IsChecked(LoadLocal(curr), false, calls, next))
 				{
-					if (!IsChecked(LoadLocal(list[i]), false, calls, list[i + 1]))
-					{
-						IsChecked(LoadArg(list[i]), true, calls, list[i + 1]);
-					}
+					IsChecked(LoadArg(curr), true, calls, next);
 				}
 
-				if (list[i].opcode != OpCodes.Callvirt)
+				if (curr.opcode != OpCodes.Callvirt)
 					continue;
 
-				MethodInfo method = (MethodInfo)list[i].operand;
+				MethodInfo method = (MethodInfo)curr.operand;
 				if (method.DeclaringType != typeof(GameObject))
 					continue;
 
@@ -88,7 +91,8 @@ namespace Mods.Randomizer
 				if (method.Name != "GetPart")
 					continue;
 
-				Type partType = method.GetGenericArguments().Length > 0 ? method.GetGenericArguments()[0] : null;
+				Type[] genericArgs = method.GetGenericArguments();
+				Type partType = genericArgs.Length > 0 ? genericArgs[0] : null;
 
 				if (hasParts.Contains(partType != null ? partType.Name : list[i - 1].operand as string))
 					continue;
@@ -96,57 +100,62 @@ namespace Mods.Randomizer
 				GetPartCall call = new GetPartCall(i, partType, partType != null);
 				calls.Add(call);
 
-				if (list[i + 1].opcode == OpCodes.Isinst || list[i + 1].opcode == OpCodes.Castclass)
+				if (next.opcode == OpCodes.Isinst || next.opcode == OpCodes.Castclass)
 				{
 					if (partType == null)
 					{
-						call.type = (Type)list[i + 1].operand;
+						call.type = (Type)next.operand;
 					}
-					i++;
+					// skip iterating over two instructions, they're about to be checked
+					i += 2;
+					next = list[i];
 				}
 
 				// is the part only checked (AnimatedMaterialSaltDunes) or removed (GameObjectSkillUnit)?
-				if (IsChecked(list[i + 1]))
+				if (IsChecked(next))
 				{
 					call.variableIndex = int.MaxValue;
 					continue;
 				}
 
 				// treat unstored parts as unchecked
-				int arg = StoreArg(list[i + 1]);
+				int arg = StoreArg(next);
 				if (arg > -1)
 				{
 					call.variableIndex = arg;
 					call.variableIsArgument = true;
 					continue;
 				}
-				call.variableIndex = StoreLocal(list[i + 1]);
+				call.variableIndex = StoreLocal(next);
 			}
 
 			int offset = 0;
 			for (int i = 0; i < calls.Count; i++)
 			{
-				if (calls[i].variableIndex < int.MaxValue)
+				var call = calls[i];
+				if (call.variableIndex == int.MaxValue)
 				{
-					int index = calls[i].index + offset;
-					list[index].operand = typeof(NullReferencePrevention).GetMethod("RequirePart");
+					continue;
+				}
 
-					if (calls[i].type != null)
-					{
-						string fullName = calls[i].type.FullName;
-						list.Insert(index, new CodeInstruction(OpCodes.Ldstr, fullName.Substring(0, fullName.LastIndexOf('.'))));
-					}
-					else
-					{
-						list.Insert(index, new CodeInstruction(OpCodes.Ldnull));
-					}
+				int index = call.index + offset;
+				list[index].operand = typeof(NullReferencePrevention).GetMethod("RequirePart");
+
+				if (call.type != null)
+				{
+					string fullName = call.type.FullName;
+					list.Insert(index, new CodeInstruction(OpCodes.Ldstr, fullName.Substring(0, fullName.LastIndexOf('.'))));
+				}
+				else
+				{
+					list.Insert(index, new CodeInstruction(OpCodes.Ldnull));
+				}
+				offset++;
+
+				if (call.loadName)
+				{
+					list.Insert(index, new CodeInstruction(OpCodes.Ldstr, call.type.Name));
 					offset++;
-
-					if (calls[i].loadName)
-					{
-						list.Insert(index, new CodeInstruction(OpCodes.Ldstr, calls[i].type.Name));
-						offset++;
-					}
 				}
 			}
 

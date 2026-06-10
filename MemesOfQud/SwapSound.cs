@@ -2,6 +2,7 @@
 using HarmonyLib;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using XRL;
 using XRL.Rules;
 using XRL.Sound;
@@ -14,6 +15,22 @@ namespace Mods.MemesOfQud
 	{
 		public static Dictionary<string, SoundReplacement> swaps;
 		private static long lastPlayed;
+
+		[HarmonyTranspiler]
+		[HarmonyPatch("Initialize")]
+		static IEnumerable<CodeInstruction> SoundPathFix(IEnumerable<CodeInstruction> instr)
+		{
+			List<CodeInstruction> list = new List<CodeInstruction>(instr);
+			for (int i = 0; i < list.Count; i++)
+			{
+				if (list[i].Is(OpCodes.Ldfld, typeof(ModFile).GetField("OriginalName")))
+				{
+					list.Insert(i + 1, CodeInstruction.Call(typeof(SwapSound), "FixPath"));
+					break;
+				}
+			}
+			return list;
+		}
 
 		[HarmonyPrefix]
 		[HarmonyPatch("PlayWorldSound", new Type[] { typeof(string), typeof(int), typeof(bool), typeof(float), typeof(Point2D), typeof(float), typeof(float), typeof(float) })]
@@ -42,6 +59,15 @@ namespace Mods.MemesOfQud
 					SoundManager.PlayUISound(Clip, Volume, Combat, Interface, Effect);
 				}
 			}
+		}
+
+		private static string FixPath(string path)
+		{
+			if (path.IsNullOrEmpty() || path.StartsWith("file://"))
+			{
+				return path;
+			}
+			return "file://" + path;
 		}
 
 		private static string Swap(ref string clip, ref float volume, ref float pitchVariance, ref float pitch)
@@ -78,7 +104,14 @@ namespace Mods.MemesOfQud
 					["Sounds/Creatures/VO/sfx_robot_generic_vo_die"] = new SoundReplacement("botDie1", "botDie2"),
 					["Sounds/Creatures/VO/sfx_ooze_generic_vo_die"] = new SoundReplacement("oozeDie1", "oozeDie2"),
 
+					["Sounds/Damage/sfx_destroy_genPlant"] = new SoundReplacement("plantDie"),
+					["Sounds/Creatures/VO/sfx_creature_animal_plant_vo_die"] = new SoundReplacement("plantDie"),
+					["Sounds/Creatures/VO/sfx_creature_animal_tree_vo_die"] = new SoundReplacement("plantDie"),
+
 					["Sounds/Abilities/sfx_ability_charge"] = new SoundReplacement("charge1", "charge2", "charge3"),
+					["Sounds/Abilities/sfx_ability_jump"] = new SoundReplacement("Sounds/Abilities/jump"),
+					["Sounds/Abilities/sfx_ability_cudgel_slam"] = new SoundReplacement("Sounds/Abilities/slam"),
+					["Sounds/Abilities/sfx_ability_turret_chirp"] = new SoundReplacement("turret1", "turret2"),
 
 					["Sounds/Foley/fly_tileMove_water_wade"] = new SoundReplacement("splash"),
 					["Sounds/Foley/fly_tileMove_water_swim"] = new SoundReplacement("splash"),
@@ -100,7 +133,6 @@ namespace Mods.MemesOfQud
 					["Sounds/StatusEffects/sfx_statusEffect_fungal"] = new SoundReplacement("Sounds/StatusEffects/bruh"),
 					["Sounds/StatusEffects/sfx_statusEffect_rusted"] = new SoundReplacement("Sounds/StatusEffects/rust", 1),
 					["Sounds/StatusEffects/sfx_statusEffect_charm"] = new SoundReplacement("Sounds/StatusEffects/charm"),
-					["Sounds/StatusEffects/sfx_statusEffect_robotBeep"] = new SoundReplacement("turret1", "turret2"),
 
 					["Sounds/Enhancements/sfx_enhancement_electric_conductiveJump"] = new SoundReplacement("spark1", "spark2"),
 
@@ -111,10 +143,6 @@ namespace Mods.MemesOfQud
 
 					["Sounds/Interact/sfx_interact_liquidContainer_pourout"] = new SoundReplacement("pour"),
 					["Sounds/Abilities/sfx_ability_generic_waterPour"] = new SoundReplacement("pour"),
-
-					["Sounds/Abilities/sfx_ability_jump"] = new SoundReplacement("Sounds/Abilities/jump"),
-
-					["Sounds/Abilities/sfx_ability_cudgel_slam"] = new SoundReplacement("Sounds/Abilities/slam"),
 
 					["Sounds/Abilities/sfx_ability_gasMutation_passiveRelease"] = new SoundReplacement("Sounds/Abilities/gas"),
 
@@ -127,6 +155,7 @@ namespace Mods.MemesOfQud
 					["Sounds/Abilities/sfx_ability_mutation_disintegration_disintegrate"] = new SoundReplacement("Sounds/Abilities/disintegrate"),
 					["Sounds/Abilities/sfx_ability_mutation_stunning_force"] = new SoundReplacement("Sounds/Abilities/stunningForce"),
 					["Sounds/Abilities/sfx_ability_mutation_burgeoning_plantGrow"] = new SoundReplacement("Sounds/Abilities/burgeoning"),
+					["Sounds/Abilities/sfx_ability_mutation_psychometry_activate"] = new SoundReplacement("startup", 0.75f),
 
 					["Sounds/Abilities/sfx_ability_mutation_timeDilation_activate"] = new SoundReplacement("Sounds/Abilities/timeDilation", 1),
 					["Sounds/Abilities/sfx_ability_mutation_timeDilation_deactivate"] = new SoundReplacement("Sounds/Abilities/timeDilationOff", 1),
@@ -145,9 +174,6 @@ namespace Mods.MemesOfQud
 
 					["Sounds/UI/ui_notification_death"] = new SoundReplacement(""),
 
-					["Sounds/Abilities/sfx_ability_mutation_psychometry_activate"] = new SoundReplacement("startup", 0.75f),
-					["Sounds/Interact/sfx_interact_artifact_windup"] = new SoundReplacement("startup", 0.75f),
-
 					["Sounds/Interact/sfx_interact_artifact_windup"] = new SoundReplacement("whine_up", 0.75f),
 					["Sounds/Interact/sfx_interact_artifact_ready"] = new SoundReplacement("whine_up", 0.75f),
 
@@ -158,6 +184,12 @@ namespace Mods.MemesOfQud
 					["sfx_tinker_idle_spark"] = new SoundReplacement("spark1", "spark2"),
 
 					["sfx_bellOfRest_toll"] = new SoundReplacement("bell", 0.3f),
+
+					// sometimes sounds are passed in without their directory because brian bucklew hates me personally
+					["sfx_interact_artifact_windup"] = new SoundReplacement("whine_up", 0.75f),
+					["sfx_interact_artifact_windDown"] = new SoundReplacement("whine_down", 0.75f),
+					["sfx_creature_girshNephilim_irisdualBeam_windup"] = new SoundReplacement("Sounds/Abilities/irisdualBeamWindup"),
+					["sfx_creature_girshNephilim_irisdualBeam_attack"] = new SoundReplacement("Sounds/Abilities/irisdualBeam"),
 				};
 			}
 

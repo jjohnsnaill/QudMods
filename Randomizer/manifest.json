@@ -1,5 +1,5 @@
 {
 	"author":"John Snail",
 	"description":"Randomizes objects.\nYou can configure what kinds of objects to randomize.\nDisables achievements and saves high scores to a separate file.",
-	"version":"1.0"
+	"version":"1.1.0.1"
 }

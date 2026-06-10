@@ -101,7 +101,7 @@ namespace Mods.PlayableGolem
 					{
 						description.Append(", ");
 					}
-					description.Append(((BaseMutation)mutation.Value.Reflector?.GetNewInstance()).DisplayName);
+					description.Append(((BaseMutation)mutation.Value.Reflector?.GetNewInstance()).GetDisplayName());
 				}
 
 				yield return new ChoiceWithColorIcon()

@@ -282,7 +282,7 @@ namespace Mods.Gauntlet
 		public void AddLayout(JSONClass root)
 		{
 			Layout layout = new Layout();
-			layout.map = MapFile.LoadWithMods(root["Map"].Value);
+			layout.map = MapFile.Resolve(root["Map"].Value);
 			layout.minWave = root["MinWave"].AsInt;
 			layout.maxWave = root["MaxWave"].AsInt;
 			layout.tag = root["Tag"] is JSONData tag ? tag.Value : null;

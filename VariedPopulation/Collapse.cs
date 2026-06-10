@@ -9,12 +9,6 @@ namespace XRL.World.Parts.Mutation
 {
 	public class Collapse : BaseMutation
 	{
-		public Collapse()
-		{
-			DisplayName = "Collapse";
-			base.Type = "Mental";
-		}
-
 		public override bool AllowStaticRegistration()
 		{
 			return true;
